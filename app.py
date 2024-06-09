@@ -16,7 +16,7 @@ CORS(app, supports_credentials=True)
 
 @app.route('/')
 def hello_world():  # put application's cod e here
-    return 'Hello World!'
+    return render_template('index.html')
 
 
 @app.route('/browser_args', methods=["GET", "POST"])

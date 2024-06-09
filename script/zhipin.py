@@ -14,8 +14,9 @@ def ParseParameters(domain_name: str, url: str, XpathList: str, page_num: int) -
         dirID: str = "dom_" + str(i)
         temp_list: list = []
         for j in json.loads(XpathList):
+            # //*[@id="positionList-hook"]/div/div[1]/div[2]/div[1]/div[1]/div[1]/a
             replaced_text = fun.editXpath(original_string=j["xpath"],
-                                          start_marker='id("positionList-hook")/div[1]/div[',
+                                          start_marker='id("positionList-hook")/div[1]/div[1]/div[',
                                           end_marker=']/div', i=i)
             temp_list.append(replaced_text)
         allXpath[dirID] = temp_list

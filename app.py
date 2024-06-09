@@ -25,13 +25,15 @@ def browser_args():
         data = {"code": "10000", "message": "Success"}
         return jsonify(data)
     if request.method == "POST":
-        print("post请求！")
+        print(request.form.get('DataList'))
         domain_name = request.form.get('domain_name')
         url = request.form.get('url')
         page_num = request.form.get('page_num')
         DataList = request.form.get('DataList')
+        print(DataList)
         if domain_name == "we.51job.com":
             print("处理51——job!")
+            print(DataList)
             return json.dumps(job_51.ParseParameters(domain_name, url, DataList, int(page_num)))
 
         elif domain_name == "sou.zhaopin.com":
@@ -61,8 +63,25 @@ def saveExcel():
         return json.dumps({"code": "10001", "message": 'No file part'})
     file = request.files['file']
     fileName = request.form.get('fileName')
-    file.save('saveFile/excelFiles/{0}'.format(fileName)+".xlsx")  # 保存上传的文件
+    file.save('saveFile/excelFiles/{0}'.format(fileName) + ".xlsx")  # 保存上传的文件
     return json.dumps({"code": "10000", "message": "Success"})
+
+
+# 可视化格式信息采集
+@app.route('/visualizeData', methods=["POST"])
+def visualizeData():
+    domain_name = request.form.get('domain_name')
+    url = request.form.get('url')
+    page_num = request.form.get('page_num')
+
+    if domain_name == "www.zhipin.com":
+        return json.dumps(boss.ParseParameters(domain_name=domain_name, url=url, page_num=int(page_num),
+                                               XpathList=fun.setParsingRules(domain_name=domain_name)))
+    elif domain_name == "sou.zhaopin.com":
+        return json.dumps(zhipin.ParseParameters(domain_name=domain_name, url=url, page_num=int(page_num),
+                                                 XpathList=fun.setParsingRules(domain_name=domain_name)))
+    else:
+        return json.dumps({"code": "10001", "message": '不在采集范围内'})
 
 
 if __name__ == '__main__':

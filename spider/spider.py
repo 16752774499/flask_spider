@@ -1,6 +1,7 @@
 import time
 
 from selenium import webdriver
+# from DrissionPage import ChromiumPage
 from selenium.common import NoSuchElementException
 from selenium.webdriver.common.by import By
 from script import fun
@@ -53,28 +54,7 @@ def work(url: str, allXpath: dict, domain_name: str, page_num: int) -> dict:
         for num in range(page_num):
             # 第一页手动登录
             if num == 0:
-                # script = """
-                # const loginBtn = document.querySelector('.login-btn');
-                # loginBtn.click();
-                # function checkIsLogin() {
-                # // 定时器间隔（毫秒）
-                # const interval = 1000; // 每秒检查一次
-                # const element = document.querySelector('.positionlist__login-foot');
-                # // 创建定时器，每隔一定时间检查变量值
-                # const checkInterval = setInterval(() => {
-                #     if (element && element.style.display === 'none') {
-                #         console.log(true); // 如果 style 属性值为 "display: none;"，输出 true
-                #         return true;
-                #     } else {
-                #         console.log(false); // 如果 style 属性值不为 "display: none;"，输出 false
-                #         }
-                #     }, interval);
-                # }
-                #    """
-                # while True:
-                #     result = driver.execute_script("checkIsLogin();")
-                #     if result:
-                #         break
+
                 script = """
                     var textBox = document.createElement('input');
 
@@ -113,13 +93,15 @@ def work(url: str, allXpath: dict, domain_name: str, page_num: int) -> dict:
         return Data
 
 
-def task(driver: object, allXpath: dict, NextButton: object, domain_name: str, pageNum: int, url: str) -> dict:
+def task(driver, allXpath: dict, NextButton: object, domain_name: str, pageNum: int, url: str) -> dict:
     time.sleep(3)
     data_obj: dict = {}
     for k, v in allXpath.items():
+        # print(v)
         temp_list: list = []
         for i in v:
             try:
+
                 element = driver.find_element(By.XPATH, i)
                 detailsUrl = element.get_attribute("href")
                 text = element.text
@@ -131,6 +113,7 @@ def task(driver: object, allXpath: dict, NextButton: object, domain_name: str, p
             except NoSuchElementException:
                 print(r"无法定位到该元素或该元素不存在：{0}".format(i))
                 temp_list.append("NULL")
+
                 continue
         data_obj[k] = temp_list
     print(data_obj)

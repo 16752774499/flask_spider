@@ -18,7 +18,16 @@ CORS(app, supports_credentials=True)
 
 @app.route('/')
 def hello_world():  # put application's cod e here
-    return render_template('index.html')
+    # 总岗位数
+    jobNums = fun.getJobsNums()
+    # 今日更新
+    toDayUpdate = fun.toDayUpdata()
+    # 查看过的数目
+    statusTrueNums = fun.viewStatus(True)
+    # 今日最新
+    latestToday = fun.latestToday()
+    return render_template('index.html', jobNums=jobNums, toDayUpdate=toDayUpdate, statusTrueNums=statusTrueNums,
+                           latestToday=latestToday)
 
 
 @app.route('/browser_args', methods=["GET", "POST"])
@@ -91,6 +100,19 @@ def visualizeData():
         return json.dumps(data)
     else:
         return json.dumps({"code": "10001", "message": '不在采集范围内'})
+
+
+# 区域数量
+@app.route('/AreaQuantity', methods=["GET"])
+def AreaQuantity():
+    AreaQuantityAll = fun.getAreaQuantity()
+    return json.dumps(AreaQuantityAll)
+
+
+@app.route('/changeStatus', methods=["GET"])
+def changeStatus():
+    fun.changeStatus(request.args.get('id'))
+    return json.dumps({"code": "10000", "message": "Success"})
 
 
 if __name__ == '__main__':

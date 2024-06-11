@@ -21,10 +21,12 @@ class Jobs(Base):
     jobCorporationBg1 = Column(String(128), nullable=False, index=True, default="NULL", name="公司背景1")
     jobCorporationBg2 = Column(String(128), nullable=False, index=True, default="NULL", name="公司背景2")
     addTime = Column(DateTime, default=datetime.datetime.now, nullable=False)
+    status = Column(String(12), default="False", index=True, nullable=False, name="查看状态")
 
 
 engine = create_engine(
-    "mysql+pymysql://{0}:{4}@{1}:{2}/{3}".format(config.dbcfg["user"], config.dbcfg["address"], config.dbcfg["port"],
+    "mysql+pymysql://{0}:{4}@{1}:{2}/{3}".format(config.dbcfg["user"], config.dbcfg["address"],
+                                                 config.dbcfg["port"],
                                                  config.dbcfg["dbname"], config.dbcfg["passwd"]),
     max_overflow=0,  # 超过连接池大小外最多创建的连接
     pool_size=5,  # 连接池大小
@@ -32,5 +34,5 @@ engine = create_engine(
     pool_recycle=-1  # 多久之后对线程池中的线程进行一次连接的回收（重置）
 )
 # 把表同步到数据库  （把被Base管理的所有表，都创建到数据库）
-# Base.metadata.create_all(engine)
+Base.metadata.create_all(engine)
 # Base.metadata.drop_all(engine)

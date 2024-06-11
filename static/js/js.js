@@ -285,7 +285,7 @@ $(function () {
         var myChart = echarts.init(document.getElementById('bt01'));
         var data1 = 1//己完成
         var data2 = 18//未完成
-        var data3 = data2/ (data1 + data2) * 100
+        var data3 = data2 / (data1 + data2) * 100
         option = {
             title: [{
                 text: data3.toFixed(1) + '%',
@@ -619,9 +619,20 @@ $(function () {
 })
 
 
-
-
-
+function clickLi(Id) {
+    const params = {
+        id: Id
+    };
+    axios.get(`${ipAddresses}/changeStatus`, {params: params})
+        .then(response => {
+            console.log(response.data)
+        })
+        .catch(error => {
+            // 请求失败时的处理
+            console.error(error);
+            throw error; // 抛出错误以便在调用方捕获
+        });
+}
 
 
 

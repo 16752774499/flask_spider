@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>岗位招聘信息可视化大屏</title>
+    <script src="../static/js/config.js"></script>
     <script type="text/javascript" src="../static/js/jquery.js"></script>
     <link rel="stylesheet" href="../static/css/comon0.css">
 </head>
@@ -106,9 +107,9 @@
                     <div class="bar">
                         <div class="barbox">
                             <ul class="clearfix">
-                                <li class="pulll_left counter">1942</li>
-                                <li class="pulll_left counter">986</li>
-                                <li class="pulll_left counter">91</li>
+                                <li class="pulll_left counter">{{ jobNums }}</li>
+                                <li class="pulll_left counter">{{ toDayUpdate }}</li>
+                                <li class="pulll_left counter">{{ statusTrueNums }}</li>
                             </ul>
                         </div>
                         <div class="barbox2">
@@ -146,14 +147,12 @@
                 <div class="boxfoot"></div>
             </div>
             <div class="boxall" style="height: calc(50% - .15rem)">
-                <div class="alltitle">最近更新</div>
+                <div class="alltitle">今日最新</div>
                 <div class="wrap boxnav">
                     <ul>
-                        <li><p><span>深圳腾讯科技有限公司</span><span>门禁系统</span><span>在线</span></p></li>
-                        <li><p><span>网易科技有限公司</span><span>防火系统</span><span>在线</span></p></li>
-                        <li><p><span>百度科技有限公司</span><span>防火系统</span><span>在线</span></p></li>
-                        <li><p><span>汽车之家科技有限公司</span><span>定位系统</span><span>在线</span></p></li>
-                        <li><p><span>小米科技有限公司</span><span>定位系统</span><span>在线</span></p></li>
+                        {% for item in latestToday %}
+                            <li><p><span onclick="clickLi({{ item.id }})"><a href="{{ item["jobUrl"] }}" target="_blank">{{ item["jobName"] }}</a></span><span><a href="{{ item["jobCorporationUrl"] }}" target="_blank">{{ item["jobCorporation"] }}</a></span><span>{{ item["jobPay"] }}</span></p></li>
+                        {% endfor %}
 
                     </ul>
                 </div>
@@ -204,7 +203,7 @@
 
     </ul>
 </div>
-
+<script src="../static/js/axios.min.js"></script>
 <script language="JavaScript" src="../static/js/js.js"></script>
 <script src="../static/js/echarts.min.js"></script>
 <script type="text/javascript" src="../static/js/xian.js"></script>

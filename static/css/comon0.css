@@ -10,7 +10,7 @@ li{ list-style-type:none;}
 @font-face{font-family:electronicFont;src:url(../font/DS-DIGIT.TTF)}
 i{ margin:0px; padding:0px; text-indent:0px;}
 img{ border:none; max-width: 100%;}
-a{ text-decoration:none; color:#399bff;}
+a{ text-decoration:none; color: #ffffff;}
 a.active,a:focus{ outline:none!important; text-decoration:none;}
 ol,ul,p,h1,h2,h3,h4,h5,h6{ padding:0; margin:0}
 a:hover{ color:#06c; text-decoration: none!important}
@@ -99,7 +99,7 @@ html,body{height: 100%;}
 .wrap li p{border: 1px solid rgba(25,186,139,.17);}
 .wrap li p{display: flex; justify-content: space-between;}
 .wrap li p{display: flex; align-items: center; height: 80%;}
-.wrap li p span{color: rgba(255,255,255,.6);  text-align: center; text-overflow: ellipsis; white-space:nowrap; overflow: hidden; width: 20%; font-size: .16rem;}
+.wrap li p span{color: rgb(255, 255, 255);  text-align: center; text-overflow: ellipsis; white-space:nowrap; overflow: hidden; width: 50%; font-size: .16rem;}
 .wrap li p span:first-child{width: 40%; text-align: left;}
 .sycm ul{   padding: .16rem 0; width: 100%;}
 .sycm li{ float: left; width: 25%; text-align: center; position: relative}

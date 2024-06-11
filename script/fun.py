@@ -1,5 +1,7 @@
 import json
-from sqlalchemy import create_engine
+from datetime import date
+
+from sqlalchemy import create_engine, func
 from sqlalchemy.orm import sessionmaker
 from models.jobs import Jobs
 import config
@@ -159,6 +161,21 @@ def returnList(data: dict) -> list:
 
 
 def insertDB(dataList: list) -> None:
+    session = returnDbSession()
+    try:
+        for i in dataList:
+            job = Jobs(jobName=i[0], jobUrl=i[1], jobPay=i[2], jobAddress=i[3], jobQualification=i[4], jobEXP=i[5],
+                       jobCorporation=i[6], jobCorporationUrl=i[7], jobCorporationBg1=i[8], jobCorporationBg2=i[9])
+            session.add(job)
+            session.commit()
+        # 第五步：关闭session对象
+        session.close()
+        print("数据插入成功")
+    except Exception as e:
+        print("数据插入失败：{0}".format(e))
+
+
+def returnDbSession() -> object:
     engine = create_engine(
         "mysql+pymysql://{0}:{4}@{1}:{2}/{3}".format(config.dbcfg["user"], config.dbcfg["address"],
                                                      config.dbcfg["port"],
@@ -171,14 +188,91 @@ def insertDB(dataList: list) -> None:
     Session = sessionmaker(bind=engine)
     # 第三步：拿到session对象,相当于连接对象（会话）
     session = Session()
-    try:
-        for i in dataList:
-            job = Jobs(jobName=i[0], jobUrl=i[1], jobPay=i[2], jobAddress=i[3], jobQualification=i[4], jobEXP=i[5],
-                       jobCorporation=i[6], jobCorporationUrl=i[7], jobCorporationBg1=i[8], jobCorporationBg2=i[9])
-            session.add(job)
-            session.commit()
-        # 第五步：关闭session对象
-        session.close()
-        print("数据插入成功")
-    except Exception as e:
-        print("数据插入失败：{0}".format(e))
+    return session
+
+
+def getAreaQuantity() -> list:
+    AreaQuantityList: list = []
+    AreaQuantityDict: dict = {}
+    session = returnDbSession()
+    cityRegions = ["碑林", "莲湖", "新城", "未央", "灞桥", "雁塔", "周至", "鄠邑", "长安", "蓝田", "临潼", "阎良", "高陵"]
+    for i in cityRegions:
+        search_term = i  # 模糊搜索关键词
+        query = session.query(Jobs).filter(Jobs.jobAddress.like(f'%{search_term}%'))
+        result_count = query.count()
+        AreaQuantityDict[i] = result_count
+        # 打印查询到的数量
+        # print("{0}岗位数有{1}个！".format(i, result_count))
+    session.close()
+
+    for key, value in AreaQuantityDict.items():
+
+        if key == "蓝田" or key == "周至":
+            key += "县"
+            TempAreaQuantityDict: dict = {"name": key, "value": value}
+            AreaQuantityList.append(TempAreaQuantityDict)
+        else:
+            key += "区"
+            TempAreaQuantityDict: dict = {"name": key, "value": value}
+            AreaQuantityList.append(TempAreaQuantityDict)
+    return AreaQuantityList
+
+
+# 岗位总数目
+def getJobsNums() -> int:
+    session = returnDbSession()
+    jobsNums: int = session.query(func.count(Jobs.id)).scalar()
+    session.close()
+    return jobsNums
+
+
+# 今日更新
+def toDayUpdata() -> int:
+    today = date.today()
+    session = returnDbSession()
+    # 查询今日更新到数据库的内容
+    today_count = session.query(func.count(Jobs.id)).filter(func.DATE(Jobs.addTime) == today).scalar()
+    # # 打印今日更新的内容
+    # for job in updated_today:
+    #     print(job.jobName)
+    session.close()
+    return today_count
+
+
+def viewStatus(status: bool) -> int:
+    session = returnDbSession()
+    statusNums = session.query(func.count(Jobs.id)).filter(Jobs.status == "{0}".format(status)).scalar()
+    session.close()
+    return statusNums
+
+
+def latestToday() -> list:
+    latestTodayList: list = []
+    session = returnDbSession()
+    latest_records = session.query(Jobs).order_by(Jobs.id.desc()).limit(20).all()
+    for record in latest_records:
+        # print(record.jobCorporation, record.jobName, record.jobUrl, record.jobPay)  # 打印每条记录
+        latestTodayList.append(
+            {"id": record.id, "jobCorporation": record.jobCorporation, "jobName": record.jobName,
+             "jobUrl": record.jobUrl,
+             "jobPay": record.jobPay, "jobCorporationUrl": record.jobCorporationUrl})
+    # print(latestTodayList)
+    session.close()
+    return latestTodayList
+
+
+def changeStatus(Id: str):
+    session = returnDbSession()
+    # 查询指定 id 的记录
+    job = session.query(Jobs).filter_by(id=Id).first()
+    if job:
+        # 更新 status 值
+        job.status = "True"
+        # 提交更改
+        session.commit()
+        print(f"Status value of record with id {Id} updated successfully.")
+    else:
+        print(f"Record with id {Id} not found.")
+    # 关闭会话
+    session.close()
+    return Id

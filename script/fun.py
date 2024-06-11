@@ -1,4 +1,8 @@
 import json
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from models.jobs import Jobs
+import config
 
 
 def editXpath(original_string: str, start_marker: str, end_marker: str, i: int) -> str:
@@ -63,10 +67,6 @@ def saveJson(fileName: str, data: str) -> bool:
         return False
 
 
-def getShowData(url: str, pageNum: int) -> list:
-    pass
-
-
 def setParsingRules(domain_name: str) -> str:
     if domain_name == "www.zhipin.com":
         DataList: list = [
@@ -112,4 +112,73 @@ def setParsingRules(domain_name: str) -> str:
         ]
         return json.dumps(DataList)
     else:
-        return "sou.zhaopin.com"
+        return json.dumps({"code": "10001", "message": '不在采集范围内'})
+
+
+# 格式化数据（需要可视化的数据）
+def formattingData(domain_name: str, data: dict) -> list:
+    dataList: list = returnList(data=data)
+    if domain_name == "www.zhipin.com":
+
+        for i, j in enumerate(dataList):
+            j[1], j[10] = j[10], j[1]
+            j[3], j[10] = j[10], j[3]
+            j[5], j[10] = j[10], j[5]
+            j[6], j[10] = j[10], j[6]
+            j[7], j[10] = j[10], j[7]
+            j[9], j[10] = j[10], j[9]
+            j[8], j[9] = j[9], j[8]
+            # print(i, j)
+
+    elif domain_name == "sou.zhaopin.com":
+
+        for i, j in enumerate(dataList):
+            j[2], j[3] = j[3], j[2]
+            j[4], j[5] = j[5], j[4]
+            j[8], j[9] = j[9], j[8]
+
+    return dataList
+
+
+def returnList(data: dict) -> list:
+    tempList: list = []
+    iter_data = iter(data.items())
+    while True:
+        try:
+            K, V = next(iter_data)
+            iter_V = iter(V.items())
+            while True:
+                try:
+                    k, v = next(iter_V)
+                    tempList.append(v)
+                except StopIteration:
+                    break
+        except StopIteration:
+            break
+    return tempList
+
+
+def insertDB(dataList: list) -> None:
+    engine = create_engine(
+        "mysql+pymysql://{0}:{4}@{1}:{2}/{3}".format(config.dbcfg["user"], config.dbcfg["address"],
+                                                     config.dbcfg["port"],
+                                                     config.dbcfg["dbname"], config.dbcfg["passwd"]),
+        max_overflow=0,  # 超过连接池大小外最多创建的连接
+        pool_size=5,  # 连接池大小
+        pool_timeout=30,  # 池中没有线程最多等待的时间，否则报错
+        pool_recycle=-1  # 多久之后对线程池中的线程进行一次连接的回收（重置）
+    )
+    Session = sessionmaker(bind=engine)
+    # 第三步：拿到session对象,相当于连接对象（会话）
+    session = Session()
+    try:
+        for i in dataList:
+            job = Jobs(jobName=i[0], jobUrl=i[1], jobPay=i[2], jobAddress=i[3], jobQualification=i[4], jobEXP=i[5],
+                       jobCorporation=i[6], jobCorporationUrl=i[7], jobCorporationBg1=i[8], jobCorporationBg2=i[9])
+            session.add(job)
+            session.commit()
+        # 第五步：关闭session对象
+        session.close()
+        print("数据插入成功")
+    except Exception as e:
+        print("数据插入失败：{0}".format(e))

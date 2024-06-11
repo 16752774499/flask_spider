@@ -1,3 +1,5 @@
+import json
+
 from flask import *
 from flask_cors import *
 from flask import jsonify
@@ -75,14 +77,21 @@ def visualizeData():
     page_num = request.form.get('page_num')
 
     if domain_name == "www.zhipin.com":
-        return json.dumps(boss.ParseParameters(domain_name=domain_name, url=url, page_num=int(page_num),
-                                               XpathList=fun.setParsingRules(domain_name=domain_name)))
+        data = fun.formattingData(domain_name=domain_name,
+                                  data=boss.ParseParameters(domain_name=domain_name, url=url, page_num=int(page_num),
+                                                            XpathList=fun.setParsingRules(domain_name=domain_name)))
+        fun.insertDB(data)
+        return json.dumps(data)
+
     elif domain_name == "sou.zhaopin.com":
-        return json.dumps(zhipin.ParseParameters(domain_name=domain_name, url=url, page_num=int(page_num),
-                                                 XpathList=fun.setParsingRules(domain_name=domain_name)))
+        data = fun.formattingData(domain_name=domain_name,
+                                  data=zhipin.ParseParameters(domain_name=domain_name, url=url, page_num=int(page_num),
+                                                              XpathList=fun.setParsingRules(domain_name=domain_name)))
+        fun.insertDB(data)
+        return json.dumps(data)
     else:
         return json.dumps({"code": "10001", "message": '不在采集范围内'})
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port=5000)

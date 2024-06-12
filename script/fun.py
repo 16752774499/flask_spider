@@ -320,7 +320,8 @@ def setPayFormat(PayString):
                 tempList2[1] = int(float(tempList2[1][:-1]) * 10000)
                 Pay = round((((int(tempList2[0]) + int(tempList2[1])) / 2) * int(tempList1[1])) / 12, 1)
                 return Pay
-    elif PayString[:-1] == "天" or PayString[:-1] == "议" or PayString[:-1] == "次":
+    # elif PayString[:-1] == "天" or PayString[:-1] == "议" or PayString[:-1] == "次":
+    elif "天" in PayString or "议" in PayString or "次" in PayString or "/" in PayString:
         return PayString
     else:
         tempList2: list = []

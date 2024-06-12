@@ -164,7 +164,9 @@ def insertDB(dataList: list) -> None:
     session = returnDbSession()
     try:
         for i in dataList:
-            job = Jobs(jobName=i[0], jobUrl=i[1], jobPay=i[2], jobAddress=i[3], jobQualification=i[4], jobEXP=i[5],
+            job = Jobs(jobName=i[0], jobUrl=i[1], jobPay=str(setPayFormat(i[2])), jobAddress=i[3],
+                       jobQualification=i[4],
+                       jobEXP=i[5],
                        jobCorporation=i[6], jobCorporationUrl=i[7], jobCorporationBg1=i[8], jobCorporationBg2=i[9])
             session.add(job)
             session.commit()
@@ -276,3 +278,76 @@ def changeStatus(Id: str):
     # 关闭会话
     session.close()
     return Id
+
+
+def setPayFormat(PayString):
+    # 存在“·”
+    tempList1: list = []
+    if "·" in PayString:
+        split_list = PayString.split("·")
+        # 打印分割后的结果
+        for item1 in split_list:
+            tempList1.append(item1)
+        # 处理“·”前的薪资
+        # 存在“-”
+        # 去除"薪"
+        tempList1[1] = tempList1[1][:-1]
+        tempList2: list = []
+        if "-" in tempList1[0]:
+            split_list = tempList1[0].split("-")
+            for item2 in split_list:
+                tempList2.append(item2)
+            # 如果-前后两个字符串结尾不一样且后面字符串结尾为K时
+            if (tempList2[0][-1] != tempList2[1][-1]) and tempList2[1][-1] == "K":
+                tempList2[1] = tempList2[1][:-1]
+                Pay = round((((int(tempList2[0]) + int(tempList2[1])) / 2) * int(tempList1[1])) / 12, 1) * 1000
+                return Pay
+            # 都为万
+            if tempList2[0][-1] == tempList2[1][-1] == "万":
+                tempList2[0] = int(float(tempList2[0][:-1]) * 10000)
+                tempList2[1] = int(float(tempList2[1][:-1]) * 10000)
+                Pay = round((((int(tempList2[0]) + int(tempList2[1])) / 2) * int(tempList1[1])) / 12, 1)
+                return Pay
+                # 都为千
+            elif tempList2[0][-1] == tempList2[1][-1] == "千":
+                tempList2[0] = int(float(tempList2[0][:-1]) * 1000)
+                tempList2[1] = int(float(tempList2[1][:-1]) * 1000)
+                Pay = round((((int(tempList2[0]) + int(tempList2[1])) / 2) * int(tempList1[1])) / 12, 1)
+                return Pay
+            # 前为千,后为万
+            elif (tempList2[0][-1] != tempList2[1][-1]) and (tempList2[0][-1] == "千" and tempList2[1][-1] == "万"):
+                tempList2[0] = int(float(tempList2[0][:-1]) * 1000)
+                tempList2[1] = int(float(tempList2[1][:-1]) * 10000)
+                Pay = round((((int(tempList2[0]) + int(tempList2[1])) / 2) * int(tempList1[1])) / 12, 1)
+                return Pay
+    elif PayString[:-1] == "天" or PayString[:-1] == "议" or PayString[:-1] == "次":
+        return PayString
+    else:
+        tempList2: list = []
+        if "-" in PayString:
+            split_list = PayString.split("-")
+            for item2 in split_list:
+                tempList2.append(item2)
+            # 如果-前后两个字符串结尾不一样且后面字符串结尾为K时
+            if (tempList2[0][-1] != tempList2[1][-1]) and tempList2[1][-1] == "K":
+                tempList2[1] = tempList2[1][:-1]
+                Pay = round(((int(tempList2[0]) + int(tempList2[1])) / 2), 1) * 1000
+                return Pay
+            # 都为万
+            if tempList2[0][-1] == tempList2[1][-1] == "万":
+                tempList2[0] = int(float(tempList2[0][:-1]) * 10000)
+                tempList2[1] = int(float(tempList2[1][:-1]) * 10000)
+                Pay = round(((int(tempList2[0]) + int(tempList2[1])) / 2), 1)
+                return Pay
+                # 都为千
+            elif tempList2[0][-1] == tempList2[1][-1] == "千":
+                tempList2[0] = int(float(tempList2[0][:-1]) * 1000)
+                tempList2[1] = int(float(tempList2[1][:-1]) * 1000)
+                Pay = round(((int(tempList2[0]) + int(tempList2[1])) / 2), 1)
+                return Pay
+            # 前为千,后为万
+            elif (tempList2[0][-1] != tempList2[1][-1]) and (tempList2[0][-1] == "千" and tempList2[1][-1] == "万"):
+                tempList2[0] = int(float(tempList2[0][:-1]) * 1000)
+                tempList2[1] = int(float(tempList2[1][:-1]) * 10000)
+                Pay = round(((int(tempList2[0]) + int(tempList2[1])) / 2), 1)
+                return Pay

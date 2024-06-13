@@ -160,14 +160,15 @@ def returnList(data: dict) -> list:
     return tempList
 
 
-def insertDB(dataList: list) -> None:
+def insertDB(dataList: list, Keyword: str) -> None:
     session = returnDbSession()
     try:
         for i in dataList:
             job = Jobs(jobName=i[0], jobUrl=i[1], jobPay=str(setPayFormat(i[2])), jobAddress=i[3],
                        jobQualification=i[4],
                        jobEXP=i[5],
-                       jobCorporation=i[6], jobCorporationUrl=i[7], jobCorporationBg1=i[8], jobCorporationBg2=i[9])
+                       jobCorporation=i[6], jobCorporationUrl=i[7], jobCorporationBg1=i[8], jobCorporationBg2=i[9],
+                       SearchKeyword=Keyword)
             session.add(job)
             session.commit()
         # 第五步：关闭session对象

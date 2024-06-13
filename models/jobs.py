@@ -22,6 +22,7 @@ class Jobs(Base):
     jobCorporationBg2 = Column(String(128), nullable=False, index=True, default="NULL", name="公司背景2")
     addTime = Column(DateTime, default=datetime.datetime.now, nullable=False)
     status = Column(String(12), default="False", index=True, nullable=False, name="查看状态")
+    SearchKeyword = Column(String(32), index=True, nullable=False, name="采集时的关键字")
 
 
 engine = create_engine(

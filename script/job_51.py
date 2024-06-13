@@ -1,7 +1,6 @@
 # 通过自动话实现翻页
 
 import json
-import re
 from spider import spider
 from script import fun
 

@@ -84,19 +84,19 @@ def visualizeData():
     domain_name = request.form.get('domain_name')
     url = request.form.get('url')
     page_num = request.form.get('page_num')
-
+    Keyword = request.form.get('Keyword')
     if domain_name == "www.zhipin.com":
         data = fun.formattingData(domain_name=domain_name,
                                   data=boss.ParseParameters(domain_name=domain_name, url=url, page_num=int(page_num),
                                                             XpathList=fun.setParsingRules(domain_name=domain_name)))
-        fun.insertDB(data)
+        fun.insertDB(data, Keyword)
         return json.dumps(data)
 
     elif domain_name == "sou.zhaopin.com":
         data = fun.formattingData(domain_name=domain_name,
                                   data=zhipin.ParseParameters(domain_name=domain_name, url=url, page_num=int(page_num),
                                                               XpathList=fun.setParsingRules(domain_name=domain_name)))
-        fun.insertDB(data)
+        fun.insertDB(data, Keyword)
         return json.dumps(data)
     else:
         return json.dumps({"code": "10001", "message": '不在采集范围内'})

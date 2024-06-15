@@ -164,7 +164,7 @@ def insertDB(dataList: list, Keyword: str) -> None:
     session = returnDbSession()
     try:
         for i in dataList:
-            job = Jobs(jobName=i[0], jobUrl=i[1], jobPay=str(setPayFormat(i[2])), jobAddress=i[3],
+            job = Jobs(jobName=i[0], jobUrl=i[1], jobPay=i[2], jobAddress=i[3],
                        jobQualification=i[4],
                        jobEXP=i[5],
                        jobCorporation=i[6], jobCorporationUrl=i[7], jobCorporationBg1=i[8], jobCorporationBg2=i[9],
@@ -195,6 +195,18 @@ def returnDbSession() -> object:
 
 
 def getAreaQuantity() -> list:
+    """
+    获取西安各个区域的岗位数量
+
+    Args:
+        无
+
+    Returns:
+        list: 包含各个区域岗位数量的字典列表，每个字典包含两个键值对：
+            - name (str): 区域名称，包含“区”或“县”后缀
+            - value (int): 该区域的岗位数量
+
+    """
     AreaQuantityList: list = []
     AreaQuantityDict: dict = {}
     session = returnDbSession()
@@ -231,6 +243,16 @@ def getJobsNums() -> int:
 
 # 今日更新
 def toDayUpdata() -> int:
+    """
+    查询并返回当天更新到数据库的Job数量。
+
+    Args:
+        无
+
+    Returns:
+        int: 当天更新到数据库的Job数量。
+
+    """
     today = date.today()
     session = returnDbSession()
     # 查询今日更新到数据库的内容
@@ -250,6 +272,22 @@ def viewStatus(status: bool) -> int:
 
 
 def latestToday() -> list:
+    """
+    获取今日最新职位列表
+
+    Args:
+        无
+
+    Returns:
+        list: 最新职位列表，包含以下字段：
+            - id (int): 职位ID
+            - jobCorporation (str): 招聘公司名称
+            - jobName (str): 职位名称
+            - jobUrl (str): 职位链接
+            - jobPay (str): 薪资范围
+            - jobCorporationUrl (str): 公司链接
+
+    """
     latestTodayList: list = []
     session = returnDbSession()
     latest_records = session.query(Jobs).order_by(Jobs.id.desc()).limit(20).all()
@@ -265,6 +303,16 @@ def latestToday() -> list:
 
 
 def changeStatus(Id: str):
+    """
+    更新指定 id 的 Jobs 记录中 status 字段为 "True"。
+
+    Args:
+    - Id (str): 需要更新 status 字段的 Jobs 记录的 id。
+
+    Returns:
+    - str: 更新后的 Jobs 记录的 id。
+
+    """
     session = returnDbSession()
     # 查询指定 id 的记录
     job = session.query(Jobs).filter_by(id=Id).first()
@@ -282,6 +330,16 @@ def changeStatus(Id: str):
 
 
 def setPayFormat(PayString):
+    """
+    根据薪资字符串计算薪资平均值。
+
+    Args:
+        PayString (str): 薪资字符串，可能包含范围（使用'-'分隔）、单位（'万'、'千'、'天'、'议'、'次'）等。
+
+    Returns:
+        Union[float, str]: 返回计算后的薪资平均值（单位为元），若无法计算则返回原薪资字符串。
+
+    """
     # 存在“·”
     tempList1: list = []
     if "·" in PayString:

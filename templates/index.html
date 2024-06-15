@@ -164,7 +164,7 @@
                             <li><p><span onclick="clickLi({{ item.id }})"><a href="{{ item["jobUrl"] }}"
                                                                              target="_blank">{{ item["jobName"] }}</a></span><span><a
                                     href="{{ item["jobCorporationUrl"] }}"
-                                    target="_blank">{{ item["jobCorporation"] }}</a></span><span>{{ item["jobPay"] }}</span>
+                                    target="_blank">{{ item["jobCorporation"] }}</a></span><span>{{ setPayFormat(item["jobPay"])}}(平均)</span>
                             </p></li>
                         {% endfor %}
 

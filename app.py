@@ -1,5 +1,5 @@
 import json
-
+from script.fun import setPayFormat
 from flask import *
 from flask_cors import *
 from flask import jsonify
@@ -27,7 +27,7 @@ def hello_world():  # put application's cod e here
     # 今日最新
     latestToday = fun.latestToday()
     return render_template('index.html', jobNums=jobNums, toDayUpdate=toDayUpdate, statusTrueNums=statusTrueNums,
-                           latestToday=latestToday)
+                           latestToday=latestToday, setPayFormat=setPayFormat)
 
 
 @app.route('/browser_args', methods=["GET", "POST"])

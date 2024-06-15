@@ -13,7 +13,7 @@ def work(url: str, allXpath: dict, domain_name: str, page_num: int) -> dict:
     driver.get(url)
     time.sleep(8)
     # 设置隐式等待时间为 10 秒
-    driver.implicitly_wait(3)
+    driver.implicitly_wait(5)
     if domain_name == "www.zhipin.com":
         # //*[@id="wrap"]/div[2]/div[2]/div/div[1]/div[2]/div/div/div/a[10]
         # 处理boos页面xpath不统一

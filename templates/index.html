@@ -79,9 +79,23 @@
             <div class="boxall" style="height: calc(60% - .15rem)">
                 <div class="alltitle">模块标题
 
+                    <select id="fruit-select">
+                        <option  value="all"> all </option>
+                        {% for i in classList %}
+                            {% if SearchKeyword==i %}
+                            <option onclick="go({{ SearchKeyword }})" selected  value="{{ SearchKeyword }}">{{ SearchKeyword }}</option>
+                            {% else %}
+                            <option onclick="go({{ i }})"  value="{{ i }}">{{ i }}</option>
+                            {% endif %}
+                        {% endfor %}
+
+
+                    </select>
+
                 </div>
 
                 <div class="sycm sycm2">
+
                     <ul class="clearfix">
                         <li>
                             <h2>1824</h2>
@@ -164,7 +178,7 @@
                             <li><p><span onclick="clickLi({{ item.id }})"><a href="{{ item["jobUrl"] }}"
                                                                              target="_blank">{{ item["jobName"] }}</a></span><span><a
                                     href="{{ item["jobCorporationUrl"] }}"
-                                    target="_blank">{{ item["jobCorporation"] }}</a></span><span>{{ setPayFormat(item["jobPay"])}}(平均)</span>
+                                    target="_blank">{{ item["jobCorporation"] }}</a></span><span>{{ setPayFormat(item["jobPay"]) }}(平均)</span>
                             </p></li>
                         {% endfor %}
 

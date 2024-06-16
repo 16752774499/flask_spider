@@ -59,6 +59,17 @@ def zhilianNextUrl(url: str, pageNum: int):
 
 
 def saveJson(fileName: str, data: str) -> bool:
+    """
+    将字符串格式的数据保存到json文件中。
+
+    Args:
+        fileName (str): json文件的名称，不包含后缀名。
+        data (str): 需要保存的数据，字符串格式。
+
+    Returns:
+        bool: 如果保存成功返回True，否则返回False。
+
+    """
     file_path = "saveFile/jsonFiles/" + fileName + ".json"
     try:
         with open(file_path, 'w') as file:
@@ -119,6 +130,17 @@ def setParsingRules(domain_name: str) -> str:
 
 # 格式化数据（需要可视化的数据）
 def formattingData(domain_name: str, data: dict) -> list:
+    """
+    根据给定的域名对字典数据进行格式化处理，并返回处理后的列表。
+
+    Args:
+        domain_name (str): 域名，用于确定数据格式化的方式。
+        data (dict): 需要进行格式化处理的字典数据。
+
+    Returns:
+        list: 格式化处理后的列表。
+
+    """
     dataList: list = returnList(data=data)
     if domain_name == "www.zhipin.com":
 
@@ -143,6 +165,16 @@ def formattingData(domain_name: str, data: dict) -> list:
 
 
 def returnList(data: dict) -> list:
+    """
+    将嵌套的字典转化为列表。
+
+    Args:
+        data (dict): 需要转化的嵌套字典。
+
+    Returns:
+        list: 转化后的列表，包含嵌套字典中所有值的扁平化结果。
+
+    """
     tempList: list = []
     iter_data = iter(data.items())
     while True:
@@ -194,7 +226,7 @@ def returnDbSession() -> object:
     return session
 
 
-def getAreaQuantity() -> list:
+def getAreaQuantity(SearchKeyword: str) -> list:
     """
     获取西安各个区域的岗位数量
 
@@ -213,7 +245,12 @@ def getAreaQuantity() -> list:
     cityRegions = ["碑林", "莲湖", "新城", "未央", "灞桥", "雁塔", "周至", "鄠邑", "长安", "蓝田", "临潼", "阎良", "高陵"]
     for i in cityRegions:
         search_term = i  # 模糊搜索关键词
-        query = session.query(Jobs).filter(Jobs.jobAddress.like(f'%{search_term}%'))
+        if SearchKeyword == "all":
+            query = session.query(Jobs).filter(
+                Jobs.jobAddress.like(f'%{search_term}%'))
+        else:
+            query = session.query(Jobs).filter(Jobs.SearchKeyword == SearchKeyword).filter(
+                Jobs.jobAddress.like(f'%{search_term}%'))
         result_count = query.count()
         AreaQuantityDict[i] = result_count
         # 打印查询到的数量
@@ -234,15 +271,18 @@ def getAreaQuantity() -> list:
 
 
 # 岗位总数目
-def getJobsNums() -> int:
+def getJobsNums(SearchKeyword: str) -> int:
     session = returnDbSession()
-    jobsNums: int = session.query(func.count(Jobs.id)).scalar()
+    if SearchKeyword == "all":
+        jobsNums: int = session.query(func.count(Jobs.id)).scalar()
+    else:
+        jobsNums: int = session.query(func.count(Jobs.id)).filter(Jobs.SearchKeyword == SearchKeyword).scalar()
     session.close()
     return jobsNums
 
 
 # 今日更新
-def toDayUpdata() -> int:
+def toDayUpdata(SearchKeyword: str) -> int:
     """
     查询并返回当天更新到数据库的Job数量。
 
@@ -256,7 +296,11 @@ def toDayUpdata() -> int:
     today = date.today()
     session = returnDbSession()
     # 查询今日更新到数据库的内容
-    today_count = session.query(func.count(Jobs.id)).filter(func.DATE(Jobs.addTime) == today).scalar()
+    if SearchKeyword == "all":
+        today_count = session.query(func.count(Jobs.id)).filter(func.DATE(Jobs.addTime) == today).scalar()
+    else:
+        today_count = session.query(func.count(Jobs.id)).filter(func.DATE(Jobs.addTime) == today).filter(
+            Jobs.SearchKeyword == SearchKeyword).scalar()
     # # 打印今日更新的内容
     # for job in updated_today:
     #     print(job.jobName)
@@ -264,14 +308,18 @@ def toDayUpdata() -> int:
     return today_count
 
 
-def viewStatus(status: bool) -> int:
+def viewStatus(status: bool, SearchKeyword: str) -> int:
     session = returnDbSession()
-    statusNums = session.query(func.count(Jobs.id)).filter(Jobs.status == "{0}".format(status)).scalar()
+    if SearchKeyword == "all":
+        statusNums = session.query(func.count(Jobs.id)).filter(Jobs.status == "{0}".format(status)).scalar()
+    else:
+        statusNums = session.query(func.count(Jobs.id)).filter(Jobs.status == "{0}".format(status)).filter(
+            Jobs.SearchKeyword == SearchKeyword).scalar()
     session.close()
     return statusNums
 
 
-def latestToday() -> list:
+def latestToday(SearchKeyword: str) -> list:
     """
     获取今日最新职位列表
 
@@ -290,7 +338,11 @@ def latestToday() -> list:
     """
     latestTodayList: list = []
     session = returnDbSession()
-    latest_records = session.query(Jobs).order_by(Jobs.id.desc()).limit(20).all()
+    if SearchKeyword == "all":
+        latest_records = session.query(Jobs).order_by(Jobs.id.desc()).limit(20).all()
+    else:
+        latest_records = session.query(Jobs).filter(
+            Jobs.SearchKeyword == SearchKeyword).order_by(Jobs.id.desc()).limit(20).all()
     for record in latest_records:
         # print(record.jobCorporation, record.jobName, record.jobUrl, record.jobPay)  # 打印每条记录
         latestTodayList.append(
@@ -411,3 +463,18 @@ def setPayFormat(PayString):
                 tempList2[1] = int(float(tempList2[1][:-1]) * 10000)
                 Pay = round(((int(tempList2[0]) + int(tempList2[1])) / 2), 1)
                 return Pay
+
+
+def getSearchKeywordClass() -> list:
+    ClassList: list = []
+    session = returnDbSession()
+
+    distinct_search_keywords = session.query(Jobs.SearchKeyword).distinct().all()
+
+    # 打印不同的 SearchKeyword 值
+    for keyword in distinct_search_keywords:
+        print(keyword[0])
+        ClassList.append(keyword[0])
+    # 关闭会话
+    session.close()
+    return ClassList

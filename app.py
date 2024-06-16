@@ -16,18 +16,28 @@ app.config['DEBUG'] = True
 CORS(app, supports_credentials=True)
 
 
-@app.route('/')
+@app.route('/', methods=["GET"])
 def hello_world():  # put application's cod e here
+    # class类型
+    SearchKeyword = request.args.get('class')
+    if not SearchKeyword or SearchKeyword == "":
+        SearchKeyword = "all"
+    print(SearchKeyword)
     # 总岗位数
-    jobNums = fun.getJobsNums()
+    jobNums = fun.getJobsNums(SearchKeyword)
     # 今日更新
-    toDayUpdate = fun.toDayUpdata()
+    toDayUpdate = fun.toDayUpdata(SearchKeyword)
     # 查看过的数目
-    statusTrueNums = fun.viewStatus(True)
+    statusTrueNums = fun.viewStatus(True, SearchKeyword)
     # 今日最新
-    latestToday = fun.latestToday()
+    latestToday = fun.latestToday(SearchKeyword)
+    # 分类
+    classList = fun.getSearchKeywordClass()
+    # 薪资格式化
+    setPayFormat(SearchKeyword)
     return render_template('index.html', jobNums=jobNums, toDayUpdate=toDayUpdate, statusTrueNums=statusTrueNums,
-                           latestToday=latestToday, setPayFormat=setPayFormat)
+                           latestToday=latestToday, setPayFormat=setPayFormat, classList=classList,
+                           SearchKeyword=SearchKeyword)
 
 
 @app.route('/browser_args', methods=["GET", "POST"])
@@ -105,12 +115,16 @@ def visualizeData():
 # 区域数量
 @app.route('/AreaQuantity', methods=["GET"])
 def AreaQuantity():
-    AreaQuantityAll = fun.getAreaQuantity()
+    SearchKeyword = request.args.get('class')
+    if not SearchKeyword or SearchKeyword == "null":
+        SearchKeyword = "all"
+    AreaQuantityAll = fun.getAreaQuantity(SearchKeyword)
     return json.dumps(AreaQuantityAll)
 
 
 @app.route('/changeStatus', methods=["GET"])
 def changeStatus():
+
     fun.changeStatus(request.args.get('id'))
     return json.dumps({"code": "10000", "message": "Success"})
 

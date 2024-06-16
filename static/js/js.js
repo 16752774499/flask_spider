@@ -635,8 +635,16 @@ function clickLi(Id) {
 }
 
 
+// 获取下拉选择器元素
+const selectElement = document.getElementById('fruit-select');
+// 获取用于显示选择结果的元素
+const selectedFruitElement = document.getElementById('selected-fruit');
 
 
+// 当用户选择不同的选项时触发事件
+selectElement.addEventListener('change', function () {
+    window.location.href = '/?class=' + selectElement.value;
+});
 
 
 

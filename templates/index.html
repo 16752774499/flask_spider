@@ -83,8 +83,8 @@
                     <select id="fruit-select">
                         <option  value="all"> all </option>
                         {% for i in classList %}
-                            {% if SearchKeyword==i %}
-                            <option  selected  value="{{ SearchKeyword }}">{{ SearchKeyword }}</option>
+                            {% if urllib.parse.unquote(SearchKeyword)==i %}
+                            <option  selected  value="{{ SearchKeyword }}">{{ urllib.parse.unquote(SearchKeyword) }}</option>
                             {% else %}
                             <option  value="{{ i }}">{{ i }}</option>
                             {% endif %}

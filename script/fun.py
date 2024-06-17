@@ -1,4 +1,5 @@
 import json
+import urllib
 from datetime import date, datetime, timedelta
 
 from sqlalchemy import create_engine, func
@@ -277,7 +278,7 @@ def getJobsNums(SearchKeyword: str) -> int:
     if SearchKeyword == "all":
         jobsNums: int = session.query(func.count(Jobs.id)).scalar()
     else:
-        jobsNums: int = session.query(func.count(Jobs.id)).filter(Jobs.SearchKeyword == SearchKeyword).scalar()
+        jobsNums: int = session.query(func.count(Jobs.id)).filter(Jobs.SearchKeyword == urllib.parse.unquote(SearchKeyword)).scalar()
     session.close()
     return jobsNums
 
@@ -301,7 +302,7 @@ def toDayUpdata(SearchKeyword: str) -> int:
         today_count = session.query(func.count(Jobs.id)).filter(func.DATE(Jobs.addTime) == today).scalar()
     else:
         today_count = session.query(func.count(Jobs.id)).filter(func.DATE(Jobs.addTime) == today).filter(
-            Jobs.SearchKeyword == SearchKeyword).scalar()
+            Jobs.SearchKeyword == urllib.parse.unquote(SearchKeyword)).scalar()
     # # 打印今日更新的内容
     # for job in updated_today:
     #     print(job.jobName)
@@ -315,7 +316,7 @@ def viewStatus(status: bool, SearchKeyword: str) -> int:
         statusNums = session.query(func.count(Jobs.id)).filter(Jobs.status == "{0}".format(status)).scalar()
     else:
         statusNums = session.query(func.count(Jobs.id)).filter(Jobs.status == "{0}".format(status)).filter(
-            Jobs.SearchKeyword == SearchKeyword).scalar()
+            Jobs.SearchKeyword == urllib.parse.unquote(SearchKeyword)).scalar()
     session.close()
     return statusNums
 
@@ -348,10 +349,10 @@ def latestToday(SearchKeyword: str, regName: str) -> list:
     else:
         if regName == "all":
             latest_records = session.query(Jobs).filter(
-                Jobs.SearchKeyword == SearchKeyword).order_by(Jobs.id.desc()).all()
+                Jobs.SearchKeyword == urllib.parse.unquote(SearchKeyword)).order_by(Jobs.id.desc()).all()
         else:
             latest_records = session.query(Jobs).filter(
-                Jobs.SearchKeyword == SearchKeyword).order_by(Jobs.id.desc()).filter(
+                Jobs.SearchKeyword == urllib.parse.unquote(SearchKeyword)).order_by(Jobs.id.desc()).filter(
                 Jobs.jobAddress.like(f'%{regName}%')).all()
     for record in latest_records:
         # print(record.jobCorporation, record.jobName, record.jobUrl, record.jobPay)  # 打印每条记录

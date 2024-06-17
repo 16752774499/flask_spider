@@ -1,4 +1,5 @@
 import json
+import urllib.parse
 
 from flask import *
 from flask import jsonify
@@ -16,7 +17,8 @@ routes_module = Blueprint('Routes', __name__)
 @routes_module.route('/', methods=["GET"])
 def hello_world():  # put application's cod e here
     # class类型
-    SearchKeyword = request.args.get('class')
+    SearchKeyword = urllib.parse.quote(request.args.get('class'))
+    print(SearchKeyword)
     regName = request.args.get('reg')
     if not SearchKeyword or SearchKeyword == "" or SearchKeyword == "undefined":
         SearchKeyword = "all"
@@ -35,9 +37,10 @@ def hello_world():  # put application's cod e here
     classList = fun.getSearchKeywordClass()
     # 薪资格式化
     setPayFormat(SearchKeyword)
+
     return render_template('index.html', jobNums=jobNums, toDayUpdate=toDayUpdate, statusTrueNums=statusTrueNums,
                            latestToday=latestToday, setPayFormat=setPayFormat, classList=classList,
-                           SearchKeyword=SearchKeyword)
+                           SearchKeyword=SearchKeyword,urllib=urllib)
 
 
 @routes_module.route('/browser_args', methods=["GET", "POST"])

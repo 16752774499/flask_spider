@@ -719,7 +719,9 @@ const selectedFruitElement = document.getElementById('selected-fruit');
 
 // 当用户选择不同的选项时触发事件
 selectElement.addEventListener('change', function () {
-    window.location.href = '/?class=' + selectElement.value;
+    const encodedParam = encodeURIComponent(selectElement.value);
+
+    window.location.href = '/?class=' + encodedParam;
 });
 
 

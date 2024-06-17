@@ -66,7 +66,7 @@ $(function () {
         myChart.on('click', function (params) {
             // 获取点击区域的名称
             let regName = params.name;
-            let className = returnParam("class");
+            let className = encodeURIComponent(returnParam("class"));
             window.location.href = "/?class=" + className + "&reg=" + regName;
 
         });
@@ -76,7 +76,8 @@ $(function () {
 })
 
 function getData(className = "all") {
-    return axios.get(`${ipAddresses}/AreaQuantity?class=${className}`)
+    const encodedParam = encodeURIComponent(className);
+    return axios.get(`${ipAddresses}/AreaQuantity?class=${encodedParam}`)
         .then(response => {
             return response.data.map(item => {
                 return {name: item.name, value: item.value};

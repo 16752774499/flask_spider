@@ -14,6 +14,7 @@
     <orderEntry type="library" name="element-ui" level="application" />
     <orderEntry type="library" name="vue" level="application" />
     <orderEntry type="library" name="@types/1line-aa" level="application" />
+    <orderEntry type="library" name="pxmu" level="application" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Jinja2" />

@@ -1,560 +1,602 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-<meta name="keywords" content="LightYear,LightYearAdmin,光年,后台模板,后台管理系统,光年HTML模板">
-<meta name="description" content="Light Year Admin V5是一个基于Bootstrap v5.1.3的后台管理系统的HTML模板。">
-<meta name="author" content="yinq">
-<title>首页 - 光年(Light Year Admin V5)后台管理系统模板</title>
-<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-touch-fullscreen" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<link rel="stylesheet" type="text/css" href="../static/css/materialdesignicons.min.css">
-<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="../static/css/animate.min.css">
-<link rel="stylesheet" type="text/css" href="../static/css/style.min.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="keywords" content="LightYear,LightYearAdmin,光年,后台模板,后台管理系统,光年HTML模板">
+    <meta name="description" content="Light Year Admin V5是一个基于Bootstrap v5.1.3的后台管理系统的HTML模板。">
+    <meta name="author" content="yinq">
+    <title>首页 - 光年(Light Year Admin V5)后台管理系统模板</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="stylesheet" type="text/css" href="../static/css/materialdesignicons.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/style.min.css">
 </head>
-
+<script src="../static/js/admin.js"></script>
+<script src="../static/js/axios.min.js"></script>
 <body>
 <!--页面loading-->
 <div id="lyear-preloader" class="loading">
-  <div class="ctn-preloader">
-    <div class="round_spinner">
-      <div class="spinner"></div>
-      <img src="../static/images/loading-logo.png" alt="">
+    <div class="ctn-preloader">
+        <div class="round_spinner">
+            <div class="spinner"></div>
+            <img src="../static/images/loading-logo.png" alt="">
+        </div>
     </div>
-  </div>
 </div>
 <!--页面loading end-->
 <div class="lyear-layout-web">
-  <div class="lyear-layout-container">
-    <!--左侧导航-->
-    <aside class="lyear-layout-sidebar">
+    <div class="lyear-layout-container">
+        <!--左侧导航-->
+        <aside class="lyear-layout-sidebar">
 
-      <!-- logo -->
-      <div id="logo" class="sidebar-header">
-        <a href="/admin"><img src="../static/images/logo-sidebar.png" title="LightYear" alt="LightYear" /></a>
-      </div>
-      <div class="lyear-layout-sidebar-info lyear-scroll">
+            <!-- logo -->
+            <div id="logo" class="sidebar-header">
+                <a href="/admin"><img src="../static/images/logo-sidebar.png" title="LightYear" alt="LightYear"/></a>
+            </div>
+            <div class="lyear-layout-sidebar-info lyear-scroll">
 
-        <nav class="sidebar-main">
+                <nav class="sidebar-main">
 
-          <ul class="nav-drawer">
-            <li class="nav-item active">
-              <a href="/admin">
-                <i class="mdi mdi-home-city-outline"></i>
-                <span>招聘信息采集后台首页</span>
-              </a>
-            </li>
+                    <ul class="nav-drawer">
+                        <li class="nav-item active">
+                            <a href="/admin">
+                                <i class="mdi mdi-home-city-outline"></i>
+                                <span>招聘信息采集后台首页</span>
+                            </a>
+                        </li>
 
-            <li class="nav-item nav-item-has-subnav">
-              <a href="javascript:void(0)">
-                <i class="mdi mdi-map-outline"></i>
-                <span>表单</span>
-              </a>
-              <ul class="nav nav-subnav">
+                        <li class="nav-item nav-item-has-subnav">
+                            <a href="javascript:void(0)">
+                                <i class="mdi mdi-map-outline"></i>
+                                <span>表单</span>
+                            </a>
+                            <ul class="nav nav-subnav">
 
-                <li> <a href="/adminFrom">输入组</a> </li>
+                                <li><a href="/adminFrom">输入组</a></li>
 
-              </ul>
-            </li>
+                            </ul>
+                        </li>
 
-            <li class="nav-item nav-item-has-subnav">
-              <a href="javascript:void(0)">
-                <i class="mdi mdi-stove"></i>
-                <span>示例页面</span>
-              </a>
-              <ul class="nav nav-subnav">
-                <li> <a href="/adminTask">文档列表</a> </li>
-                <li> <a href="/adminTable">表格插件</a> </li>
+                        <li class="nav-item nav-item-has-subnav">
+                            <a href="javascript:void(0)">
+                                <i class="mdi mdi-stove"></i>
+                                <span>列表</span>
+                            </a>
+                            <ul class="nav nav-subnav">
+                                <li><a href="/adminTask">任务列表</a></li>
+                                <li><a href="/adminTable">数据列表</a></li>
 
-              </ul>
-            </li>
+                            </ul>
+                        </li>
 
-          </ul>
-        </nav>
+                    </ul>
+                </nav>
 
-        <div class="sidebar-footer">
-          <p class="copyright">
-            <span>Copyright &copy; 2022. </span>
-            <a target="_blank" href="http://www.bixiaguangnian.com">笔下光年</a>
-            <span> All rights reserved.</span>
-          </p>
-        </div>
-      </div>
+                <div class="sidebar-footer">
+                    <p class="copyright">
+                        <span>Copyright &copy; 2022. </span>
+                        <a target="_blank" href="http://www.bixiaguangnian.com">笔下光年</a>
+                        <span> All rights reserved.</span>
+                    </p>
+                </div>
+            </div>
 
-    </aside>
-    <!--End 左侧导航-->
+        </aside>
+        <!--End 左侧导航-->
 
-    <!--头部信息-->
-    <header class="lyear-layout-header">
+        <!--头部信息-->
+        <header class="lyear-layout-header">
 
-      <nav class="navbar">
+            <nav class="navbar">
 
-        <div class="navbar-left">
-          <div class="lyear-aside-toggler">
-            <span class="lyear-toggler-bar"></span>
-            <span class="lyear-toggler-bar"></span>
-            <span class="lyear-toggler-bar"></span>
-          </div>
-        </div>
+                <div class="navbar-left">
+                    <div class="lyear-aside-toggler">
+                        <span class="lyear-toggler-bar"></span>
+                        <span class="lyear-toggler-bar"></span>
+                        <span class="lyear-toggler-bar"></span>
+                    </div>
+                </div>
 
-        <ul class="navbar-right d-flex align-items-center">
-          <!--顶部消息部分-->
-          <li class="dropdown dropdown-notice">
+                <ul class="navbar-right d-flex align-items-center">
+                    <!--顶部消息部分-->
+                    <li class="dropdown dropdown-notice">
             <span data-bs-toggle="dropdown" class="position-relative icon-item">
               <i class="mdi mdi-bell-outline fs-5"></i>
               <span class="position-absolute translate-middle badge bg-danger">7</span>
             </span>
-            <div class="dropdown-menu dropdown-menu-end">
-              <div class="lyear-notifications">
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <div class="lyear-notifications">
 
-                <div class="lyear-notifications-title d-flex justify-content-between" data-stopPropagation="true">
-                  <span>你有 10 条未读消息</span>
-                  <a href="#!">查看全部</a>
-                </div>
-                <div class="lyear-notifications-info lyear-scroll">
-                  <a href="#!" class="dropdown-item"
-                    title="树莓派销量猛增，疫情期间居家工作学习、医疗领域都需要它">树莓派销量猛增，疫情期间居家工作学习、医疗领域都需要它</a>
-                  <a href="#!" class="dropdown-item"
-                    title="GNOME 用户体验团队将为 GNOME Shell 提供更多改进">GNOME 用户体验团队将为 GNOME Shell
-                    提供更多改进</a>
-                  <a href="#!" class="dropdown-item"
-                    title="Linux On iPhone 即将面世，支持 iOS 的双启动">Linux On iPhone 即将面世，支持 iOS
-                    的双启动</a>
-                  <a href="#!" class="dropdown-item" title="GitHub 私有仓库完全免费面向团队提供">GitHub
-                    私有仓库完全免费面向团队提供</a>
-                  <a href="#!" class="dropdown-item"
-                    title="Wasmtime 为 WebAssembly 增加 Go 语言绑定">Wasmtime 为 WebAssembly 增加 Go
-                    语言绑定</a>
-                  <a href="#!" class="dropdown-item"
-                    title="红帽借“订阅”成开源一哥，首创者 Cormier 升任总裁">红帽借“订阅”成开源一哥，首创者 Cormier 升任总裁</a>
-                  <a href="#!" class="dropdown-item" title="Zend 宣布推出两项 PHP 新产品">Zend 宣布推出两项
-                    PHP 新产品</a>
-                </div>
+                                <div class="lyear-notifications-title d-flex justify-content-between"
+                                     data-stopPropagation="true">
+                                    <span>你有 10 条未读消息</span>
+                                    <a href="#!">查看全部</a>
+                                </div>
+                                <div class="lyear-notifications-info lyear-scroll">
+                                    <a href="#!" class="dropdown-item"
+                                       title="树莓派销量猛增，疫情期间居家工作学习、医疗领域都需要它">树莓派销量猛增，疫情期间居家工作学习、医疗领域都需要它</a>
+                                    <a href="#!" class="dropdown-item"
+                                       title="GNOME 用户体验团队将为 GNOME Shell 提供更多改进">GNOME 用户体验团队将为 GNOME Shell
+                                        提供更多改进</a>
+                                    <a href="#!" class="dropdown-item"
+                                       title="Linux On iPhone 即将面世，支持 iOS 的双启动">Linux On iPhone 即将面世，支持 iOS
+                                        的双启动</a>
+                                    <a href="#!" class="dropdown-item" title="GitHub 私有仓库完全免费面向团队提供">GitHub
+                                        私有仓库完全免费面向团队提供</a>
+                                    <a href="#!" class="dropdown-item"
+                                       title="Wasmtime 为 WebAssembly 增加 Go 语言绑定">Wasmtime 为 WebAssembly 增加 Go
+                                        语言绑定</a>
+                                    <a href="#!" class="dropdown-item"
+                                       title="红帽借“订阅”成开源一哥，首创者 Cormier 升任总裁">红帽借“订阅”成开源一哥，首创者 Cormier 升任总裁</a>
+                                    <a href="#!" class="dropdown-item" title="Zend 宣布推出两项 PHP 新产品">Zend 宣布推出两项
+                                        PHP 新产品</a>
+                                </div>
 
-              </div>
-            </div>
-          </li>
-          <!--End 顶部消息部分-->
-          <!--切换主题配色-->
-		  <li class="dropdown dropdown-skin">
+                            </div>
+                        </div>
+                    </li>
+                    <!--End 顶部消息部分-->
+                    <!--切换主题配色-->
+                    <li class="dropdown dropdown-skin">
 		    <span data-bs-toggle="dropdown" class="icon-item">
               <i class="mdi mdi-palette fs-5"></i>
             </span>
-			<ul class="dropdown-menu dropdown-menu-end" data-stopPropagation="true">
-              <li class="lyear-skin-title"><p>主题</p></li>
-              <li class="lyear-skin-li clearfix">
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="site_theme" id="site_theme_1" value="default" checked="checked">
-                  <label class="form-check-label" for="site_theme_1"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="site_theme" id="site_theme_2" value="translucent-green">
-                  <label class="form-check-label" for="site_theme_2"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="site_theme" id="site_theme_3" value="translucent-blue">
-                  <label class="form-check-label" for="site_theme_3"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="site_theme" id="site_theme_4" value="translucent-yellow">
-                  <label class="form-check-label" for="site_theme_4"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="site_theme" id="site_theme_5" value="translucent-red">
-                  <label class="form-check-label" for="site_theme_5"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="site_theme" id="site_theme_6" value="translucent-pink">
-                  <label class="form-check-label" for="site_theme_6"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="site_theme" id="site_theme_7" value="translucent-cyan">
-                  <label class="form-check-label" for="site_theme_7"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="site_theme" id="site_theme_8" value="dark">
-                  <label class="form-check-label" for="site_theme_8"></label>
-                </div>
-              </li>
-			  <li class="lyear-skin-title"><p>LOGO</p></li>
-			  <li class="lyear-skin-li clearfix">
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_1" value="default" checked="checked">
-                  <label class="form-check-label" for="logo_bg_1"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_2" value="color_2">
-                  <label class="form-check-label" for="logo_bg_2"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_3" value="color_3">
-                  <label class="form-check-label" for="logo_bg_3"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_4" value="color_4">
-                  <label class="form-check-label" for="logo_bg_4"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_5" value="color_5">
-                  <label class="form-check-label" for="logo_bg_5"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_6" value="color_6">
-                  <label class="form-check-label" for="logo_bg_6"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_7" value="color_7">
-                  <label class="form-check-label" for="logo_bg_7"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_8" value="color_8">
-                  <label class="form-check-label" for="logo_bg_8"></label>
-                </div>
-			  </li>
-			  <li class="lyear-skin-title"><p>头部</p></li>
-			  <li class="lyear-skin-li clearfix">
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="header_bg" id="header_bg_1" value="default" checked="checked">
-                  <label class="form-check-label" for="header_bg_1"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="header_bg" id="header_bg_2" value="color_2">
-                  <label class="form-check-label" for="header_bg_2"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="header_bg" id="header_bg_3" value="color_3">
-                  <label class="form-check-label" for="header_bg_3"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="header_bg" id="header_bg_4" value="color_4">
-                  <label class="form-check-label" for="header_bg_4"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="header_bg" id="header_bg_5" value="color_5">
-                  <label class="form-check-label" for="header_bg_5"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="header_bg" id="header_bg_6" value="color_6">
-                  <label class="form-check-label" for="header_bg_6"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="header_bg" id="header_bg_7" value="color_7">
-                  <label class="form-check-label" for="header_bg_7"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="header_bg" id="header_bg_8" value="color_8">
-                  <label class="form-check-label" for="header_bg_8"></label>
-                </div>
-			  </li>
-			  <li class="lyear-skin-title"><p>侧边栏</p></li>
-			  <li class="lyear-skin-li clearfix">
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_1" value="default" checked="checked">
-                  <label class="form-check-label" for="sidebar_bg_1"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_2" value="color_2">
-                  <label class="form-check-label" for="sidebar_bg_2"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_3" value="color_3">
-                  <label class="form-check-label" for="sidebar_bg_3"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_4" value="color_4">
-                  <label class="form-check-label" for="sidebar_bg_4"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_5" value="color_5">
-                  <label class="form-check-label" for="sidebar_bg_5"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_6" value="color_6">
-                  <label class="form-check-label" for="sidebar_bg_6"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_7" value="color_7">
-                  <label class="form-check-label" for="sidebar_bg_7"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_8" value="color_8">
-                  <label class="form-check-label" for="sidebar_bg_8"></label>
-                </div>
-			  </li>
-		    </ul>
-		  </li>
-          <!--End 切换主题配色-->
-          <!--个人头像内容-->
-          <li class="dropdown">
-            <a href="javascript:void(0)" data-bs-toggle="dropdown" class="dropdown-toggle">
-              <img class="avatar-md rounded-circle" src="../static/images/users/avatar.jpg" alt="笔下光年" />
-              <span style="margin-left: 10px;">笔下光年</span>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end">
-              <li>
-                <a class="dropdown-item" href="lyear_pages_profile.html"
-                  href="javascript:void(0)">
-                  <i class="mdi mdi-account"></i>
-                  <span>个人信息</span>
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="lyear_pages_edit_pwd.html"
-                  href="javascript:void(0)">
-                  <i class="mdi mdi-lock-outline"></i>
-                  <span>修改密码</span>
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="javascript:void(0)">
-                  <i class="mdi mdi-delete"></i>
-                  <span>清空缓存</span>
-                </a>
-              </li>
-              <li class="dropdown-divider"></li>
-              <li>
-                <a class="dropdown-item" href="lyear_pages_login_1.html">
-                  <i class="mdi mdi-logout-variant"></i>
-                  <span>退出登录</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <!--End 个人头像内容-->
-        </ul>
+                        <ul class="dropdown-menu dropdown-menu-end" data-stopPropagation="true">
+                            <li class="lyear-skin-title"><p>主题</p></li>
+                            <li class="lyear-skin-li clearfix">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="site_theme" id="site_theme_1"
+                                           value="default" checked="checked">
+                                    <label class="form-check-label" for="site_theme_1"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="site_theme" id="site_theme_2"
+                                           value="translucent-green">
+                                    <label class="form-check-label" for="site_theme_2"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="site_theme" id="site_theme_3"
+                                           value="translucent-blue">
+                                    <label class="form-check-label" for="site_theme_3"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="site_theme" id="site_theme_4"
+                                           value="translucent-yellow">
+                                    <label class="form-check-label" for="site_theme_4"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="site_theme" id="site_theme_5"
+                                           value="translucent-red">
+                                    <label class="form-check-label" for="site_theme_5"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="site_theme" id="site_theme_6"
+                                           value="translucent-pink">
+                                    <label class="form-check-label" for="site_theme_6"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="site_theme" id="site_theme_7"
+                                           value="translucent-cyan">
+                                    <label class="form-check-label" for="site_theme_7"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="site_theme" id="site_theme_8"
+                                           value="dark">
+                                    <label class="form-check-label" for="site_theme_8"></label>
+                                </div>
+                            </li>
+                            <li class="lyear-skin-title"><p>LOGO</p></li>
+                            <li class="lyear-skin-li clearfix">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_1"
+                                           value="default" checked="checked">
+                                    <label class="form-check-label" for="logo_bg_1"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_2"
+                                           value="color_2">
+                                    <label class="form-check-label" for="logo_bg_2"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_3"
+                                           value="color_3">
+                                    <label class="form-check-label" for="logo_bg_3"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_4"
+                                           value="color_4">
+                                    <label class="form-check-label" for="logo_bg_4"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_5"
+                                           value="color_5">
+                                    <label class="form-check-label" for="logo_bg_5"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_6"
+                                           value="color_6">
+                                    <label class="form-check-label" for="logo_bg_6"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_7"
+                                           value="color_7">
+                                    <label class="form-check-label" for="logo_bg_7"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_8"
+                                           value="color_8">
+                                    <label class="form-check-label" for="logo_bg_8"></label>
+                                </div>
+                            </li>
+                            <li class="lyear-skin-title"><p>头部</p></li>
+                            <li class="lyear-skin-li clearfix">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="header_bg" id="header_bg_1"
+                                           value="default" checked="checked">
+                                    <label class="form-check-label" for="header_bg_1"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="header_bg" id="header_bg_2"
+                                           value="color_2">
+                                    <label class="form-check-label" for="header_bg_2"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="header_bg" id="header_bg_3"
+                                           value="color_3">
+                                    <label class="form-check-label" for="header_bg_3"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="header_bg" id="header_bg_4"
+                                           value="color_4">
+                                    <label class="form-check-label" for="header_bg_4"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="header_bg" id="header_bg_5"
+                                           value="color_5">
+                                    <label class="form-check-label" for="header_bg_5"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="header_bg" id="header_bg_6"
+                                           value="color_6">
+                                    <label class="form-check-label" for="header_bg_6"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="header_bg" id="header_bg_7"
+                                           value="color_7">
+                                    <label class="form-check-label" for="header_bg_7"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="header_bg" id="header_bg_8"
+                                           value="color_8">
+                                    <label class="form-check-label" for="header_bg_8"></label>
+                                </div>
+                            </li>
+                            <li class="lyear-skin-title"><p>侧边栏</p></li>
+                            <li class="lyear-skin-li clearfix">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_1"
+                                           value="default" checked="checked">
+                                    <label class="form-check-label" for="sidebar_bg_1"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_2"
+                                           value="color_2">
+                                    <label class="form-check-label" for="sidebar_bg_2"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_3"
+                                           value="color_3">
+                                    <label class="form-check-label" for="sidebar_bg_3"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_4"
+                                           value="color_4">
+                                    <label class="form-check-label" for="sidebar_bg_4"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_5"
+                                           value="color_5">
+                                    <label class="form-check-label" for="sidebar_bg_5"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_6"
+                                           value="color_6">
+                                    <label class="form-check-label" for="sidebar_bg_6"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_7"
+                                           value="color_7">
+                                    <label class="form-check-label" for="sidebar_bg_7"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_8"
+                                           value="color_8">
+                                    <label class="form-check-label" for="sidebar_bg_8"></label>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <!--End 切换主题配色-->
+                    <!--个人头像内容-->
+                    <li class="dropdown">
+                        <a href="javascript:void(0)" data-bs-toggle="dropdown" class="dropdown-toggle">
+                            <img class="avatar-md rounded-circle" src="../static/images/users/avatar.jpg" alt="笔下光年"/>
+                            <span style="margin-left: 10px;">笔下光年</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <a class="dropdown-item" href="lyear_pages_profile.html"
+                                   href="javascript:void(0)">
+                                    <i class="mdi mdi-account"></i>
+                                    <span>个人信息</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="lyear_pages_edit_pwd.html"
+                                   href="javascript:void(0)">
+                                    <i class="mdi mdi-lock-outline"></i>
+                                    <span>修改密码</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="javascript:void(0)">
+                                    <i class="mdi mdi-delete"></i>
+                                    <span>清空缓存</span>
+                                </a>
+                            </li>
+                            <li class="dropdown-divider"></li>
+                            <li>
+                                <a class="dropdown-item" href="lyear_pages_login_1.html">
+                                    <i class="mdi mdi-logout-variant"></i>
+                                    <span>退出登录</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!--End 个人头像内容-->
+                </ul>
 
-      </nav>
+            </nav>
 
-    </header>
-    <!--End 头部信息-->
+        </header>
+        <!--End 头部信息-->
 
-    <!--页面主要内容-->
-    <main class="lyear-layout-content">
+        <!--页面主要内容-->
+        <main class="lyear-layout-content">
 
-      <div class="container-fluid">
+            <div class="container-fluid">
 
-        <div class="row">
+                <div class="row">
 
-          <div class="col-md-6 col-xl-3">
-            <div class="card bg-primary text-white">
-              <div class="card-body">
-                <div class="d-flex justify-content-between">
-                  <span class="avatar-md rounded-circle bg-white bg-opacity-25 avatar-box">
-                    <i class="mdi mdi-currency-cny fs-4"></i>
+                    <div class="col-md-6 col-xl-3">
+                        <div class="card bg-primary text-white">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                  <span class="avatar-md rounded-circle  bg-opacity-25 avatar-box">
+                    <i><img src="../static/images/数据.png"></i>
                   </span>
-                  <span class="fs-4">102,125.00</span>
-                </div>
-                <div class="text-end">今日收入</div>
-              </div>
-            </div>
-          </div>
+                                    <span class="fs-4">{{ jobNums }}条</span>
+                                </div>
+                                <div class="text-end">数据总量</div>
+                            </div>
+                        </div>
+                    </div>
 
-          <div class="col-md-6 col-xl-3">
-            <div class="card bg-danger text-white">
-              <div class="card-body">
-                <div class="d-flex justify-content-between">
-                  <span class="avatar-md rounded-circle bg-white bg-opacity-25 avatar-box">
-                    <i class="mdi mdi-account fs-4"></i>
+                    <div class="col-md-6 col-xl-3">
+                        <div class="card bg-danger text-white">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                  <span class="avatar-md rounded-circle  bg-opacity-25 avatar-box">
+                    <i><img src="../static/images/分类.png"></i>
                   </span>
-                  <span class="fs-4">920,000</span>
-                </div>
-                <div class="text-end">用户总数</div>
-              </div>
-            </div>
-          </div>
+                                    <span class="fs-4">{{ classNums }}类 </span>
+                                </div>
+                                <div class="text-end">采集类别</div>
+                            </div>
+                        </div>
+                    </div>
 
-          <div class="col-md-6 col-xl-3">
-            <div class="card bg-success text-white">
-              <div class="card-body">
-                <div class="d-flex justify-content-between">
-                  <span class="avatar-md rounded-circle bg-white bg-opacity-25 avatar-box">
-                    <i class="mdi mdi-arrow-down-bold fs-4"></i>
+                    <div class="col-md-6 col-xl-3">
+                        <div class="card bg-success text-white">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                  <span class="avatar-md rounded-circle  bg-opacity-25 avatar-box">
+                    <i><img src="../static/images/查看.png"></i>
                   </span>
-                  <span class="fs-4">34,005,000</span>
-                </div>
-                <div class="text-end">下载总量</div>
-              </div>
-            </div>
-          </div>
+                                    <span class="fs-4">{{ statusTrueNums }}条</span>
+                                </div>
+                                <div class="text-end">查看过</div>
+                            </div>
+                        </div>
+                    </div>
 
-          <div class="col-md-6 col-xl-3">
-            <div class="card bg-purple text-white">
-              <div class="card-body">
-                <div class="d-flex justify-content-between">
-                  <span class="avatar-md rounded-circle bg-white bg-opacity-25 avatar-box">
-                    <i class="mdi mdi-comment-outline fs-4"></i>
+                    <div class="col-md-6 col-xl-3">
+                        <div class="card bg-purple text-white">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                  <span class="avatar-md rounded-circle  bg-opacity-25 avatar-box">
+                    <i><img src="../static/images/导出.png"></i>
                   </span>
-                  <span class="fs-4">153 条</span>
+                                    <span class="fs-4">153 条</span>
+                                </div>
+                                <div class="text-end">导出条数</div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-                <div class="text-end">新增留言</div>
-              </div>
-            </div>
-          </div>
 
-        </div>
+                <div class="row">
 
-        <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">各类数据量</div>
+                            </div>
+                            <div class="card-body">
+                                <canvas class="js-chartjs-bars"></canvas>
+                            </div>
+                        </div>
+                    </div>
 
-          <div class="col-md-6">
-            <div class="card">
-              <div class="card-header">
-                <div class="card-title">每周用户</div>
-              </div>
-              <div class="card-body">
-                <canvas class="js-chartjs-bars"></canvas>
-              </div>
-            </div>
-          </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">交易历史记录</div>
+                            </div>
+                            <div class="card-body">
+                                <canvas class="js-chartjs-lines"></canvas>
+                            </div>
+                        </div>
+                    </div>
 
-          <div class="col-md-6">
-            <div class="card">
-              <div class="card-header">
-                <div class="card-title">交易历史记录</div>
-              </div>
-              <div class="card-body">
-                <canvas class="js-chartjs-lines"></canvas>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="row">
-
-          <div class="col-lg-12">
-            <div class="card">
-              <header class="card-header">
-                <div class="card-title">项目信息</div>
-              </header>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table table-hover">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>项目名称</th>
-                        <th>开始日期</th>
-                        <th>截止日期</th>
-                        <th>状态</th>
-                        <th>进度</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>设计新主题</td>
-                        <td>10/02/2019</td>
-                        <td>12/05/2019</td>
-                        <td><span class="badge bg-warning">待定</span></td>
-                        <td>
-                          <div class="progress progress-xs">
-                            <div class="progress-bar progress-bar-striped bg-warning" style="width: 45%;"></div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>网站重新设计</td>
-                        <td>01/03/2019</td>
-                        <td>12/04/2019</td>
-                        <td><span class="badge bg-success">进行中</span></td>
-                        <td>
-                          <div class="progress progress-xs">
-                            <div class="progress-bar progress-bar-striped bg-success" style="width: 30%;"></div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>模型设计</td>
-                        <td>10/10/2019</td>
-                        <td>12/11/2019</td>
-                        <td><span class="badge bg-warning">待定</span></td>
-                        <td>
-                          <div class="progress progress-xs">
-                            <div class="progress-bar progress-bar-striped bg-warning" style="width: 25%;"></div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td>后台管理系统模板设计</td>
-                        <td>25/01/2019</td>
-                        <td>09/05/2019</td>
-                        <td><span class="badge bg-success">进行中</span></td>
-                        <td>
-                          <div class="progress progress-xs">
-                            <div class="progress-bar progress-bar-striped bg-success" style="width: 55%;"></div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>5</td>
-                        <td>前端设计</td>
-                        <td>10/10/2019</td>
-                        <td>12/12/2019</td>
-                        <td><span class="badge bg-danger">未开始</span></td>
-                        <td>
-                          <div class="progress progress-xs">
-                            <div class="progress-bar progress-bar-striped bg-danger" style="width: 0%;"></div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>6</td>
-                        <td>桌面软件测试</td>
-                        <td>10/01/2019</td>
-                        <td>29/03/2019</td>
-                        <td><span class="badge bg-success">进行中</span></td>
-                        <td>
-                          <div class="progress progress-xs">
-                            <div class="progress-bar progress-bar-striped bg-success" style="width: 75%;"></div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>7</td>
-                        <td>APP改版开发</td>
-                        <td>25/02/2019</td>
-                        <td>12/05/2019</td>
-                        <td><span class="badge bg-danger">暂停</span></td>
-                        <td>
-                          <div class="progress progress-xs">
-                            <div class="progress-bar progress-bar-striped bg-danger" style="width: 15%;"></div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>8</td>
-                        <td>Logo设计</td>
-                        <td>10/02/2019</td>
-                        <td>01/03/2019</td>
-                        <td><span class="badge bg-warning">完成</span></td>
-                        <td>
-                          <div class="progress progress-xs">
-                            <div class="progress-bar progress-bar-striped bg-success" style="width: 100%;"></div>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
                 </div>
-              </div>
+
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <header class="card-header">
+                                <div class="card-title">项目信息</div>
+                            </header>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>项目名称</th>
+                                            <th>开始日期</th>
+                                            <th>截止日期</th>
+                                            <th>状态</th>
+                                            <th>进度</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>设计新主题</td>
+                                            <td>10/02/2019</td>
+                                            <td>12/05/2019</td>
+                                            <td><span class="badge bg-warning">待定</span></td>
+                                            <td>
+                                                <div class="progress progress-xs">
+                                                    <div class="progress-bar progress-bar-striped bg-warning"
+                                                         style="width: 45%;"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>网站重新设计</td>
+                                            <td>01/03/2019</td>
+                                            <td>12/04/2019</td>
+                                            <td><span class="badge bg-success">进行中</span></td>
+                                            <td>
+                                                <div class="progress progress-xs">
+                                                    <div class="progress-bar progress-bar-striped bg-success"
+                                                         style="width: 30%;"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>模型设计</td>
+                                            <td>10/10/2019</td>
+                                            <td>12/11/2019</td>
+                                            <td><span class="badge bg-warning">待定</span></td>
+                                            <td>
+                                                <div class="progress progress-xs">
+                                                    <div class="progress-bar progress-bar-striped bg-warning"
+                                                         style="width: 25%;"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>后台管理系统模板设计</td>
+                                            <td>25/01/2019</td>
+                                            <td>09/05/2019</td>
+                                            <td><span class="badge bg-success">进行中</span></td>
+                                            <td>
+                                                <div class="progress progress-xs">
+                                                    <div class="progress-bar progress-bar-striped bg-success"
+                                                         style="width: 55%;"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td>前端设计</td>
+                                            <td>10/10/2019</td>
+                                            <td>12/12/2019</td>
+                                            <td><span class="badge bg-danger">未开始</span></td>
+                                            <td>
+                                                <div class="progress progress-xs">
+                                                    <div class="progress-bar progress-bar-striped bg-danger"
+                                                         style="width: 0%;"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>6</td>
+                                            <td>桌面软件测试</td>
+                                            <td>10/01/2019</td>
+                                            <td>29/03/2019</td>
+                                            <td><span class="badge bg-success">进行中</span></td>
+                                            <td>
+                                                <div class="progress progress-xs">
+                                                    <div class="progress-bar progress-bar-striped bg-success"
+                                                         style="width: 75%;"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>7</td>
+                                            <td>APP改版开发</td>
+                                            <td>25/02/2019</td>
+                                            <td>12/05/2019</td>
+                                            <td><span class="badge bg-danger">暂停</span></td>
+                                            <td>
+                                                <div class="progress progress-xs">
+                                                    <div class="progress-bar progress-bar-striped bg-danger"
+                                                         style="width: 15%;"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>8</td>
+                                            <td>Logo设计</td>
+                                            <td>10/02/2019</td>
+                                            <td>01/03/2019</td>
+                                            <td><span class="badge bg-warning">完成</span></td>
+                                            <td>
+                                                <div class="progress progress-xs">
+                                                    <div class="progress-bar progress-bar-striped bg-success"
+                                                         style="width: 100%;"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
-          </div>
 
-        </div>
-
-      </div>
-
-    </main>
-    <!--End 页面主要内容-->
-  </div>
+        </main>
+        <!--End 页面主要内容-->
+    </div>
 </div>
 
 <script type="text/javascript" src="../static/js/jquery.min.js"></script>
@@ -566,47 +608,58 @@
 <script type="text/javascript" src="../static/js/chart.min.js"></script>
 <script type="text/javascript" src="../static/js/main.min.js"></script>
 <script type="text/javascript">
-$(document).ready(function(e) {
-	var $dashChartBarsCnt = jQuery('.js-chartjs-bars')[0].getContext('2d'),
-		$dashChartLinesCnt = jQuery('.js-chartjs-lines')[0].getContext('2d');
+    $(document).ready(function (e) {
+        var $dashChartBarsCnt = jQuery('.js-chartjs-bars')[0].getContext('2d'),
+            $dashChartLinesCnt = jQuery('.js-chartjs-lines')[0].getContext('2d');
+        axios.get('/returnClassList')
+            .then(response => {
+                var $dashChartBarsData = {
+                    labels: response.data[0],
+                    datasets: [{
+                        label: '数据量',
+                        borderWidth: 1,
+                        borderColor: 'rgba(0, 0, 0, 0)',
+                        backgroundColor: 'rgba(0, 123, 255,0.5)',
+                        hoverBackgroundColor: "rgba(0, 123, 255, 0.7)",
+                        hoverBorderColor: "rgba(0, 0, 0, 0)",
+                        data: response.data[1]
+                    }]
+                };
+                console.log(response.data); // 输出获取到的数据
+                new Chart($dashChartBarsCnt, {
+                    type: 'bar',
+                    data: $dashChartBarsData
+                });
+            })
+            .catch(error => {
+                console.error(error); // 输出错误信息
+            });
+        axios.get('/WeeklyDataVolumeList')
+            .then(response => {
+                var $dashChartLinesData = {
+                    labels: response.data[0],
+                    datasets: [{
+                        label: '采集量',
+                        data: response.data[1],
+                        borderColor: '#007bff',
+                        backgroundColor: 'rgba(0, 123, 255, 0.175)',
+                        borderWidth: 1,
+                        fill: false,
+                        lineTension: 0.5
+                    }]
+                };
+                console.log(response.data); // 输出获取到的数据
+                new Chart($dashChartLinesCnt, {
+                    type: 'line',
+                    data: $dashChartLinesData,
+                });
+            })
+            .catch(error => {
+                console.error(error); // 输出错误信息
+            });
 
-	var $dashChartBarsData = {
-		labels: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-		datasets: [{
-			label: '注册用户',
-			borderWidth: 1,
-			borderColor: 'rgba(0, 0, 0, 0)',
-			backgroundColor: 'rgba(0, 123, 255,0.5)',
-			hoverBackgroundColor: "rgba(0, 123, 255, 0.7)",
-			hoverBorderColor: "rgba(0, 0, 0, 0)",
-			data: [2500, 1500, 1200, 3200, 4800, 3500, 1500]
-		}]
-	};
-	var $dashChartLinesData = {
-		labels: ['2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013',
-			'2014'
-		],
-		datasets: [{
-			label: '交易资金',
-			data: [20, 25, 40, 30, 45, 40, 55, 40, 48, 40, 42, 50],
-			borderColor: '#007bff',
-			backgroundColor: 'rgba(0, 123, 255, 0.175)',
-			borderWidth: 1,
-			fill: false,
-			lineTension: 0.5
-		}]
-	};
 
-	new Chart($dashChartBarsCnt, {
-		type: 'bar',
-		data: $dashChartBarsData
-	});
-
-	var myLineChart = new Chart($dashChartLinesCnt, {
-		type: 'line',
-		data: $dashChartLinesData,
-	});
-});
+    });
 </script>
 </body>
 </html>

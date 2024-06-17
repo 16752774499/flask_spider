@@ -1,5 +1,5 @@
 import json
-from datetime import date
+from datetime import date, datetime, timedelta
 
 from sqlalchemy import create_engine, func
 from sqlalchemy.orm import sessionmaker
@@ -250,12 +250,12 @@ def getAreaQuantity(SearchKeyword: str) -> list:
             query = session.query(Jobs).filter(
                 Jobs.jobAddress.like(f'%{search_term}%'))
         else:
-            query = session.query(Jobs).filter(Jobs.SearchKeyword == SearchKeyword).filter(
-                Jobs.jobAddress.like(f'%{search_term}%'))
+            query = session.query(Jobs).filter(
+                Jobs.jobAddress.like(f'%{search_term}%')).filter(Jobs.SearchKeyword == SearchKeyword)
         result_count = query.count()
         AreaQuantityDict[i] = result_count
         # 打印查询到的数量
-        # print("{0}岗位数有{1}个！".format(i, result_count))
+        print("{0}岗位数有{1}个！".format(i, result_count))
     session.close()
 
     for key, value in AreaQuantityDict.items():
@@ -488,3 +488,58 @@ def getSearchKeywordClass() -> list:
     # 关闭会话
     session.close()
     return ClassList
+
+
+def returnClassList() -> list:
+    """
+    获取所有职位分类和对应数量
+
+    Args:
+        无参数
+
+    Returns:
+        list: 包含两个列表的列表，第一个列表为所有职位分类，第二个列表为对应职位分类的数量
+
+    """
+    classListNums: list = []
+    session = returnDbSession()
+    classList = getSearchKeywordClass()
+    for item in classList:
+        count = session.query(Jobs).filter(Jobs.SearchKeyword == item).count()
+        classListNums.append(count)
+    session.close()
+    return [classList, classListNums]
+
+
+def WeeklyDataVolumeList() -> list:
+    """
+    获取近一周内每天入库的数据量列表。
+
+    Args:
+        无参数。
+
+    Returns:
+        list: 包含两个列表的列表，第一个列表为近一周内每天的格式化日期（'YYYY-MM-DD'格式），第二个列表为对应日期的入库数据量。
+
+    """
+    session = returnDbSession()
+    one_week_ago = datetime.now().date() - timedelta(days=7)
+    all_dates = [one_week_ago + timedelta(days=i) for i in range(8)]  # 一周内所有日期，包括一周前的日期
+
+    # 查询近一周内每天入库的数据量
+    result = session.query(func.date(Jobs.addTime), func.count(Jobs.id)) \
+        .filter(Jobs.addTime >= one_week_ago) \
+        .group_by(func.date(Jobs.addTime)) \
+        .all()
+
+    # 将查询结果转换为字典，方便后续处理
+    data_dict = {date: count for date, count in result}
+
+    # 生成包含所有日期的数据量列表和格式化日期列表
+    data_list = [data_dict.get(date, 0) for date in all_dates]
+    formatted_dates = [date.strftime('%Y-%m-%d') for date in all_dates]  # 格式化日期为 'YYYY-MM-DD' 格式
+
+    # 输出格式化后的日期列表和数据量列表
+    print("日期列表:", formatted_dates)
+    print("数据量列表:", data_list)
+    return [formatted_dates, data_list]

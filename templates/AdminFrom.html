@@ -1,877 +1,533 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-<meta name="keywords" content="LightYear,LightYearAdmin,光年,后台模板,后台管理系统,光年HTML模板">
-<meta name="description" content="Light Year Admin V5是一个基于Bootstrap v5.1.3的后台管理系统的HTML模板。">
-<title>输入组 - 光年(Light Year Admin V5)后台管理系统模板</title>
-<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-touch-fullscreen" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<link rel="stylesheet" type="text/css" href="../static/css/materialdesignicons.min.css">
-<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="../static/css/style.min.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="keywords" content="LightYear,LightYearAdmin,光年,后台模板,后台管理系统,光年HTML模板">
+    <meta name="description" content="Light Year Admin V5是一个基于Bootstrap v5.1.3的后台管理系统的HTML模板。">
+    <title>输入组 - 光年(Light Year Admin V5)后台管理系统模板</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="stylesheet" type="text/css" href="../static/css/materialdesignicons.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/style.min.css">
 </head>
-  
+<script src="../static/js/admin.js"></script>
 <body>
 <!--页面loading-->
 <div id="lyear-preloader" class="loading">
-  <div class="ctn-preloader">
-    <div class="round_spinner">
-      <div class="spinner"></div>
-      <img src="../static/images/loading-logo.png" alt="">
+    <div class="ctn-preloader">
+        <div class="round_spinner">
+            <div class="spinner"></div>
+            <img src="../static/images/loading-logo.png" alt="">
+        </div>
     </div>
-  </div>
 </div>
 <!--页面loading end-->
 <div class="lyear-layout-web">
-  <div class="lyear-layout-container">
-     <!--左侧导航-->
-    <aside class="lyear-layout-sidebar">
+    <div class="lyear-layout-container">
+        <!--左侧导航-->
+        <aside class="lyear-layout-sidebar">
 
-      <!-- logo -->
-      <div id="logo" class="sidebar-header">
-        <a href="/admin"><img src="../static/images/logo-sidebar.png" title="LightYear" alt="LightYear" /></a>
-      </div>
-      <div class="lyear-layout-sidebar-info lyear-scroll">
+            <!-- logo -->
+            <div id="logo" class="sidebar-header">
+                <a href="/admin"><img src="../static/images/logo-sidebar.png" title="LightYear" alt="LightYear"/></a>
+            </div>
+            <div class="lyear-layout-sidebar-info lyear-scroll">
 
-        <nav class="sidebar-main">
+                <nav class="sidebar-main">
 
-          <ul class="nav-drawer">
-            <li class="nav-item active">
-              <a href="/admin">
-                <i class="mdi mdi-home-city-outline"></i>
-                <span>招聘信息采集后台首页</span>
-              </a>
-            </li>
+                    <ul class="nav-drawer">
+                        <li class="nav-item active">
+                            <a href="/admin">
+                                <i class="mdi mdi-home-city-outline"></i>
+                                <span>招聘信息采集后台首页</span>
+                            </a>
+                        </li>
 
-            <li class="nav-item nav-item-has-subnav">
-              <a href="javascript:void(0)">
-                <i class="mdi mdi-map-outline"></i>
-                <span>表单</span>
-              </a>
-              <ul class="nav nav-subnav">
+                        <li class="nav-item nav-item-has-subnav">
+                            <a href="javascript:void(0)">
+                                <i class="mdi mdi-map-outline"></i>
+                                <span>表单</span>
+                            </a>
+                            <ul class="nav nav-subnav">
 
-                <li> <a href="/adminFrom">输入组</a> </li>
+                                <li><a href="/adminFrom">输入组</a></li>
 
-              </ul>
-            </li>
+                            </ul>
+                        </li>
 
-            <li class="nav-item nav-item-has-subnav">
-              <a href="javascript:void(0)">
-                <i class="mdi mdi-stove"></i>
-                <span>示例页面</span>
-              </a>
-              <ul class="nav nav-subnav">
-                <li> <a href="/adminTask">文档列表</a> </li>
-                <li> <a href="/adminTable">表格插件</a> </li>
+                        <li class="nav-item nav-item-has-subnav">
+                            <a href="javascript:void(0)">
+                                <i class="mdi mdi-stove"></i>
+                                <span>列表</span>
+                            </a>
+                            <ul class="nav nav-subnav">
+                                <li><a href="/adminTask">任务列表</a></li>
+                                <li><a href="/adminTable">数据列表</a></li>
 
-              </ul>
-            </li>
+                            </ul>
+                        </li>
 
-          </ul>
-        </nav>
+                    </ul>
+                </nav>
 
-        <div class="sidebar-footer">
-          <p class="copyright">
-            <span>Copyright &copy; 2022. </span>
-            <a target="_blank" href="http://www.bixiaguangnian.com">笔下光年</a>
-            <span> All rights reserved.</span>
-          </p>
-        </div>
-      </div>
+                <div class="sidebar-footer">
+                    <p class="copyright">
+                        <span>Copyright &copy; 2022. </span>
+                        <a target="_blank" href="http://www.bixiaguangnian.com">笔下光年</a>
+                        <span> All rights reserved.</span>
+                    </p>
+                </div>
+            </div>
 
-    </aside>
-    <!--End 左侧导航-->
+        </aside>
+        <!--End 左侧导航-->
 
-    <!--头部信息-->
-    <header class="lyear-layout-header">
+        <!--头部信息-->
+        <header class="lyear-layout-header">
 
-      <nav class="navbar">
+            <nav class="navbar">
 
-        <div class="navbar-left">
-          <div class="lyear-aside-toggler">
-            <span class="lyear-toggler-bar"></span>
-            <span class="lyear-toggler-bar"></span>
-            <span class="lyear-toggler-bar"></span>
-          </div>
-        </div>
+                <div class="navbar-left">
+                    <div class="lyear-aside-toggler">
+                        <span class="lyear-toggler-bar"></span>
+                        <span class="lyear-toggler-bar"></span>
+                        <span class="lyear-toggler-bar"></span>
+                    </div>
+                </div>
 
-        <ul class="navbar-right d-flex align-items-center">
-          <!--顶部消息部分-->
-          <li class="dropdown dropdown-notice">
+                <ul class="navbar-right d-flex align-items-center">
+                    <!--顶部消息部分-->
+                    <li class="dropdown dropdown-notice">
             <span data-bs-toggle="dropdown" class="position-relative icon-item">
               <i class="mdi mdi-bell-outline fs-5"></i>
               <span class="position-absolute translate-middle badge bg-danger">7</span>
             </span>
-            <div class="dropdown-menu dropdown-menu-end">
-              <div class="lyear-notifications">
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <div class="lyear-notifications">
 
-                <div class="lyear-notifications-title d-flex justify-content-between" data-stopPropagation="true">
-                  <span>你有 10 条未读消息</span>
-                  <a href="#!">查看全部</a>
-                </div>
-                <div class="lyear-notifications-info lyear-scroll">
-                  <a href="#!" class="dropdown-item"
-                    title="树莓派销量猛增，疫情期间居家工作学习、医疗领域都需要它">树莓派销量猛增，疫情期间居家工作学习、医疗领域都需要它</a>
-                  <a href="#!" class="dropdown-item"
-                    title="GNOME 用户体验团队将为 GNOME Shell 提供更多改进">GNOME 用户体验团队将为 GNOME Shell
-                    提供更多改进</a>
-                  <a href="#!" class="dropdown-item"
-                    title="Linux On iPhone 即将面世，支持 iOS 的双启动">Linux On iPhone 即将面世，支持 iOS
-                    的双启动</a>
-                  <a href="#!" class="dropdown-item" title="GitHub 私有仓库完全免费面向团队提供">GitHub
-                    私有仓库完全免费面向团队提供</a>
-                  <a href="#!" class="dropdown-item"
-                    title="Wasmtime 为 WebAssembly 增加 Go 语言绑定">Wasmtime 为 WebAssembly 增加 Go
-                    语言绑定</a>
-                  <a href="#!" class="dropdown-item"
-                    title="红帽借“订阅”成开源一哥，首创者 Cormier 升任总裁">红帽借“订阅”成开源一哥，首创者 Cormier 升任总裁</a>
-                  <a href="#!" class="dropdown-item" title="Zend 宣布推出两项 PHP 新产品">Zend 宣布推出两项
-                    PHP 新产品</a>
-                </div>
+                                <div class="lyear-notifications-title d-flex justify-content-between"
+                                     data-stopPropagation="true">
+                                    <span>你有 10 条未读消息</span>
+                                    <a href="#!">查看全部</a>
+                                </div>
+                                <div class="lyear-notifications-info lyear-scroll">
+                                    <a href="#!" class="dropdown-item"
+                                       title="树莓派销量猛增，疫情期间居家工作学习、医疗领域都需要它">树莓派销量猛增，疫情期间居家工作学习、医疗领域都需要它</a>
+                                    <a href="#!" class="dropdown-item"
+                                       title="GNOME 用户体验团队将为 GNOME Shell 提供更多改进">GNOME 用户体验团队将为 GNOME Shell
+                                        提供更多改进</a>
+                                    <a href="#!" class="dropdown-item"
+                                       title="Linux On iPhone 即将面世，支持 iOS 的双启动">Linux On iPhone 即将面世，支持 iOS
+                                        的双启动</a>
+                                    <a href="#!" class="dropdown-item" title="GitHub 私有仓库完全免费面向团队提供">GitHub
+                                        私有仓库完全免费面向团队提供</a>
+                                    <a href="#!" class="dropdown-item"
+                                       title="Wasmtime 为 WebAssembly 增加 Go 语言绑定">Wasmtime 为 WebAssembly 增加 Go
+                                        语言绑定</a>
+                                    <a href="#!" class="dropdown-item"
+                                       title="红帽借“订阅”成开源一哥，首创者 Cormier 升任总裁">红帽借“订阅”成开源一哥，首创者 Cormier 升任总裁</a>
+                                    <a href="#!" class="dropdown-item" title="Zend 宣布推出两项 PHP 新产品">Zend 宣布推出两项
+                                        PHP 新产品</a>
+                                </div>
 
-              </div>
-            </div>
-          </li>
-          <!--End 顶部消息部分-->
-          <!--切换主题配色-->
-		  <li class="dropdown dropdown-skin">
+                            </div>
+                        </div>
+                    </li>
+                    <!--End 顶部消息部分-->
+                    <!--切换主题配色-->
+                    <li class="dropdown dropdown-skin">
 		    <span data-bs-toggle="dropdown" class="icon-item">
               <i class="mdi mdi-palette fs-5"></i>
             </span>
-			<ul class="dropdown-menu dropdown-menu-end" data-stopPropagation="true">
-              <li class="lyear-skin-title"><p>主题</p></li>
-              <li class="lyear-skin-li clearfix">
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="site_theme" id="site_theme_1" value="default" checked="checked">
-                  <label class="form-check-label" for="site_theme_1"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="site_theme" id="site_theme_2" value="translucent-green">
-                  <label class="form-check-label" for="site_theme_2"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="site_theme" id="site_theme_3" value="translucent-blue">
-                  <label class="form-check-label" for="site_theme_3"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="site_theme" id="site_theme_4" value="translucent-yellow">
-                  <label class="form-check-label" for="site_theme_4"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="site_theme" id="site_theme_5" value="translucent-red">
-                  <label class="form-check-label" for="site_theme_5"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="site_theme" id="site_theme_6" value="translucent-pink">
-                  <label class="form-check-label" for="site_theme_6"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="site_theme" id="site_theme_7" value="translucent-cyan">
-                  <label class="form-check-label" for="site_theme_7"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="site_theme" id="site_theme_8" value="dark">
-                  <label class="form-check-label" for="site_theme_8"></label>
-                </div>
-              </li>
-			  <li class="lyear-skin-title"><p>LOGO</p></li>
-			  <li class="lyear-skin-li clearfix">
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_1" value="default" checked="checked">
-                  <label class="form-check-label" for="logo_bg_1"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_2" value="color_2">
-                  <label class="form-check-label" for="logo_bg_2"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_3" value="color_3">
-                  <label class="form-check-label" for="logo_bg_3"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_4" value="color_4">
-                  <label class="form-check-label" for="logo_bg_4"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_5" value="color_5">
-                  <label class="form-check-label" for="logo_bg_5"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_6" value="color_6">
-                  <label class="form-check-label" for="logo_bg_6"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_7" value="color_7">
-                  <label class="form-check-label" for="logo_bg_7"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_8" value="color_8">
-                  <label class="form-check-label" for="logo_bg_8"></label>
-                </div>
-			  </li>
-			  <li class="lyear-skin-title"><p>头部</p></li>
-			  <li class="lyear-skin-li clearfix">
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="header_bg" id="header_bg_1" value="default" checked="checked">
-                  <label class="form-check-label" for="header_bg_1"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="header_bg" id="header_bg_2" value="color_2">
-                  <label class="form-check-label" for="header_bg_2"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="header_bg" id="header_bg_3" value="color_3">
-                  <label class="form-check-label" for="header_bg_3"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="header_bg" id="header_bg_4" value="color_4">
-                  <label class="form-check-label" for="header_bg_4"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="header_bg" id="header_bg_5" value="color_5">
-                  <label class="form-check-label" for="header_bg_5"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="header_bg" id="header_bg_6" value="color_6">
-                  <label class="form-check-label" for="header_bg_6"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="header_bg" id="header_bg_7" value="color_7">
-                  <label class="form-check-label" for="header_bg_7"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="header_bg" id="header_bg_8" value="color_8">
-                  <label class="form-check-label" for="header_bg_8"></label>
-                </div>
-			  </li>
-			  <li class="lyear-skin-title"><p>侧边栏</p></li>
-			  <li class="lyear-skin-li clearfix">
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_1" value="default" checked="checked">
-                  <label class="form-check-label" for="sidebar_bg_1"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_2" value="color_2">
-                  <label class="form-check-label" for="sidebar_bg_2"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_3" value="color_3">
-                  <label class="form-check-label" for="sidebar_bg_3"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_4" value="color_4">
-                  <label class="form-check-label" for="sidebar_bg_4"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_5" value="color_5">
-                  <label class="form-check-label" for="sidebar_bg_5"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_6" value="color_6">
-                  <label class="form-check-label" for="sidebar_bg_6"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_7" value="color_7">
-                  <label class="form-check-label" for="sidebar_bg_7"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_8" value="color_8">
-                  <label class="form-check-label" for="sidebar_bg_8"></label>
-                </div>
-			  </li>
-		    </ul>
-		  </li>
-          <!--End 切换主题配色-->
-          <!--个人头像内容-->
-          <li class="dropdown">
-            <a href="javascript:void(0)" data-bs-toggle="dropdown" class="dropdown-toggle">
-              <img class="avatar-md rounded-circle" src="../static/images/users/avatar.jpg" alt="笔下光年" />
-              <span style="margin-left: 10px;">笔下光年</span>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end">
-              <li>
-                <a class="dropdown-item" href="lyear_pages_profile.html"
-                  href="javascript:void(0)">
-                  <i class="mdi mdi-account"></i>
-                  <span>个人信息</span>
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="lyear_pages_edit_pwd.html"
-                  href="javascript:void(0)">
-                  <i class="mdi mdi-lock-outline"></i>
-                  <span>修改密码</span>
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="javascript:void(0)">
-                  <i class="mdi mdi-delete"></i>
-                  <span>清空缓存</span>
-                </a>
-              </li>
-              <li class="dropdown-divider"></li>
-              <li>
-                <a class="dropdown-item" href="lyear_pages_login_1.html">
-                  <i class="mdi mdi-logout-variant"></i>
-                  <span>退出登录</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <!--End 个人头像内容-->
-        </ul>
+                        <ul class="dropdown-menu dropdown-menu-end" data-stopPropagation="true">
+                            <li class="lyear-skin-title"><p>主题</p></li>
+                            <li class="lyear-skin-li clearfix">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="site_theme" id="site_theme_1"
+                                           value="default" checked="checked">
+                                    <label class="form-check-label" for="site_theme_1"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="site_theme" id="site_theme_2"
+                                           value="translucent-green">
+                                    <label class="form-check-label" for="site_theme_2"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="site_theme" id="site_theme_3"
+                                           value="translucent-blue">
+                                    <label class="form-check-label" for="site_theme_3"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="site_theme" id="site_theme_4"
+                                           value="translucent-yellow">
+                                    <label class="form-check-label" for="site_theme_4"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="site_theme" id="site_theme_5"
+                                           value="translucent-red">
+                                    <label class="form-check-label" for="site_theme_5"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="site_theme" id="site_theme_6"
+                                           value="translucent-pink">
+                                    <label class="form-check-label" for="site_theme_6"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="site_theme" id="site_theme_7"
+                                           value="translucent-cyan">
+                                    <label class="form-check-label" for="site_theme_7"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="site_theme" id="site_theme_8"
+                                           value="dark">
+                                    <label class="form-check-label" for="site_theme_8"></label>
+                                </div>
+                            </li>
+                            <li class="lyear-skin-title"><p>LOGO</p></li>
+                            <li class="lyear-skin-li clearfix">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_1"
+                                           value="default" checked="checked">
+                                    <label class="form-check-label" for="logo_bg_1"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_2"
+                                           value="color_2">
+                                    <label class="form-check-label" for="logo_bg_2"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_3"
+                                           value="color_3">
+                                    <label class="form-check-label" for="logo_bg_3"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_4"
+                                           value="color_4">
+                                    <label class="form-check-label" for="logo_bg_4"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_5"
+                                           value="color_5">
+                                    <label class="form-check-label" for="logo_bg_5"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_6"
+                                           value="color_6">
+                                    <label class="form-check-label" for="logo_bg_6"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_7"
+                                           value="color_7">
+                                    <label class="form-check-label" for="logo_bg_7"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_8"
+                                           value="color_8">
+                                    <label class="form-check-label" for="logo_bg_8"></label>
+                                </div>
+                            </li>
+                            <li class="lyear-skin-title"><p>头部</p></li>
+                            <li class="lyear-skin-li clearfix">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="header_bg" id="header_bg_1"
+                                           value="default" checked="checked">
+                                    <label class="form-check-label" for="header_bg_1"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="header_bg" id="header_bg_2"
+                                           value="color_2">
+                                    <label class="form-check-label" for="header_bg_2"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="header_bg" id="header_bg_3"
+                                           value="color_3">
+                                    <label class="form-check-label" for="header_bg_3"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="header_bg" id="header_bg_4"
+                                           value="color_4">
+                                    <label class="form-check-label" for="header_bg_4"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="header_bg" id="header_bg_5"
+                                           value="color_5">
+                                    <label class="form-check-label" for="header_bg_5"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="header_bg" id="header_bg_6"
+                                           value="color_6">
+                                    <label class="form-check-label" for="header_bg_6"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="header_bg" id="header_bg_7"
+                                           value="color_7">
+                                    <label class="form-check-label" for="header_bg_7"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="header_bg" id="header_bg_8"
+                                           value="color_8">
+                                    <label class="form-check-label" for="header_bg_8"></label>
+                                </div>
+                            </li>
+                            <li class="lyear-skin-title"><p>侧边栏</p></li>
+                            <li class="lyear-skin-li clearfix">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_1"
+                                           value="default" checked="checked">
+                                    <label class="form-check-label" for="sidebar_bg_1"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_2"
+                                           value="color_2">
+                                    <label class="form-check-label" for="sidebar_bg_2"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_3"
+                                           value="color_3">
+                                    <label class="form-check-label" for="sidebar_bg_3"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_4"
+                                           value="color_4">
+                                    <label class="form-check-label" for="sidebar_bg_4"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_5"
+                                           value="color_5">
+                                    <label class="form-check-label" for="sidebar_bg_5"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_6"
+                                           value="color_6">
+                                    <label class="form-check-label" for="sidebar_bg_6"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_7"
+                                           value="color_7">
+                                    <label class="form-check-label" for="sidebar_bg_7"></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_8"
+                                           value="color_8">
+                                    <label class="form-check-label" for="sidebar_bg_8"></label>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <!--End 切换主题配色-->
+                    <!--个人头像内容-->
+                    <li class="dropdown">
+                        <a href="javascript:void(0)" data-bs-toggle="dropdown" class="dropdown-toggle">
+                            <img class="avatar-md rounded-circle" src="../static/images/users/avatar.jpg" alt="笔下光年"/>
+                            <span style="margin-left: 10px;">笔下光年</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <a class="dropdown-item" href="lyear_pages_profile.html"
+                                   href="javascript:void(0)">
+                                    <i class="mdi mdi-account"></i>
+                                    <span>个人信息</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="lyear_pages_edit_pwd.html"
+                                   href="javascript:void(0)">
+                                    <i class="mdi mdi-lock-outline"></i>
+                                    <span>修改密码</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="javascript:void(0)">
+                                    <i class="mdi mdi-delete"></i>
+                                    <span>清空缓存</span>
+                                </a>
+                            </li>
+                            <li class="dropdown-divider"></li>
+                            <li>
+                                <a class="dropdown-item" href="lyear_pages_login_1.html">
+                                    <i class="mdi mdi-logout-variant"></i>
+                                    <span>退出登录</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!--End 个人头像内容-->
+                </ul>
 
-      </nav>
+            </nav>
 
-    </header>
-    <!--End 头部信息-->
+        </header>
+        <!--End 头部信息-->
 
-    <!--页面主要内容-->
-    <main class="lyear-layout-content">
-	
-      <div class="container-fluid">
+        <!--页面主要内容-->
+        <main class="lyear-layout-content">
 
-        <div class="row">
+            <div class="container-fluid">
 
-          <div class="col-lg-12">
-            <div class="card">
-              <header class="card-header"><div class="card-title">输入组</div></header>
-              <div class="card-body">
+                <div class="row">
 
-                <p>通过在文本输入、自定义选择和自定义文件输入的任一侧添加文本、按钮或按钮组来轻松扩展表单控件。</p>
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <header class="card-header">
+                                <div class="card-title">输入组</div>
+                            </header>
+                            <div class="card-body">
 
-                <h6>基本示例</h6>
-                <p>在输入的任一侧放置一个附加组件或按钮。您也可以在输入的两侧放置一个。请记住将 <code>&lt;label&gt;</code> 放在输入组之外。</p>
-                <div class="border-example">
-                  <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">@</span>
-                    <input type="text" class="form-control" placeholder="用户名" aria-label="用户名" aria-describedby="basic-addon1">
-                  </div>
+                                <p>通过在文本输入、自定义选择和自定义文件输入的任一侧添加文本、按钮或按钮组来轻松扩展表单控件。</p>
 
-                  <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="收件人的用户名" aria-label="收件人的用户名" aria-describedby="basic-addon2">
-                    <span class="input-group-text" id="basic-addon2">@example.com</span>
-                  </div>
+                                <h6>基本示例</h6>
+                                <p>在输入的任一侧放置一个附加组件或按钮。您也可以在输入的两侧放置一个。请记住将 <code>&lt;label&gt;</code> 放在输入组之外。</p>
 
-                  <label for="basic-url" class="form-label">您的个人网址</label>
-                  <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
-                    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-                  </div>
+                                <div class="border-example">
 
-                  <div class="input-group mb-3">
-                    <span class="input-group-text">$</span>
-                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                    <span class="input-group-text">.00</span>
-                  </div>
+                                    <form href="/xiaohua" class="row g-3 needs-validation" novalidate>
+                                        <div class="col-md-3">
+                                            <label for="validationCustom04" class="form-label">采集目的</label>
+                                            <select class="form-select" id="validationCustom04" required>
+                                                <option selected disabled value="">请选择...</option>
+                                                <option>学习研究</option>
+                                                <option>其他用途</option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                请选择您的采集目的。
+                                            </div>
+                                        </div>
 
-                  <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="用户名" aria-label="用户名">
-                    <span class="input-group-text">@</span>
-                    <input type="text" class="form-control" placeholder="服务器" aria-label="服务器">
-                  </div>
+                                        <div class="col-md-4">
+                                            <label for="validationCustom02" class="form-label">采集关键字</label>
+                                            <input type="text" class="form-control" id="validationCustom02" value=""
+                                                   required>
+                                            <div class="invalid-feedback">
+                                                请输入您的采集关键字。
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="validationCustom02" class="form-label">采集页数</label>
 
-                  <div class="input-group">
-                    <span class="input-group-text">带文本区域</span>
-                    <textarea class="form-control" aria-label="带文本区域"></textarea>
-                  </div>
-                </div>
-                <pre>&lt;div class="input-group mb-3"&gt;
-        &lt;span class="input-group-text" id="basic-addon1"&gt;@&lt;/span&gt;
-        &lt;input type="text" class="form-control" placeholder="用户名" aria-label="用户名" aria-describedby="basic-addon1"&gt;
-      &lt;/div&gt;
+                                            <input type="range" class="form-range" value="1" min="1" max="5" step="1"
+                                                   id="customRange3">
+                                            <region class="form-range" id="rangeValue"></region>
+                                        </div>
 
-      &lt;div class="input-group mb-3"&gt;
-        &lt;input type="text" class="form-control" placeholder="收件人的用户名" aria-label="收件人的用户名" aria-describedby="basic-addon2"&gt;
-        &lt;span class="input-group-text" id="basic-addon2"&gt;@example.com&lt;/span&gt;
-      &lt;/div&gt;
+                                        <div class="col-md-4">
+                                            <label for="validationCustom03" class="form-label">采集城市</label>
+                                            <select class="form-select" id="validationCustom04" required>
+                                                <option selected disabled value="">请选择...</option>
+                                                <option>西安</option>
 
-      &lt;label for="basic-url" class="form-label"&gt;您的个人网址&lt;/label&gt;
-      &lt;div class="input-group mb-3"&gt;
-        &lt;span class="input-group-text" id="basic-addon3"&gt;https://example.com/users/&lt;/span&gt;
-        &lt;input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3"&gt;
-      &lt;/div&gt;
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                请提供一个正确的城市。
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="validationCustom04" class="form-label">采集目标</label>
+                                            <select class="form-select" id="validationCustom04" required>
+                                                <option selected disabled value="">请选择...</option>
+                                                <option value="https://www.zhipin.com/web/geek/job?query=python&city=101110100">
+                                                    BOSS直聘
+                                                </option>
+                                                <option>智联招聘</option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                请选择您需要采集的站点。
+                                            </div>
+                                        </div>
 
-      &lt;div class="input-group mb-3"&gt;
-        &lt;span class="input-group-text"&gt;$&lt;/span&gt;
-        &lt;input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"&gt;
-        &lt;span class="input-group-text"&gt;.00&lt;/span&gt;
-      &lt;/div&gt;
+                                        <div class="col-12">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="false"
+                                                       id="invalidCheck" required>
+                                                <label class="form-check-label" for="invalidCheck">
+                                                    同意条款和条件
+                                                </label>
+                                                <div class="invalid-feedback">
+                                                    你必须在提交前同意。
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <button class="btn btn-primary" id="submit" type="submit">提交表单</button>
+                                        </div>
+                                    </form>
+                                    <pre>
+                   软件使用同意条款和条件
 
-      &lt;div class="input-group mb-3"&gt;
-        &lt;input type="text" class="form-control" placeholder="用户名" aria-label="用户名"&gt;
-        &lt;span class="input-group-text"&gt;@&lt;/span&gt;
-        &lt;input type="text" class="form-control" placeholder="服务器" aria-label="服务器"&gt;
-      &lt;/div&gt;
+欢迎使用我们的软件！在开始使用之前，请仔细阅读以下条款和条件：
 
-      &lt;div class="input-group"&gt;
-        &lt;span class="input-group-text"&gt;带文本区域&lt;/span&gt;
-        &lt;textarea class="form-control" aria-label="带文本区域"&gt;&lt;/textarea&gt;
-      &lt;/div&gt;</pre>
+1. 授权：本软件由我们公司开发并拥有版权。您可以根据本协议获得有限的许可，用于个人或商业用途。
 
-                <h6>包装</h6>
-                <p>默认情况下，输入组通过 <code>flex-wrap: wrap</code> 进行包装，以便在输入组中适应自定义表单字段验证。您可以使用 <code>.flex-nowrap</code> 禁用它。</p>
-                <div class="border-example">
-                  <div class="input-group flex-nowrap">
-                    <span class="input-group-text" id="addon-wrapping">@</span>
-                    <input type="text" class="form-control" placeholder="用户名" aria-label="用户名" aria-describedby="addon-wrapping">
-                  </div>
-                </div>
-                <pre>&lt;div class="input-group flex-nowrap"&gt;
-        &lt;span class="input-group-text" id="addon-wrapping"&gt;@&lt;/span&gt;
-        &lt;input type="text" class="form-control" placeholder="用户名" aria-label="用户名" aria-describedby="addon-wrapping"&gt;
-      &lt;/div&gt;</pre>
+2. 使用限制：您不得修改、复制、分发或出售本软件的任何部分。您也不得逆向工程、破解或试图获取源代码。
 
-                <h6>尺寸</h6>
-                <p>将相对的表单大小类添加到 <code>.input-group</code> 本身，其中的内容将自动调整大小 - 无需在每个元素上重复表单控件大小类。</p>
-                <p><strong>不支持调整单个输入组元素的大小。</strong></p>
-                <div class="border-example">
-                  <div class="input-group input-group-sm mb-3">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">小</span>
-                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                  </div>
+3. 隐私保护：我们尊重用户隐私，不会收集或分享您的个人信息。我们可能会收集匿名的使用数据用于改进软件性能。
 
-                  <div class="input-group mb-3">
-                    <span class="input-group-text" id="inputGroup-sizing-default">默认</span>
-                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                  </div>
+4. 免责声明：本软件按原样提供，不提供任何明示或暗示的担保。我们不对软件使用造成的任何损失负责。
 
-                  <div class="input-group input-group-lg">
-                    <span class="input-group-text" id="inputGroup-sizing-lg">大</span>
-                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
-                  </div>
-                </div>
-                <pre>&lt;div class="input-group input-group-sm mb-3"&gt;
-        &lt;span class="input-group-text" id="inputGroup-sizing-sm"&gt;小&lt;/span&gt;
-        &lt;input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"&gt;
-      &lt;/div&gt;
+5. 协议更新：我们保留随时更新本协议的权利。更新后的条款将在软件中生效。
 
-      &lt;div class="input-group mb-3"&gt;
-        &lt;span class="input-group-text" id="inputGroup-sizing-default"&gt;默认&lt;/span&gt;
-        &lt;input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"&gt;
-      &lt;/div&gt;
+点击“同意”按钮即表示您已阅读并同意条款和条件。如果您不同意这些条款，请不要继续使用本软件。
 
-      &lt;div class="input-group input-group-lg"&gt;
-        &lt;span class="input-group-text" id="inputGroup-sizing-lg"&gt;大&lt;/span&gt;
-        &lt;input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"&gt;
-      &lt;/div&gt;</pre>
+                                                                        感谢您的配合！
+                                    </pre>
+                                </div>
+                            </div>
+                        </div>
 
-                <h6>复选框和单选框</h6>
-                <p>将任何复选框或单选选项放在输入组的插件中而不是文本中。当输入旁边没有可见文本时，我们建议将 <code>.mt-0</code> 添加到 <code>.form-check-input</code>。</p>
-                <div class="border-example">
-                  <div class="input-group mb-3">
-                    <div class="input-group-text">
-                      <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
                     </div>
-                    <input type="text" class="form-control" aria-label="Text input with checkbox">
-                  </div>
 
-                  <div class="input-group">
-                    <div class="input-group-text">
-                      <input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input">
-                    </div>
-                    <input type="text" class="form-control" aria-label="Text input with radio button">
-                  </div>
                 </div>
-                <pre>&lt;div class="input-group mb-3"&gt;
-        &lt;div class="input-group-text"&gt;
-          &lt;input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input"&gt;
-        &lt;/div&gt;
-        &lt;input type="text" class="form-control" aria-label="Text input with checkbox"&gt;
-      &lt;/div&gt;
-
-      &lt;div class="input-group"&gt;
-        &lt;div class="input-group-text"&gt;
-          &lt;input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input"&gt;
-        &lt;/div&gt;
-        &lt;input type="text" class="form-control" aria-label="Text input with radio button"&gt;
-      &lt;/div&gt;</pre>
-
-                <h6>多个输入</h6>
-                <p>虽然视觉上支持多个 <code>&lt;input&gt;</code>，但验证样式仅适用于具有单个 <code>&lt;input&gt;</code> 的输入组。</p>
-                <div class="border-example">
-                  <div class="input-group">
-                    <span class="input-group-text">名字和姓氏</span>
-                    <input type="text" aria-label="名字" class="form-control">
-                    <input type="text" aria-label="姓氏" class="form-control">
-                  </div>
-                </div>
-                <pre>&lt;div class="input-group"&gt;
-        &lt;span class="input-group-text"&gt;名字和姓氏&lt;/span&gt;
-        &lt;input type="text" aria-label="名字" class="form-control"&gt;
-        &lt;input type="text" aria-label="姓氏" class="form-control"&gt;
-      &lt;/div&gt;</pre>
-
-                <h6>多个插件</h6>
-                <p>支持多个附加组件，并且可以与复选框和单选输入版本混合使用。</p>
-                <div class="border-example">
-                  <div class="input-group mb-3">
-                    <span class="input-group-text">$</span>
-                    <span class="input-group-text">0.00</span>
-                    <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
-                  </div>
-
-                  <div class="input-group">
-                    <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
-                    <span class="input-group-text">$</span>
-                    <span class="input-group-text">0.00</span>
-                  </div>
-                </div>
-                <pre>&lt;div class="input-group mb-3"&gt;
-        &lt;span class="input-group-text"&gt;$&lt;/span&gt;
-        &lt;span class="input-group-text"&gt;0.00&lt;/span&gt;
-        &lt;input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)"&gt;
-      &lt;/div&gt;
-
-      &lt;div class="input-group"&gt;
-        &lt;input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)"&gt;
-        &lt;span class="input-group-text"&gt;$&lt;/span&gt;
-        &lt;span class="input-group-text"&gt;0.00&lt;/span&gt;
-      &lt;/div&gt;</pre>
-
-                <h6>按钮插件</h6>
-                <div class="border-example">
-                  <div class="input-group mb-3">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon1">按钮</button>
-                    <input type="text" class="form-control" placeholder="" aria-label="带有按钮插件的示例文本" aria-describedby="button-addon1">
-                  </div>
-
-                  <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="收件人用户名" aria-label="收件人用户名" aria-describedby="button-addon2">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">按钮</button>
-                  </div>
-
-                  <div class="input-group mb-3">
-                    <button class="btn btn-outline-secondary" type="button">按钮</button>
-                    <button class="btn btn-outline-secondary" type="button">按钮</button>
-                    <input type="text" class="form-control" placeholder="" aria-label="带有两个按钮插件的示例文本">
-                  </div>
-
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="收件人用户名" aria-label="带有两个按钮插件的收件人用户名">
-                    <button class="btn btn-outline-secondary" type="button">按钮</button>
-                    <button class="btn btn-outline-secondary" type="button">按钮</button>
-                  </div>
-                </div>
-                <pre>&lt;div class="input-group mb-3"&gt;
-        &lt;button class="btn btn-outline-secondary" type="button" id="button-addon1"&gt;按钮&lt;/button&gt;
-        &lt;input type="text" class="form-control" placeholder="" aria-label="带有按钮插件的示例文本" aria-describedby="button-addon1"&gt;
-      &lt;/div&gt;
-
-      &lt;div class="input-group mb-3"&gt;
-        &lt;input type="text" class="form-control" placeholder="收件人用户名" aria-label="收件人用户名" aria-describedby="button-addon2"&gt;
-        &lt;button class="btn btn-outline-secondary" type="button" id="button-addon2"&gt;按钮&lt;/button&gt;
-      &lt;/div&gt;
-
-      &lt;div class="input-group mb-3"&gt;
-        &lt;button class="btn btn-outline-secondary" type="button"&gt;按钮&lt;/button&gt;
-        &lt;button class="btn btn-outline-secondary" type="button"&gt;按钮&lt;/button&gt;
-        &lt;input type="text" class="form-control" placeholder="" aria-label="带有两个按钮插件的示例文本"&gt;
-      &lt;/div&gt;
-
-      &lt;div class="input-group"&gt;
-        &lt;input type="text" class="form-control" placeholder="收件人用户名" aria-label="带有两个按钮插件的收件人用户名"&gt;
-        &lt;button class="btn btn-outline-secondary" type="button"&gt;按钮&lt;/button&gt;
-        &lt;button class="btn btn-outline-secondary" type="button"&gt;按钮&lt;/button&gt;
-      &lt;/div&gt;</pre>
-
-                <h6>带有下拉菜单的按钮</h6>
-                <div class="border-example">
-                  <div class="input-group mb-3">
-                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">周杰伦</button>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">东风破</a></li>
-                      <li><a class="dropdown-item" href="#">听见下雨的声音</a></li>
-                      <li><a class="dropdown-item" href="#">千里之外</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">夜的第七章</a></li>
-                    </ul>
-                    <input type="text" class="form-control" aria-label="带有下拉按钮的文本输入">
-                  </div>
-
-                  <div class="input-group mb-3">
-                    <input type="text" class="form-control" aria-label="带有下拉按钮的文本输入">
-                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">陈奕迅</button>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                      <li><a class="dropdown-item" href="#">淘汰</a></li>
-                      <li><a class="dropdown-item" href="#">富士山下</a></li>
-                      <li><a class="dropdown-item" href="#">孤勇者</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">六月飞雪</a></li>
-                    </ul>
-                  </div>
-
-                  <div class="input-group">
-                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">王菲</button>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">红豆</a></li>
-                      <li><a class="dropdown-item" href="#">匆匆那年</a></li>
-                      <li><a class="dropdown-item" href="#">但愿人长久</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">容易受伤的女人</a></li>
-                    </ul>
-                    <input type="text" class="form-control" aria-label="带有 2 个下拉按钮的文本输入">
-                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">张学友</button>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                      <li><a class="dropdown-item" href="#">吻别</a></li>
-                      <li><a class="dropdown-item" href="#">心如刀割</a></li>
-                      <li><a class="dropdown-item" href="#">一千个伤心的理由</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">楚歌</a></li>
-                    </ul>
-                  </div>
-                </div>
-                <pre>&lt;div class="input-group mb-3"&gt;
-        &lt;button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"&gt;周杰伦&lt;/button&gt;
-        &lt;ul class="dropdown-menu"&gt;
-          &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;东风破&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;听见下雨的声音&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;千里之外&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;hr class="dropdown-divider"&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;夜的第七章&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-        &lt;input type="text" class="form-control" aria-label="带有下拉按钮的文本输入"&gt;
-      &lt;/div&gt;
-
-      &lt;div class="input-group mb-3"&gt;
-        &lt;input type="text" class="form-control" aria-label="带有下拉按钮的文本输入"&gt;
-        &lt;button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"&gt;陈奕迅&lt;/button&gt;
-        &lt;ul class="dropdown-menu dropdown-menu-end"&gt;
-          &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;淘汰&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;富士山下&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;孤勇者&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;hr class="dropdown-divider"&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;六月飞雪&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/div&gt;
-
-      &lt;div class="input-group"&gt;
-        &lt;button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"&gt;王菲&lt;/button&gt;
-        &lt;ul class="dropdown-menu"&gt;
-          &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;红豆&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;匆匆那年&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;但愿人长久&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;hr class="dropdown-divider"&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;容易受伤的女人&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-        &lt;input type="text" class="form-control" aria-label="带有 2 个下拉按钮的文本输入"&gt;
-        &lt;button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"&gt;张学友&lt;/button&gt;
-        &lt;ul class="dropdown-menu dropdown-menu-end"&gt;
-          &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;吻别&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;心如刀割&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;一千个伤心的理由&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;hr class="dropdown-divider"&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;楚歌&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/div&gt;</pre>
-
-                <h6>分段按钮</h6>
-                <div class="border-example">
-                  <div class="input-group mb-3">
-                    <button type="button" class="btn btn-outline-secondary">选项</button>
-                    <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                      <span class="visually-hidden">切换下拉列表</span>
-                    </button>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">隋唐英雄传</a></li>
-                      <li><a class="dropdown-item" href="#">七侠五义</a></li>
-                      <li><a class="dropdown-item" href="#">聊斋志异</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">大唐狄公案</a></li>
-                    </ul>
-                    <input type="text" class="form-control" aria-label="带分段下拉按钮的文本输入">
-                  </div>
-
-                  <div class="input-group">
-                    <input type="text" class="form-control" aria-label="带分段下拉按钮的文本输入">
-                    <button type="button" class="btn btn-outline-secondary">选项</button>
-                    <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                      <span class="visually-hidden">切换下拉列表</span>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                      <li><a class="dropdown-item" href="#">增广贤文 </a></li>
-                      <li><a class="dropdown-item" href="#">儿女英雄传</a></li>
-                      <li><a class="dropdown-item" href="#">醒世恒言</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">世说新语</a></li>
-                    </ul>
-                  </div>
-                </div>
-                <pre>&lt;div class="input-group mb-3"&gt;
-        &lt;button type="button" class="btn btn-outline-secondary"&gt;选项&lt;/button&gt;
-        &lt;button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false"&gt;
-          &lt;span class="visually-hidden"&gt;切换下拉列表&lt;/span&gt;
-        &lt;/button&gt;
-        &lt;ul class="dropdown-menu"&gt;
-          &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;隋唐英雄传&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;七侠五义&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;聊斋志异&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;hr class="dropdown-divider"&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;大唐狄公案&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-        &lt;input type="text" class="form-control" aria-label="带分段下拉按钮的文本输入"&gt;
-      &lt;/div&gt;
-
-      &lt;div class="input-group"&gt;
-        &lt;input type="text" class="form-control" aria-label="带分段下拉按钮的文本输入"&gt;
-        &lt;button type="button" class="btn btn-outline-secondary"&gt;选项&lt;/button&gt;
-        &lt;button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false"&gt;
-          &lt;span class="visually-hidden"&gt;切换下拉列表&lt;/span&gt;
-        &lt;/button&gt;
-        &lt;ul class="dropdown-menu dropdown-menu-end"&gt;
-          &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;增广贤文 &lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;儿女英雄传&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;醒世恒言&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;hr class="dropdown-divider"&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;世说新语&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/div&gt;</pre>
-
-                <h5>自定义表单</h5>
-                <p>输入组包括对自定义选择和自定义文件输入的支持。不支持这些的浏览器默认版本。</p>
-
-                <h6>自定义选择</h6>
-                <div class="border-example">
-                  <div class="input-group mb-3">
-                    <label class="input-group-text" for="inputGroupSelect01">Options</label>
-                    <select class="form-select" id="inputGroupSelect01">
-                      <option selected>请选择...</option>
-                      <option value="1">清稗类钞</option>
-                      <option value="2">一枕奇</option>
-                      <option value="3">七修类稿</option>
-                    </select>
-                  </div>
-
-                  <div class="input-group mb-3">
-                    <select class="form-select" id="inputGroupSelect02">
-                      <option selected>请选择...</option>
-                      <option value="1">七剑十三侠</option>
-                      <option value="2">七十二朝人物演义</option>
-                      <option value="3">万历野获编</option>
-                    </select>
-                    <label class="input-group-text" for="inputGroupSelect02">Options</label>
-                  </div>
-
-                  <div class="input-group mb-3">
-                    <button class="btn btn-outline-secondary" type="button">按钮</button>
-                    <select class="form-select" id="inputGroupSelect03" aria-label="示例选择按钮插件">
-                      <option selected>请选择...</option>
-                      <option value="1">永乐大典残卷</option>
-                      <option value="2">龙川略志</option>
-                      <option value="3">龙图公案</option>
-                    </select>
-                  </div>
-
-                  <div class="input-group">
-                    <select class="form-select" id="inputGroupSelect04" aria-label="示例选择按钮插件">
-                      <option selected>请选择...</option>
-                      <option value="1">包公案</option>
-                      <option value="2">齐民要术</option>
-                      <option value="3">齐东野语</option>
-                    </select>
-                    <button class="btn btn-outline-secondary" type="button">按钮</button>
-                  </div>
-                </div>
-                <pre>&lt;div class="input-group mb-3"&gt;
-        &lt;label class="input-group-text" for="inputGroupSelect01"&gt;Options&lt;/label&gt;
-        &lt;select class="form-select" id="inputGroupSelect01"&gt;
-          &lt;option selected&gt;请选择...&lt;/option&gt;
-          &lt;option value="1"&gt;清稗类钞&lt;/option&gt;
-          &lt;option value="2"&gt;一枕奇&lt;/option&gt;
-          &lt;option value="3"&gt;七修类稿&lt;/option&gt;
-        &lt;/select&gt;
-      &lt;/div&gt;
-
-      &lt;div class="input-group mb-3"&gt;
-        &lt;select class="form-select" id="inputGroupSelect02"&gt;
-          &lt;option selected&gt;请选择...&lt;/option&gt;
-          &lt;option value="1"&gt;七剑十三侠&lt;/option&gt;
-          &lt;option value="2"&gt;七十二朝人物演义&lt;/option&gt;
-          &lt;option value="3"&gt;万历野获编&lt;/option&gt;
-        &lt;/select&gt;
-        &lt;label class="input-group-text" for="inputGroupSelect02"&gt;Options&lt;/label&gt;
-      &lt;/div&gt;
-
-      &lt;div class="input-group mb-3"&gt;
-        &lt;button class="btn btn-outline-secondary" type="button"&gt;按钮&lt;/button&gt;
-        &lt;select class="form-select" id="inputGroupSelect03" aria-label="示例选择按钮插件"&gt;
-          &lt;option selected&gt;请选择...&lt;/option&gt;
-          &lt;option value="1"&gt;永乐大典残卷&lt;/option&gt;
-          &lt;option value="2"&gt;龙川略志&lt;/option&gt;
-          &lt;option value="3"&gt;龙图公案&lt;/option&gt;
-        &lt;/select&gt;
-      &lt;/div&gt;
-
-      &lt;div class="input-group"&gt;
-        &lt;select class="form-select" id="inputGroupSelect04" aria-label="示例选择按钮插件"&gt;
-          &lt;option selected&gt;请选择...&lt;/option&gt;
-          &lt;option value="1"&gt;包公案&lt;/option&gt;
-          &lt;option value="2"&gt;齐民要术&lt;/option&gt;
-          &lt;option value="3"&gt;齐东野语&lt;/option&gt;
-        &lt;/select&gt;
-        &lt;button class="btn btn-outline-secondary" type="button"&gt;按钮&lt;/button&gt;
-      &lt;/div&gt;</pre>
-
-                <h6>自定义文件输入</h6>
-                <div class="border-example">
-                  <div class="input-group mb-3">
-                    <label class="input-group-text" for="inputGroupFile01">上传</label>
-                    <input type="file" class="form-control" id="inputGroupFile01">
-                  </div>
-
-                  <div class="input-group mb-3">
-                    <input type="file" class="form-control" id="inputGroupFile02">
-                    <label class="input-group-text" for="inputGroupFile02">上传</label>
-                  </div>
-
-                  <div class="input-group mb-3">
-                    <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon03">按钮</button>
-                    <input type="file" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="上传">
-                  </div>
-
-                  <div class="input-group">
-                    <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="上传">
-                    <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">按钮</button>
-                  </div>
-                </div>
-                <pre>&lt;div class="input-group mb-3"&gt;
-        &lt;label class="input-group-text" for="inputGroupFile01"&gt;上传&lt;/label&gt;
-        &lt;input type="file" class="form-control" id="inputGroupFile01"&gt;
-      &lt;/div&gt;
-
-      &lt;div class="input-group mb-3"&gt;
-        &lt;input type="file" class="form-control" id="inputGroupFile02"&gt;
-        &lt;label class="input-group-text" for="inputGroupFile02"&gt;上传&lt;/label&gt;
-      &lt;/div&gt;
-
-      &lt;div class="input-group mb-3"&gt;
-        &lt;button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon03"&gt;按钮&lt;/button&gt;
-        &lt;input type="file" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="上传"&gt;
-      &lt;/div&gt;
-
-      &lt;div class="input-group"&gt;
-        &lt;input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="上传"&gt;
-        &lt;button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04"&gt;按钮&lt;/button&gt;
-      &lt;/div&gt;</pre>
-
-              </div>
             </div>
-          </div>
-
-        </div>
-
-      </div>    
-	
-	</main>
-    <!--End 页面主要内容-->
-  </div>
+        </main>
+        <!--End 页面主要内容-->
+    </div>
 </div>
+<script>
+    const form = document.querySelector('.needs-validation');
+    (function () {
+        'use strict'
 
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms).forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+
+                // 添加验证通过的样式
+                form.classList.add('was-validated');
+
+                // 获取指定元素的 value 值（不管验证是否通过）
+                const inputValue = document.getElementById('validationCustom04').value;
+                console.log('Input value:', inputValue);
+            }, false);
+        });
+        const rangeInput = document.getElementById('customRange3');
+        const rangeValue = document.getElementById('rangeValue');
+
+        if (rangeInput && rangeValue) {
+            // 初始化显示滑动条的当前值
+            rangeValue.textContent = rangeInput.value;
+
+            // 监听滑动条的 input 事件，更新显示当前值
+            rangeInput.addEventListener('input', function () {
+                rangeValue.textContent = rangeInput.value;
+                console.log(rangeInput.value);
+            });
+        } else {
+            console.error('Cannot find elements with the specified IDs.');
+        }
+
+    })()
+</script>
 <script type="text/javascript" src="../static/js/jquery.min.js"></script>
 <script type="text/javascript" src="../static/js/popper.min.js"></script>
 <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>

@@ -65,11 +65,11 @@
             <li class="nav-item nav-item-has-subnav">
               <a href="javascript:void(0)">
                 <i class="mdi mdi-stove"></i>
-                <span>示例页面</span>
+                <span>列表</span>
               </a>
               <ul class="nav nav-subnav">
-                <li> <a href="/adminTask">文档列表</a> </li>
-                <li> <a href="/adminTable">表格插件</a> </li>
+                <li> <a href="/adminTask">任务列表</a> </li>
+                <li> <a href="/adminTable">数据列表</a> </li>
 
               </ul>
             </li>
@@ -348,7 +348,33 @@
                 <p>插件使用用bootstrap-table 1.20.0，文档地址：<a href="https://www.bootstrap-table.com.cn" target="_blank">https://www.bootstrap-table.com.cn</a>，github地址：<a href="https://github.com/wenzhixin/bootstrap-table" target="_blank">https://github.com/wenzhixin/bootstrap-table</a>。</p>
 
                 <p>bootstrap-table插件具体的一些使用方法，可以查看 <a href="https://www.itxst.com/Bootstrap-Table/QuickStart.html" target="_blank">https://www.itxst.com/Bootstrap-Table/QuickStart.html</a></p>
-
+                  <div class="row">
+                      <div class="col-md-4">
+                        <div class="row">
+                          <label class="col-sm-4 col-form-label"><span class="text-danger">*</span> 任务名称</label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control pull-left" name="name" value="" placeholder="请输入任务名称" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="row">
+                          <label class="col-sm-4 col-form-label"><span class="text-danger">*</span> 任务类型</label>
+                          <div class="col-sm-8">
+                            <select name="type" class="form-select">
+                              <option value="1">小说</option>
+                              <option value="2">古籍</option>
+                              <option value="3">专辑</option>
+                              <option value="4">自传</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <button type="submit" class="btn btn-primary me-1">搜索</button>
+                        <button type="reset" class="btn btn-default">重置</button>
+                      </div>
+                    </div>
                 <div id="toolbar" class="toolbar-btn-action">
                   <button id="btn_add" type="button" class="btn btn-primary me-1">
                     <span class="mdi mdi-plus" aria-hidden="true"></span>新增
@@ -363,6 +389,7 @@
                     <span class="mdi mdi-window-close" aria-hidden="true"></span>删除
                   </button>
                 </div>
+
                 <table id="table"></table>
                 
               </div>

@@ -3,8 +3,9 @@ from datetime import date
 
 from sqlalchemy import create_engine, func
 from sqlalchemy.orm import sessionmaker
-from models.jobs import Jobs
+
 import config
+from models.jobs import Jobs
 
 
 def editXpath(original_string: str, start_marker: str, end_marker: str, i: int) -> str:
@@ -319,7 +320,7 @@ def viewStatus(status: bool, SearchKeyword: str) -> int:
     return statusNums
 
 
-def latestToday(SearchKeyword: str) -> list:
+def latestToday(SearchKeyword: str, regName: str) -> list:
     """
     获取今日最新职位列表
 
@@ -339,17 +340,26 @@ def latestToday(SearchKeyword: str) -> list:
     latestTodayList: list = []
     session = returnDbSession()
     if SearchKeyword == "all":
-        latest_records = session.query(Jobs).order_by(Jobs.id.desc()).limit(20).all()
+        if regName == "all":
+            latest_records = session.query(Jobs).order_by(Jobs.id.desc()).all()
+        else:
+            latest_records = session.query(Jobs).order_by(Jobs.id.desc()).filter(
+                Jobs.jobAddress.like(f'%{regName}%')).all()
     else:
-        latest_records = session.query(Jobs).filter(
-            Jobs.SearchKeyword == SearchKeyword).order_by(Jobs.id.desc()).limit(20).all()
+        if regName == "all":
+            latest_records = session.query(Jobs).filter(
+                Jobs.SearchKeyword == SearchKeyword).order_by(Jobs.id.desc()).all()
+        else:
+            latest_records = session.query(Jobs).filter(
+                Jobs.SearchKeyword == SearchKeyword).order_by(Jobs.id.desc()).filter(
+                Jobs.jobAddress.like(f'%{regName}%')).all()
     for record in latest_records:
         # print(record.jobCorporation, record.jobName, record.jobUrl, record.jobPay)  # 打印每条记录
         latestTodayList.append(
             {"id": record.id, "jobCorporation": record.jobCorporation, "jobName": record.jobName,
              "jobUrl": record.jobUrl,
              "jobPay": record.jobPay, "jobCorporationUrl": record.jobCorporationUrl})
-    # print(latestTodayList)
+    print(len(latestTodayList))
     session.close()
     return latestTodayList
 

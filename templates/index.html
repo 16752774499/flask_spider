@@ -72,20 +72,21 @@
                             <h2>1824</h2>
                             <span>华北地区</span></li>
 
+
                     </ul>
                 </div>
                 <div class="boxfoot"></div>
             </div>
             <div class="boxall" style="height: calc(60% - .15rem)">
-                <div class="alltitle">模块标题
+                <div class="alltitle">关键字
 
                     <select id="fruit-select">
                         <option  value="all"> all </option>
                         {% for i in classList %}
                             {% if SearchKeyword==i %}
-                            <option onclick="go({{ SearchKeyword }})" selected  value="{{ SearchKeyword }}">{{ SearchKeyword }}</option>
+                            <option  selected  value="{{ SearchKeyword }}">{{ SearchKeyword }}</option>
                             {% else %}
-                            <option onclick="go({{ i }})"  value="{{ i }}">{{ i }}</option>
+                            <option  value="{{ i }}">{{ i }}</option>
                             {% endif %}
                         {% endfor %}
 
@@ -94,31 +95,8 @@
 
                 </div>
 
-                <div class="sycm sycm2">
+                <div class="sycm sycm2" id="sycm2">
 
-                    <ul class="clearfix">
-                        <li>
-                            <h2>1824</h2>
-                            <span>字段名称</span></li>
-                        <li>
-                            <h2>1920</h2>
-                            <span>字段名称</span></li>
-                        <li>
-                            <h2>19%</h2>
-                            <span>字段名称</span></li>
-
-                        <li>
-                            <h2>1824</h2>
-                            <span>字段名称</span></li>
-                        <li>
-                            <h2>19%</h2>
-                            <span>字段名称</span></li>
-
-                        <li>
-                            <h2>1824</h2>
-                            <span>字段名称</span></li>
-
-                    </ul>
                 </div>
                 <div class="boxfoot"></div>
             </div>
@@ -216,7 +194,7 @@
         </li>
         <li>
             <div class="boxall" style="height:100%">
-                <div class="alltitle">模块标题
+                <div class="alltitle">采集记录
                     <div class="pulll_right sebtn">
                         <!--			<a href="." class="active">近七天</a>-->
 

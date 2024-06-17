@@ -24,12 +24,87 @@ $(function () {
     bt02()
     bt03()
     bt04()
+    sycm2()
+
+    function sycm2() {
+
+
+        // 获取名为 'class' 的查询参数的值
+        let className = returnParam("class");
+        if (className == null || className === "undefined") {
+            className = "all";
+        }
+        var dom = document.getElementById('sycm2');
+        var myChart = echarts.init(dom, null, {
+            renderer: 'canvas',
+            useDirtyRect: false
+        });
+        var app = {};
+
+        var option;
+
+        option = {
+            graphic: {
+                elements: [
+                    {
+                        type: 'text',
+                        left: 'center',
+                        top: 'center',
+                        style: {
+                            text: className,
+                            fontSize: 100,
+                            fontWeight: 'bold',
+                            lineDash: [0, 200],
+                            lineDashOffset: 0,
+                            fill: 'transparent',
+                            stroke: '#1075dc',
+                            lineWidth: 1
+                        },
+                        keyframeAnimation: {
+                            duration: 3000,
+                            loop: true,
+                            keyframes: [
+                                {
+                                    percent: 0.7,
+                                    style: {
+                                        fill: 'transparent',
+                                        lineDashOffset: 200,
+                                        lineDash: [200, 0]
+                                    }
+                                },
+                                {
+                                    // Stop for a while.
+                                    percent: 0.8,
+                                    style: {
+                                        fill: 'transparent'
+                                    }
+                                },
+                                {
+                                    percent: 1,
+                                    style: {
+                                        fill: '#1075dc'
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        };
+
+        if (option && typeof option === 'object') {
+            myChart.setOption(option);
+        }
+
+        window.addEventListener('resize', myChart.resize);
+
+    }
 
 
     function echarts_4() {
         var myChart = echarts.init(document.getElementById('echart4'));
         option1 = {
-            //  backgroundColor: '#00265f',
+             backgroundColor: 'rgba(14,93,211,0.08)',
             tooltip: {
                 trigger: 'axis',
                 axisPointer: {
@@ -37,7 +112,7 @@ $(function () {
                 }
             },
             legend: {
-                data: ['字段名称1', '字段名称2'],
+                data: ['java', 'python'],
                 top: '5%',
                 textStyle: {
                     color: "#fff",
@@ -45,7 +120,7 @@ $(function () {
 
                 },
 
-                //itemGap: 35
+                itemGap: 35
             },
             grid: {
                 left: '0%',
@@ -70,9 +145,9 @@ $(function () {
                 },
                 axisLabel: {
                     interval: 0,
-                    // rotate:50,
+                    rotate:50,
                     show: true,
-                    //  splitNumber: 2,
+                     splitNumber: 2,
                     textStyle: {
                         color: "rgba(255,255,255,.6)",
                         fontSize: '12',
@@ -83,7 +158,7 @@ $(function () {
                 {
                     type: 'value',
                     axisLabel: {
-                        //formatter: '{value} %'
+                        // formatter: '{value} %',
                         show: true,
                         textStyle: {
                             color: "rgba(255,255,255,.6)",
@@ -110,12 +185,12 @@ $(function () {
             series: [
 
                 {
-                    name: '字段名称1',
+                    name: 'java',
                     type: 'line',
                     smooth: true,
-                    data: [5, 2, 6, 4, 5, 12, 20],
+                    data: [100, 2, 6, 4, 5, 12, 20],
                     barWidth: '15',
-                    // barGap: 1,
+                    barGap: 1,
                     itemStyle: {
                         normal: {
                             color: '#62c98d',
@@ -125,7 +200,7 @@ $(function () {
                     }
                 },
                 {
-                    name: '字段名称2',
+                    name: 'python',
                     type: 'line',
                     smooth: true,
                     data: [7, 11, 8, 13, 10, 13, 10],
@@ -141,6 +216,7 @@ $(function () {
                 }
             ]
         };
+
 
 
         myChart.setOption(option1);

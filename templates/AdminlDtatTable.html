@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+<meta name="keywords" content="LightYear,LightYearAdmin,光年,后台模板,后台管理系统,光年HTML模板">
+<meta name="description" content="Light Year Admin V5是一个基于Bootstrap v5.1.3的后台管理系统的HTML模板。">
+<title>表格插件 - 光年(Light Year Admin V5)后台管理系统模板</title>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="stylesheet" type="text/css" href="../static/css/materialdesignicons.min.css">
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+<!--表格插件css-->
+<link rel="stylesheet" href="../static/js/bootstrap-table/bootstrap-table.min.css">
+<link rel="stylesheet" type="text/css" href="../static/css/style.min.css">
+</head>
+  
+<body>
+<!--页面loading-->
+<div id="lyear-preloader" class="loading">
+  <div class="ctn-preloader">
+    <div class="round_spinner">
+      <div class="spinner"></div>
+      <img src="../static/images/loading-logo.png" alt="">
+    </div>
+  </div>
+</div>
+<!--页面loading end-->
+<div class="lyear-layout-web">
+  <div class="lyear-layout-container">
+     <!--左侧导航-->
+    <aside class="lyear-layout-sidebar">
+
+      <!-- logo -->
+      <div id="logo" class="sidebar-header">
+        <a href="/admin"><img src="../static/images/logo-sidebar.png" title="LightYear" alt="LightYear" /></a>
+      </div>
+      <div class="lyear-layout-sidebar-info lyear-scroll">
+
+        <nav class="sidebar-main">
+
+          <ul class="nav-drawer">
+            <li class="nav-item active">
+              <a href="/admin">
+                <i class="mdi mdi-home-city-outline"></i>
+                <span>招聘信息采集后台首页</span>
+              </a>
+            </li>
+
+            <li class="nav-item nav-item-has-subnav">
+              <a href="javascript:void(0)">
+                <i class="mdi mdi-map-outline"></i>
+                <span>表单</span>
+              </a>
+              <ul class="nav nav-subnav">
+
+                <li> <a href="/adminFrom">输入组</a> </li>
+
+              </ul>
+            </li>
+
+            <li class="nav-item nav-item-has-subnav">
+              <a href="javascript:void(0)">
+                <i class="mdi mdi-stove"></i>
+                <span>示例页面</span>
+              </a>
+              <ul class="nav nav-subnav">
+                <li> <a href="/adminTask">文档列表</a> </li>
+                <li> <a href="/adminTable">表格插件</a> </li>
+
+              </ul>
+            </li>
+
+          </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+          <p class="copyright">
+            <span>Copyright &copy; 2022. </span>
+            <a target="_blank" href="http://www.bixiaguangnian.com">笔下光年</a>
+            <span> All rights reserved.</span>
+          </p>
+        </div>
+      </div>
+
+    </aside>
+    <!--End 左侧导航-->
+    <header class="lyear-layout-header">
+
+      <nav class="navbar">
+
+        <div class="navbar-left">
+          <div class="lyear-aside-toggler">
+            <span class="lyear-toggler-bar"></span>
+            <span class="lyear-toggler-bar"></span>
+            <span class="lyear-toggler-bar"></span>
+          </div>
+        </div>
+
+        <ul class="navbar-right d-flex align-items-center">
+          <!--顶部消息部分-->
+          <li class="dropdown dropdown-notice">
+            <span data-bs-toggle="dropdown" class="position-relative icon-item">
+              <i class="mdi mdi-bell-outline fs-5"></i>
+              <span class="position-absolute translate-middle badge bg-danger">7</span>
+            </span>
+            <div class="dropdown-menu dropdown-menu-end">
+              <div class="lyear-notifications">
+
+                <div class="lyear-notifications-title d-flex justify-content-between" data-stopPropagation="true">
+                  <span>你有 10 条未读消息</span>
+                  <a href="#!">查看全部</a>
+                </div>
+                <div class="lyear-notifications-info lyear-scroll">
+                  <a href="#!" class="dropdown-item"
+                    title="树莓派销量猛增，疫情期间居家工作学习、医疗领域都需要它">树莓派销量猛增，疫情期间居家工作学习、医疗领域都需要它</a>
+                  <a href="#!" class="dropdown-item"
+                    title="GNOME 用户体验团队将为 GNOME Shell 提供更多改进">GNOME 用户体验团队将为 GNOME Shell
+                    提供更多改进</a>
+                  <a href="#!" class="dropdown-item"
+                    title="Linux On iPhone 即将面世，支持 iOS 的双启动">Linux On iPhone 即将面世，支持 iOS
+                    的双启动</a>
+                  <a href="#!" class="dropdown-item" title="GitHub 私有仓库完全免费面向团队提供">GitHub
+                    私有仓库完全免费面向团队提供</a>
+                  <a href="#!" class="dropdown-item"
+                    title="Wasmtime 为 WebAssembly 增加 Go 语言绑定">Wasmtime 为 WebAssembly 增加 Go
+                    语言绑定</a>
+                  <a href="#!" class="dropdown-item"
+                    title="红帽借“订阅”成开源一哥，首创者 Cormier 升任总裁">红帽借“订阅”成开源一哥，首创者 Cormier 升任总裁</a>
+                  <a href="#!" class="dropdown-item" title="Zend 宣布推出两项 PHP 新产品">Zend 宣布推出两项
+                    PHP 新产品</a>
+                </div>
+
+              </div>
+            </div>
+          </li>
+          <!--End 顶部消息部分-->
+          <!--切换主题配色-->
+		  <li class="dropdown dropdown-skin">
+		    <span data-bs-toggle="dropdown" class="icon-item">
+              <i class="mdi mdi-palette fs-5"></i>
+            </span>
+			<ul class="dropdown-menu dropdown-menu-end" data-stopPropagation="true">
+              <li class="lyear-skin-title"><p>主题</p></li>
+              <li class="lyear-skin-li clearfix">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="site_theme" id="site_theme_1" value="default" checked="checked">
+                  <label class="form-check-label" for="site_theme_1"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="site_theme" id="site_theme_2" value="translucent-green">
+                  <label class="form-check-label" for="site_theme_2"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="site_theme" id="site_theme_3" value="translucent-blue">
+                  <label class="form-check-label" for="site_theme_3"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="site_theme" id="site_theme_4" value="translucent-yellow">
+                  <label class="form-check-label" for="site_theme_4"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="site_theme" id="site_theme_5" value="translucent-red">
+                  <label class="form-check-label" for="site_theme_5"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="site_theme" id="site_theme_6" value="translucent-pink">
+                  <label class="form-check-label" for="site_theme_6"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="site_theme" id="site_theme_7" value="translucent-cyan">
+                  <label class="form-check-label" for="site_theme_7"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="site_theme" id="site_theme_8" value="dark">
+                  <label class="form-check-label" for="site_theme_8"></label>
+                </div>
+              </li>
+			  <li class="lyear-skin-title"><p>LOGO</p></li>
+			  <li class="lyear-skin-li clearfix">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_1" value="default" checked="checked">
+                  <label class="form-check-label" for="logo_bg_1"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_2" value="color_2">
+                  <label class="form-check-label" for="logo_bg_2"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_3" value="color_3">
+                  <label class="form-check-label" for="logo_bg_3"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_4" value="color_4">
+                  <label class="form-check-label" for="logo_bg_4"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_5" value="color_5">
+                  <label class="form-check-label" for="logo_bg_5"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_6" value="color_6">
+                  <label class="form-check-label" for="logo_bg_6"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_7" value="color_7">
+                  <label class="form-check-label" for="logo_bg_7"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_8" value="color_8">
+                  <label class="form-check-label" for="logo_bg_8"></label>
+                </div>
+			  </li>
+			  <li class="lyear-skin-title"><p>头部</p></li>
+			  <li class="lyear-skin-li clearfix">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="header_bg" id="header_bg_1" value="default" checked="checked">
+                  <label class="form-check-label" for="header_bg_1"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="header_bg" id="header_bg_2" value="color_2">
+                  <label class="form-check-label" for="header_bg_2"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="header_bg" id="header_bg_3" value="color_3">
+                  <label class="form-check-label" for="header_bg_3"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="header_bg" id="header_bg_4" value="color_4">
+                  <label class="form-check-label" for="header_bg_4"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="header_bg" id="header_bg_5" value="color_5">
+                  <label class="form-check-label" for="header_bg_5"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="header_bg" id="header_bg_6" value="color_6">
+                  <label class="form-check-label" for="header_bg_6"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="header_bg" id="header_bg_7" value="color_7">
+                  <label class="form-check-label" for="header_bg_7"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="header_bg" id="header_bg_8" value="color_8">
+                  <label class="form-check-label" for="header_bg_8"></label>
+                </div>
+			  </li>
+			  <li class="lyear-skin-title"><p>侧边栏</p></li>
+			  <li class="lyear-skin-li clearfix">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_1" value="default" checked="checked">
+                  <label class="form-check-label" for="sidebar_bg_1"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_2" value="color_2">
+                  <label class="form-check-label" for="sidebar_bg_2"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_3" value="color_3">
+                  <label class="form-check-label" for="sidebar_bg_3"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_4" value="color_4">
+                  <label class="form-check-label" for="sidebar_bg_4"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_5" value="color_5">
+                  <label class="form-check-label" for="sidebar_bg_5"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_6" value="color_6">
+                  <label class="form-check-label" for="sidebar_bg_6"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_7" value="color_7">
+                  <label class="form-check-label" for="sidebar_bg_7"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_8" value="color_8">
+                  <label class="form-check-label" for="sidebar_bg_8"></label>
+                </div>
+			  </li>
+		    </ul>
+		  </li>
+          <!--End 切换主题配色-->
+          <!--个人头像内容-->
+          <li class="dropdown">
+            <a href="javascript:void(0)" data-bs-toggle="dropdown" class="dropdown-toggle">
+              <img class="avatar-md rounded-circle" src="../static/images/users/avatar.jpg" alt="笔下光年" />
+              <span style="margin-left: 10px;">笔下光年</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                <a class="dropdown-item" href="lyear_pages_profile.html"
+                  href="javascript:void(0)">
+                  <i class="mdi mdi-account"></i>
+                  <span>个人信息</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="lyear_pages_edit_pwd.html"
+                  href="javascript:void(0)">
+                  <i class="mdi mdi-lock-outline"></i>
+                  <span>修改密码</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="javascript:void(0)">
+                  <i class="mdi mdi-delete"></i>
+                  <span>清空缓存</span>
+                </a>
+              </li>
+              <li class="dropdown-divider"></li>
+              <li>
+                <a class="dropdown-item" href="lyear_pages_login_1.html">
+                  <i class="mdi mdi-logout-variant"></i>
+                  <span>退出登录</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <!--End 个人头像内容-->
+        </ul>
+
+      </nav>
+
+    </header>
+    <!--End 头部信息-->
+
+    <!--页面主要内容-->
+    <main class="lyear-layout-content">
+	
+      <div class="container-fluid">
+
+        <div class="row">
+
+          <div class="col-lg-12">
+            <div class="card">
+              <header class="card-header">
+                <div class="card-title">表格插件</div>
+              </header>
+              <div class="card-body">
+
+                <p>插件使用用bootstrap-table 1.20.0，文档地址：<a href="https://www.bootstrap-table.com.cn" target="_blank">https://www.bootstrap-table.com.cn</a>，github地址：<a href="https://github.com/wenzhixin/bootstrap-table" target="_blank">https://github.com/wenzhixin/bootstrap-table</a>。</p>
+
+                <p>bootstrap-table插件具体的一些使用方法，可以查看 <a href="https://www.itxst.com/Bootstrap-Table/QuickStart.html" target="_blank">https://www.itxst.com/Bootstrap-Table/QuickStart.html</a></p>
+
+                <div id="toolbar" class="toolbar-btn-action">
+                  <button id="btn_add" type="button" class="btn btn-primary me-1">
+                    <span class="mdi mdi-plus" aria-hidden="true"></span>新增
+                  </button>
+                  <button id="btn_edit" type="button" class="btn btn-success me-1">
+                    <span class="mdi mdi-check" aria-hidden="true"></span>启用
+                  </button>
+                  <button id="btn_edit" type="button" class="btn btn-warning me-1">
+                    <span class="mdi mdi-block-helper" aria-hidden="true"></span>禁用
+                  </button>
+                  <button id="btn_delete" type="button" class="btn btn-danger">
+                    <span class="mdi mdi-window-close" aria-hidden="true"></span>删除
+                  </button>
+                </div>
+                <table id="table"></table>
+                
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>    
+	
+	</main>
+    <!--End 页面主要内容-->
+  </div>
+</div>
+
+<script type="text/javascript" src="../static/js/jquery.min.js"></script>
+<script type="text/javascript" src="../static/js/popper.min.js"></script>
+<script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../static/js/perfect-scrollbar.min.js"></script>
+<script type="text/javascript" src="../static/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="../static/js/main.min.js"></script>
+<!--表格插件js-->
+<script src="../static/js/bootstrap-table/bootstrap-table.js"></script>
+<script src="../static/js/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+
+<script>
+	/**
+	 * 分页相关的配置
+	 **/
+	const pagination = {
+		// 分页方式：[client] 客户端分页，[server] 服务端分页
+		sidePagination: "server",
+		// 初始化加载第一页，默认第一页
+		pageNumber: 1,
+		// 每页的记录行数
+		pageSize: 10,
+		// 可供选择的每页的行数 - (亲测大于1000存在渲染问题)
+		pageList: [5, 10, 25, 50, 100],
+		// 在上百页的情况下体验较好 - 能够显示首尾页
+		paginationLoop: true,
+		// 展示首尾页的最小页数
+		paginationPagesBySide: 2
+	};
+	
+	/**
+	 * 按钮相关配置
+	 **/
+	const button = {
+		// 按钮的类
+		buttonsClass: 'default',
+		// 类名前缀
+		buttonsPrefix: 'btn'
+	}
+	
+	/**
+	 * 图标相关配置
+	 **/
+	const icon = {
+		// 图标前缀
+		iconsPrefix: 'mdi',
+		// 图标大小
+		iconSize: 'mini',
+		// 图标的设置
+		icons: {
+      paginationSwitchDown: 'mdi-door-closed',
+      paginationSwitchUp: 'mdi-door-open',
+      refresh: 'mdi-refresh',
+      toggleOff: 'mdi-toggle-switch-off',
+      toggleOn: 'mdi-toggle-switch',
+      columns: 'mdi-table-column-remove',
+      detailOpen: 'mdi-plus',
+      detailClose: 'mdi-minus',
+      fullscreen: 'mdi-monitor-screenshot',
+      search: 'mdi-table-search',
+      clearSearch: 'mdi-trash-can-outline'
+		}
+	};
+	
+	/**
+	 * 表格相关的配置
+	 **/
+	const table = {
+		classes: 'table table-bordered table-hover table-striped lyear-table',
+		// 请求地址
+		url: 'http://www.bixiaguangnian.com/index/test/getExampleJson',
+		// 唯一ID字段
+		uniqueId: 'id',
+		// 每行的唯一标识字段
+		idField: 'id',
+		// 是否启用点击选中行
+		clickToSelect: true,
+		// 是否显示详细视图和列表视图的切换按钮(clickToSelect同时设置为true时点击会报错)
+		// showToggle: true,
+		// 请求得到的数据类型
+		dataType: 'jsonp',
+		// 请求方法
+		method: 'get',
+		// 工具按钮容器
+		toolbar: '#toolbar',
+		// 是否分页
+		pagination: true,
+		// 是否显示所有的列
+		showColumns: true,
+		// 是否显示刷新按钮
+		showRefresh: true,
+		// 显示图标
+		showButtonIcons: true,
+		// 显示文本
+		showButtonText: false,
+		// 显示全屏
+		showFullscreen: true,
+		// 开关控制分页
+		showPaginationSwitch: true,
+		// 总数字段
+		totalField: 'total',
+		// 当字段为 undefined 显示
+		undefinedText: '-',
+		// 排序方式
+		sortOrder: "asc",
+		...icon,
+		...pagination,
+		...button
+	};
+	
+	/**
+	 * 用于演示的列信息
+	 **/
+	const columns = [{
+		field: 'example',
+		checkbox: true,
+		// 列的宽度
+		width: 5,
+		// 宽度单位
+		widthUnit: 'rem'
+	}, {
+		field: 'id',
+		title: '编号',
+		// 使用[align]，[halign]和[valign]选项来设置列和它们的标题的对齐方式。
+		// h表示横向，v标识垂直
+		align: 'center',
+		// 是否作为排序列
+		sortable: true,
+		// 当列名称与实际名称不一致时可用
+		sortName: 'sortId',
+		switchable: false,
+		// 列的宽度
+		width: 8,
+		// 宽度单位
+		widthUnit: 'rem'
+	}, {
+		field: 'author',
+		align: 'center',
+		title: '作者',
+		titleTooltip: '作者名称'
+	}, {
+		field: 'dynasty',
+		align: 'center',
+		title: '朝代',
+	}, {
+		field: 'nationality',
+		// 是否可视(默认 - true)
+		visible: false,
+		align: 'center',
+		title: '国籍'
+	}, {
+		field: 'opus',
+		align: 'center',
+		title: '作品'
+	}, {
+		field: 'category',
+		align: 'center',
+		title: '分类'
+	}, {
+        field: 'status',
+        title: '状态',
+        formatter:function(value, row, index){ 
+			var value="";
+			if (row.status == '0') {
+				value = '<span class="badge bg-danger">禁用</span>';
+			} else if(row.status == '1') {
+				value = '<span class="badge bg-success">正常</span>';
+			} else {
+				value = '<span class="badge bg-secondary">未知</span>' ;
+			}
+			return value;
+		}
+    }, {
+        field: 'operate',
+        title: '操作',
+        formatter: btnGroup,  // 自定义方法
+        events: {
+            'click .edit-btn': function (event, value, row, index) {
+                event.stopPropagation();
+                editUser(row);
+            },
+            'click .del-btn': function (event, value, row, index) {
+                event.stopPropagation();
+                delUser(row);
+            }
+        }
+    }];
+    
+    // 自定义操作按钮
+    function btnGroup () {
+        let html =
+            '<a href="#!" class="btn btn-sm btn-default me-1 edit-btn" title="编辑" data-bs-toggle="tooltip"><i class="mdi mdi-pencil"></i></a>' +
+            '<a href="#!" class="btn btn-sm btn-default del-btn" title="删除" data-bs-toggle="tooltip"><i class="mdi mdi-window-close"></i></a>';
+        return html;
+    }
+  
+    // 操作方法 - 编辑
+    function editUser() {
+        alert('跳转修改信息');
+    }
+    // 操作方法 - 删除
+    function delUser() {
+        alert('信息删除成功');
+    }
+	
+	$('table').bootstrapTable({
+		...table,
+		// 自定义的查询参数
+		queryParams: function (params) {
+			return {
+				// 每页数据量
+				limit: params.limit,
+				// sql语句起始索引
+				offset: params.offset,
+				page: (params.offset / params.limit) + 1,
+				// 排序的列名
+				sort: params.sort,
+				// 排序方式 'asc' 'desc'
+				sortOrder: params.order
+			};
+		},
+		columns,
+        onLoadSuccess: function(data){
+            $("[data-bs-toggle='tooltip']").tooltip();
+        }
+	});
+</script>
+</body>
+</html>

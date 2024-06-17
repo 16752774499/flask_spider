@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+<meta name="keywords" content="LightYear,LightYearAdmin,光年,后台模板,后台管理系统,光年HTML模板">
+<meta name="description" content="Light Year Admin V5是一个基于Bootstrap v5.1.3的后台管理系统的HTML模板。">
+<title>文档列表 - 光年(Light Year Admin V5)后台管理系统模板</title>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="stylesheet" type="text/css" href="../static/css/materialdesignicons.min.css">
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../static/css/style.min.css">
+</head>
+  
+<body>
+<!--页面loading-->
+<div id="lyear-preloader" class="loading">
+  <div class="ctn-preloader">
+    <div class="round_spinner">
+      <div class="spinner"></div>
+      <img src="../static/images/loading-logo.png" alt="">
+    </div>
+  </div>
+</div>
+<!--页面loading end-->
+<div class="lyear-layout-web">
+  <div class="lyear-layout-container">
+    <!--左侧导航-->
+    <aside class="lyear-layout-sidebar">
+
+      <!-- logo -->
+      <div id="logo" class="sidebar-header">
+        <a href="/admin"><img src="../static/images/logo-sidebar.png" title="LightYear" alt="LightYear" /></a>
+      </div>
+      <div class="lyear-layout-sidebar-info lyear-scroll">
+
+        <nav class="sidebar-main">
+
+          <ul class="nav-drawer">
+            <li class="nav-item active">
+              <a href="/admin">
+                <i class="mdi mdi-home-city-outline"></i>
+                <span>招聘信息采集后台首页</span>
+              </a>
+            </li>
+
+            <li class="nav-item nav-item-has-subnav">
+              <a href="javascript:void(0)">
+                <i class="mdi mdi-map-outline"></i>
+                <span>表单</span>
+              </a>
+              <ul class="nav nav-subnav">
+
+                <li> <a href="/adminFrom">输入组</a> </li>
+
+              </ul>
+            </li>
+
+            <li class="nav-item nav-item-has-subnav">
+              <a href="javascript:void(0)">
+                <i class="mdi mdi-stove"></i>
+                <span>示例页面</span>
+              </a>
+              <ul class="nav nav-subnav">
+                <li> <a href="/adminTask">文档列表</a> </li>
+                <li> <a href="/adminTable">表格插件</a> </li>
+
+              </ul>
+            </li>
+
+          </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+          <p class="copyright">
+            <span>Copyright &copy; 2022. </span>
+            <a target="_blank" href="http://www.bixiaguangnian.com">笔下光年</a>
+            <span> All rights reserved.</span>
+          </p>
+        </div>
+      </div>
+
+    </aside>
+    <!--End 左侧导航-->
+    <!--头部信息-->
+    <header class="lyear-layout-header">
+
+      <nav class="navbar">
+
+        <div class="navbar-left">
+          <div class="lyear-aside-toggler">
+            <span class="lyear-toggler-bar"></span>
+            <span class="lyear-toggler-bar"></span>
+            <span class="lyear-toggler-bar"></span>
+          </div>
+        </div>
+
+        <ul class="navbar-right d-flex align-items-center">
+          <!--顶部消息部分-->
+          <li class="dropdown dropdown-notice">
+            <span data-bs-toggle="dropdown" class="position-relative icon-item">
+              <i class="mdi mdi-bell-outline fs-5"></i>
+              <span class="position-absolute translate-middle badge bg-danger">7</span>
+            </span>
+            <div class="dropdown-menu dropdown-menu-end">
+              <div class="lyear-notifications">
+
+                <div class="lyear-notifications-title d-flex justify-content-between" data-stopPropagation="true">
+                  <span>你有 10 条未读消息</span>
+                  <a href="#!">查看全部</a>
+                </div>
+                <div class="lyear-notifications-info lyear-scroll">
+                  <a href="#!" class="dropdown-item"
+                    title="树莓派销量猛增，疫情期间居家工作学习、医疗领域都需要它">树莓派销量猛增，疫情期间居家工作学习、医疗领域都需要它</a>
+                  <a href="#!" class="dropdown-item"
+                    title="GNOME 用户体验团队将为 GNOME Shell 提供更多改进">GNOME 用户体验团队将为 GNOME Shell
+                    提供更多改进</a>
+                  <a href="#!" class="dropdown-item"
+                    title="Linux On iPhone 即将面世，支持 iOS 的双启动">Linux On iPhone 即将面世，支持 iOS
+                    的双启动</a>
+                  <a href="#!" class="dropdown-item" title="GitHub 私有仓库完全免费面向团队提供">GitHub
+                    私有仓库完全免费面向团队提供</a>
+                  <a href="#!" class="dropdown-item"
+                    title="Wasmtime 为 WebAssembly 增加 Go 语言绑定">Wasmtime 为 WebAssembly 增加 Go
+                    语言绑定</a>
+                  <a href="#!" class="dropdown-item"
+                    title="红帽借“订阅”成开源一哥，首创者 Cormier 升任总裁">红帽借“订阅”成开源一哥，首创者 Cormier 升任总裁</a>
+                  <a href="#!" class="dropdown-item" title="Zend 宣布推出两项 PHP 新产品">Zend 宣布推出两项
+                    PHP 新产品</a>
+                </div>
+
+              </div>
+            </div>
+          </li>
+          <!--End 顶部消息部分-->
+          <!--切换主题配色-->
+		  <li class="dropdown dropdown-skin">
+		    <span data-bs-toggle="dropdown" class="icon-item">
+              <i class="mdi mdi-palette fs-5"></i>
+            </span>
+			<ul class="dropdown-menu dropdown-menu-end" data-stopPropagation="true">
+              <li class="lyear-skin-title"><p>主题</p></li>
+              <li class="lyear-skin-li clearfix">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="site_theme" id="site_theme_1" value="default" checked="checked">
+                  <label class="form-check-label" for="site_theme_1"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="site_theme" id="site_theme_2" value="translucent-green">
+                  <label class="form-check-label" for="site_theme_2"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="site_theme" id="site_theme_3" value="translucent-blue">
+                  <label class="form-check-label" for="site_theme_3"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="site_theme" id="site_theme_4" value="translucent-yellow">
+                  <label class="form-check-label" for="site_theme_4"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="site_theme" id="site_theme_5" value="translucent-red">
+                  <label class="form-check-label" for="site_theme_5"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="site_theme" id="site_theme_6" value="translucent-pink">
+                  <label class="form-check-label" for="site_theme_6"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="site_theme" id="site_theme_7" value="translucent-cyan">
+                  <label class="form-check-label" for="site_theme_7"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="site_theme" id="site_theme_8" value="dark">
+                  <label class="form-check-label" for="site_theme_8"></label>
+                </div>
+              </li>
+			  <li class="lyear-skin-title"><p>LOGO</p></li>
+			  <li class="lyear-skin-li clearfix">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_1" value="default" checked="checked">
+                  <label class="form-check-label" for="logo_bg_1"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_2" value="color_2">
+                  <label class="form-check-label" for="logo_bg_2"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_3" value="color_3">
+                  <label class="form-check-label" for="logo_bg_3"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_4" value="color_4">
+                  <label class="form-check-label" for="logo_bg_4"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_5" value="color_5">
+                  <label class="form-check-label" for="logo_bg_5"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_6" value="color_6">
+                  <label class="form-check-label" for="logo_bg_6"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_7" value="color_7">
+                  <label class="form-check-label" for="logo_bg_7"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="logo_bg" id="logo_bg_8" value="color_8">
+                  <label class="form-check-label" for="logo_bg_8"></label>
+                </div>
+			  </li>
+			  <li class="lyear-skin-title"><p>头部</p></li>
+			  <li class="lyear-skin-li clearfix">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="header_bg" id="header_bg_1" value="default" checked="checked">
+                  <label class="form-check-label" for="header_bg_1"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="header_bg" id="header_bg_2" value="color_2">
+                  <label class="form-check-label" for="header_bg_2"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="header_bg" id="header_bg_3" value="color_3">
+                  <label class="form-check-label" for="header_bg_3"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="header_bg" id="header_bg_4" value="color_4">
+                  <label class="form-check-label" for="header_bg_4"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="header_bg" id="header_bg_5" value="color_5">
+                  <label class="form-check-label" for="header_bg_5"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="header_bg" id="header_bg_6" value="color_6">
+                  <label class="form-check-label" for="header_bg_6"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="header_bg" id="header_bg_7" value="color_7">
+                  <label class="form-check-label" for="header_bg_7"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="header_bg" id="header_bg_8" value="color_8">
+                  <label class="form-check-label" for="header_bg_8"></label>
+                </div>
+			  </li>
+			  <li class="lyear-skin-title"><p>侧边栏</p></li>
+			  <li class="lyear-skin-li clearfix">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_1" value="default" checked="checked">
+                  <label class="form-check-label" for="sidebar_bg_1"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_2" value="color_2">
+                  <label class="form-check-label" for="sidebar_bg_2"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_3" value="color_3">
+                  <label class="form-check-label" for="sidebar_bg_3"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_4" value="color_4">
+                  <label class="form-check-label" for="sidebar_bg_4"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_5" value="color_5">
+                  <label class="form-check-label" for="sidebar_bg_5"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_6" value="color_6">
+                  <label class="form-check-label" for="sidebar_bg_6"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_7" value="color_7">
+                  <label class="form-check-label" for="sidebar_bg_7"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="sidebar_bg" id="sidebar_bg_8" value="color_8">
+                  <label class="form-check-label" for="sidebar_bg_8"></label>
+                </div>
+			  </li>
+		    </ul>
+		  </li>
+          <!--End 切换主题配色-->
+          <!--个人头像内容-->
+          <li class="dropdown">
+            <a href="javascript:void(0)" data-bs-toggle="dropdown" class="dropdown-toggle">
+              <img class="avatar-md rounded-circle" src="../static/images/users/avatar.jpg" alt="笔下光年" />
+              <span style="margin-left: 10px;">笔下光年</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                <a class="dropdown-item" href="lyear_pages_profile.html"
+                  href="javascript:void(0)">
+                  <i class="mdi mdi-account"></i>
+                  <span>个人信息</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="lyear_pages_edit_pwd.html"
+                  href="javascript:void(0)">
+                  <i class="mdi mdi-lock-outline"></i>
+                  <span>修改密码</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="javascript:void(0)">
+                  <i class="mdi mdi-delete"></i>
+                  <span>清空缓存</span>
+                </a>
+              </li>
+              <li class="dropdown-divider"></li>
+              <li>
+                <a class="dropdown-item" href="lyear_pages_login_1.html">
+                  <i class="mdi mdi-logout-variant"></i>
+                  <span>退出登录</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <!--End 个人头像内容-->
+        </ul>
+
+      </nav>
+
+    </header>
+    <!--End 头部信息-->
+
+    <!--页面主要内容-->
+    <main class="lyear-layout-content">
+	
+      <div class="container-fluid">
+
+        <div class="row">
+
+          <div class="col-lg-12">
+            <div class="card">
+              <header class="card-header"><div class="card-title">文档列表</div></header>
+              <div class="card-body">
+                <div class="card-search mb-2-5">
+                  <form class="search-form" method="get" action="#!" role="form">
+
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="row">
+                          <label class="col-sm-4 col-form-label"><span class="text-danger">*</span> 任务名称</label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control pull-left" name="name" value="" placeholder="请输入任务名称" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="row">
+                          <label class="col-sm-4 col-form-label"><span class="text-danger">*</span> 任务类型</label>
+                          <div class="col-sm-8">
+                            <select name="type" class="form-select">
+                              <option value="1">小说</option>
+                              <option value="2">古籍</option>
+                              <option value="3">专辑</option>
+                              <option value="4">自传</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <button type="submit" class="btn btn-primary me-1">搜索</button>
+                        <button type="reset" class="btn btn-default">重置</button>
+                      </div>
+                    </div>
+
+                  </form>
+                </div>
+                <div class="card-btns mb-2-5">
+                  <a class="btn btn-primary me-1" href="#!"><i class="mdi mdi-plus"></i> 新增</a>
+                  <a class="btn btn-success me-1" href="#!"><i class="mdi mdi-check"></i> 启用</a>
+                  <a class="btn btn-warning me-1" href="#!"><i class="mdi mdi-block-helper"></i> 禁用</a>
+                  <a class="btn btn-danger" href="#!"><i class="mdi mdi-window-close"></i> 删除</a>
+                </div>
+                <div class="table-responsive">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="check-all">
+                            <label class="form-check-label" for="check-all"></label>
+                          </div>
+                        </th>
+                        <th>编号</th>
+                        <th>标题</th>
+                        <th>书籍</th>
+                        <th>作者</th>
+                        <th>阅读量</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <div class="form-check">
+                            <input type="checkbox" class="form-check-input ids" name="ids[]" value="1" id="ids-1">
+                            <label class="form-check-label" for="ids-1"></label>
+                          </div>
+                        </td>
+                        <td>1</td>
+                        <td>第01章 天涯思君不可忘</td>
+                        <td>《倚天屠龙记》</td>
+                        <td>金庸</td>
+                        <td>36</td>
+                        <td><font class="text-success">正常</font></td>
+                        <td>
+                          <div class="btn-group btn-group-sm">
+                            <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="编辑"><i class="mdi mdi-pencil"></i></a>
+                            <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="删除"><i class="mdi mdi-window-close"></i></a>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="form-check">
+                            <input type="checkbox" class="form-check-input ids" name="ids[]" value="2" id="ids-2">
+                            <label class="form-check-label" for="ids-2"></label>
+                          </div>
+                        </td>
+                        <td>2</td>
+                        <td>第01章 古道腾驹惊白发，危峦快剑识青翎</td>
+                        <td>《书剑恩仇录》</td>
+                        <td>金庸</td>
+                        <td>44</td>
+                        <td><font class="text-success">正常</font></td>
+                        <td>
+                          <div class="btn-group btn-group-sm">
+                            <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="编辑"><i class="mdi mdi-pencil"></i></a>
+                            <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="删除"><i class="mdi mdi-window-close"></i></a>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="form-check">
+                            <input type="checkbox" class="form-check-input ids" name="ids[]" value="3" id="ids-3">
+                            <label class="form-check-label" for="ids-3"></label>
+                          </div>
+                        </td>
+                        <td>3</td>
+                        <td>一个戴水獭皮帽子的朋友</td>
+                        <td>《湘行散记》</td>
+                        <td>沈从文</td>
+                        <td>39</td>
+                        <td><font class="text-success">正常</font></td>
+                        <td>
+                          <div class="btn-group btn-group-sm">
+                            <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="编辑"><i class="mdi mdi-pencil"></i></a>
+                            <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="删除"><i class="mdi mdi-window-close"></i></a>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="form-check">
+                            <input type="checkbox" class="form-check-input ids" name="ids[]" value="4" id="ids-4">
+                            <label class="form-check-label" for="ids-4"></label>
+                          </div>
+                        </td>
+                        <td>4</td>
+                        <td>你是要灼灼容颜，还是要宜其室家</td>
+                        <td>《诗三百：思无邪》</td>
+                        <td>安意如</td>
+                        <td>36</td>
+                        <td><font class="text-success">正常</font></td>
+                        <td>
+                          <div class="btn-group btn-group-sm">
+                            <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="编辑"><i class="mdi mdi-pencil"></i></a>
+                            <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="删除"><i class="mdi mdi-window-close"></i></a>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="form-check">
+                            <input type="checkbox" class="form-check-input ids" name="ids[]" value="5" id="ids-5">
+                            <label class="form-check-label" for="ids-5"></label>
+                          </div>
+                        </td>
+                        <td>5</td>
+                        <td>海上的消息</td>
+                        <td>《打开心内的窗》</td>
+                        <td>林清玄</td>
+                        <td>32</td>
+                        <td><font class="text-success">正常</font></td>
+                        <td>
+                          <div class="btn-group btn-group-sm">
+                            <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="编辑"><i class="mdi mdi-pencil"></i></a>
+                            <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="删除"><i class="mdi mdi-window-close"></i></a>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="form-check">
+                            <input type="checkbox" class="form-check-input ids" name="ids[]" value="6" id="ids-6">
+                            <label class="form-check-label" for="ids-6"></label>
+                          </div>
+                        </td>
+                        <td>6</td>
+                        <td>楔子 一阕词来 南国清秋魂梦绕 十年人散 绣房红烛剑光寒</td>
+                        <td>《七剑下天山》</td>
+                        <td>梁羽生</td>
+                        <td>42</td>
+                        <td><font class="text-success">正常</font></td>
+                        <td>
+                          <div class="btn-group btn-group-sm">
+                            <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="编辑"><i class="mdi mdi-pencil"></i></a>
+                            <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="删除"><i class="mdi mdi-window-close"></i></a>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="form-check">
+                            <input type="checkbox" class="form-check-input ids" name="ids[]" value="7" id="ids-7">
+                            <label class="form-check-label" for="ids-7"></label>
+                          </div>
+                        </td>
+                        <td>7</td>
+                        <td>祝福</td>
+                        <td>《彷徨》</td>
+                        <td>鲁迅</td>
+                        <td>40</td>
+                        <td><font class="text-success">正常</font></td>
+                        <td>
+                          <div class="btn-group btn-group-sm">
+                            <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="编辑"><i class="mdi mdi-pencil"></i></a>
+                            <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="删除"><i class="mdi mdi-window-close"></i></a>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="form-check">
+                            <input type="checkbox" class="form-check-input ids" name="ids[]" value="8" id="ids-8">
+                            <label class="form-check-label" for="ids-8"></label>
+                          </div>
+                        </td>
+                        <td>8</td>
+                        <td>一个女长年的故事</td>
+                        <td>《莫泊桑短篇小说集》</td>
+                        <td>莫泊桑</td>
+                        <td>36</td>
+                        <td><font class="text-success">正常</font></td>
+                        <td>
+                          <div class="btn-group btn-group-sm">
+                            <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="编辑"><i class="mdi mdi-pencil"></i></a>
+                            <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="删除"><i class="mdi mdi-window-close"></i></a>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="form-check">
+                            <input type="checkbox" class="form-check-input ids" name="ids[]" value="9" id="ids-9">
+                            <label class="form-check-label" for="ids-9"></label>
+                          </div>
+                        </td>
+                        <td>9</td>
+                        <td>第一回 赈民饥包公奉旨　图谋害庞相施计</td>
+                        <td>《五虎征西》</td>
+                        <td>李雨堂</td>
+                        <td>35</td>
+                        <td><font class="text-success">正常</font></td>
+                        <td>
+                          <div class="btn-group btn-group-sm">
+                            <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="编辑"><i class="mdi mdi-pencil"></i></a>
+                            <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="删除"><i class="mdi mdi-window-close"></i></a>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="form-check">
+                            <input type="checkbox" class="form-check-input ids" name="ids[]" value="10" id="ids-10">
+                            <label class="form-check-label" for="ids-10"></label>
+                          </div>
+                        </td>
+                        <td>10</td>
+                        <td>第一回 于按察山东赴任　邹其仁赴路登程</td>
+                        <td>《于公案》</td>
+                        <td>佚名</td>
+                        <td>37</td>
+                        <td><font class="text-success">正常</font></td>
+                        <td>
+                          <div class="btn-group btn-group-sm">
+                            <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="编辑"><i class="mdi mdi-pencil"></i></a>
+                            <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="删除"><i class="mdi mdi-window-close"></i></a>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <ul class="pagination">
+                  <li class="page-item disabled"><span class="page-link">上一页</span></li>
+                  <li class="page-item active"><span class="page-link">1</span></li>
+                  <li class="page-item"><a class="page-link" href="#1">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#1">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#1">4</a></li>
+                  <li class="page-item"><a class="page-link" href="#1">5</a></li>
+                  <li class="page-item disabled"><span class="page-link">...</span></li>
+                  <li class="page-item"><a class="page-link" href="#!">14452</a></li>
+                  <li class="page-item"><a class="page-link" href="#!">14453</a></li>
+                  <li class="page-item"><a class="page-link" href="#!">下一页</a></li>
+                </ul>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>    
+	
+	</main>
+    <!--End 页面主要内容-->
+  </div>
+</div>
+
+<script type="text/javascript" src="../static/js/jquery.min.js"></script>
+<script type="text/javascript" src="../static/js/popper.min.js"></script>
+<script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../static/js/perfect-scrollbar.min.js"></script>
+<script type="text/javascript" src="../static/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="../static/js/main.min.js"></script>
+</body>
+</html>

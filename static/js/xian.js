@@ -1,23 +1,7 @@
 $(function () {
-    // 获取当前页面的 URL
-    const currentUrl = window.location.href;
-    console.log(currentUrl)
-// 从 URL 中提取查询参数部分
-    const queryString = currentUrl.split('?')[1];
-
-// 创建一个对象来存储查询参数
-    const queryParams = {};
-
-// 将查询参数部分分割成键值对并存储到对象中
-    if (queryString) {
-        queryString.split('&').forEach(item => {
-            const parts = item.split('=');
-            queryParams[parts[0]] = decodeURIComponent(parts[1]);
-        });
-    }
 
 // 获取名为 'class' 的查询参数的值
-    const className = queryParams['class'];
+    const className = returnParam("class");
     map(className);
     console.log(className)
 
@@ -79,12 +63,19 @@ $(function () {
             .catch(error => {
                 console.error(error); // 处理请求失败的情况
             });
+        myChart.on('click', function (params) {
+            // 获取点击区域的名称
+            let regName = params.name;
+            let className = returnParam("class");
+            window.location.href = "/?class=" + className + "&reg=" + regName;
+
+        });
     }
 
 
 })
 
-function getData(className="all") {
+function getData(className = "all") {
     return axios.get(`${ipAddresses}/AreaQuantity?class=${className}`)
         .then(response => {
             return response.data.map(item => {
@@ -98,3 +89,23 @@ function getData(className="all") {
         });
 }
 
+function returnParam(arg) {
+    // 获取当前页面的 URL
+    const currentUrl = window.location.href;
+    console.log(currentUrl)
+// 从 URL 中提取查询参数部分
+    const queryString = currentUrl.split('?')[1];
+
+// 创建一个对象来存储查询参数
+    const queryParams = {};
+
+// 将查询参数部分分割成键值对并存储到对象中
+    if (queryString) {
+        queryString.split('&').forEach(item => {
+            const parts = item.split('=');
+            queryParams[parts[0]] = decodeURIComponent(parts[1]);
+        });
+    }
+// 获取名为 'class' 的查询参数的值
+    return queryParams[arg];
+}

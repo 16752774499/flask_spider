@@ -26,7 +26,7 @@ li {
 
 @font-face {
     font-family: electronicFont;
-    src: url(../font/DS-DIGIT.TTF)
+    src: url(../fonts/DS-DIGIT.TTF)
 }
 
 i {
@@ -622,6 +622,11 @@ select {
 
 select option {
     background-color: transparent; /* 设置选项背景为透明 */
+}
+#chart-container {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
 }
 
 

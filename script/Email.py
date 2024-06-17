@@ -1,10 +1,10 @@
 import json
+import random
 import smtplib
 from datetime import datetime
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
 from email.header import Header
-import random
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 import requests
 
@@ -83,12 +83,12 @@ def sendEmail(mailCfg: dict, msgData: str, receivers: list):  # 创建邮件对�
                         width: 200px;
                         height: 400px;
                         perspective: 1000px;
-                        font-family: sans-serif;
+                        fonts-family: sans-serif;
                     }}
 
                     .title {{
-                        font-size: 1.0em;
-                        font-weight: 900;
+                        fonts-size: 1.0em;
+                        fonts-weight: 900;
                         text-align: center;
                         margin: 0;
                     }}
@@ -149,7 +149,7 @@ def sendEmail(mailCfg: dict, msgData: str, receivers: list):  # 创建邮件对�
 
                     <div class="flip-card-back">
                         <p class="title">给爷笑😀</p>
-                        <p style="font-size: 13px">
+                        <p style="fonts-size: 13px">
                             有一对年轻的男女正坐在一起谈恋爱，突然女的想放屁，但这种场合怎能。于是女的想了个办法，就对男的说：哎，你听过布谷鸟的叫声吗？男的莫名其妙地说：没听过。女的马上说：那我学给你听听，就是……布……谷……她喊着，同时放屁，想用叫声掩盖放屁声。过后，女的舒服多了，就问男的：怎样？知道布谷鸟的叫声了吧？男的红着脸为难地说：……嗯，对不起……我没听见……咦？为什么？因为……因为你那放屁声太大了，所以弄得我听不见你哪布谷鸟的叫声……</p>
                         <img style="width: 100%;height: 30%" src="https://q8.itc.cn/q_70/images03/20240227/a3f370582a2243ecb2342fdd0db1b1e9.jpeg">
                     </div>

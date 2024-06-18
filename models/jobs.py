@@ -27,17 +27,17 @@ class Jobs(Base):
     SearchKeyword = Column(String(32), index=True, nullable=False, name="采集时的关键字")
 
 
-class Task(Base):
-    __tablename__ = 'task'  # 数据库表名称
+class Tasks(Base):
+    __tablename__ = 'tasks'  # 数据库表名称
     id = Column(Integer, primary_key=True)  # 生成一列，类型是Integer，主键
+    taskId = Column(String(128), index=True, nullable=False, name="采集任务ID")
     CollectionPurpose = Column(String(128), index=True, nullable=False, name="采集任务目的")
     SearchKeyword = Column(String(32), index=True, nullable=False, name="采集任务时的关键字")
-    CollectionPages = Column(Integer, nullable=False, name="采集任务页数")
+    CollectionPages = Column(String(8), nullable=False, name="采集任务页数")
     CollectionCity = Column(String(128), nullable=False, name="采集任务城市")
     CollectionTarget = Column(String(128), index=True, nullable=False, name="采集任务目标")
-    status = Column(String(12), default="False", index=True, nullable=False, name="采集任务状态")
+    status = Column(String(12), default="", index=True, nullable=False, name="采集任务状态")
     CollectionUrl = Column(Text, nullable=False, name="采集任务详情")
-    CollectionType = Column(String(12), nullable=False, name="采集任务类型")
     addTime = Column(DateTime, default=datetime.datetime.now, nullable=False, name="采集任务时间")
 
 

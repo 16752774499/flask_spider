@@ -18,19 +18,9 @@
 <script src="../static/js/config.js"></script>
 <script src="../static/js/axios.min.js"></script>
 <script src="../static/js/admin.js"></script>
-<script type="text/javascript" src="https://unpkg.com/pxmu/dist/web/pxmu.min.js"></script>
+<script type="text/javascript" src="../static/js/pxmu.js"></script>
 <body>
-<style>
-    body[data-theme|='translucent'] div:not(.layui-layer-hui):not(.layui-layer-tips):not([class*='bg-']) .layui-layer-content,
-    [data-theme='dark'] .layui-layer-content {
-        color: var(--bs-body-color);
-    }
 
-    body[data-theme|='translucent'] .layui-layer-content .form-control {
-        border: 1px solid var(--bs-gray-300);
-        color: var(--bs-body-color);
-    }
-</style>
 <!--页面loading-->
 <div id="lyear-preloader" class="loading">
     <div class="ctn-preloader">
@@ -533,6 +523,7 @@
 
                     }
                 }
+
                 form.classList.add('was-validated');
             }, false);
         });

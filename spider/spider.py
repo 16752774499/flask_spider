@@ -4,6 +4,7 @@ from selenium import webdriver
 # from DrissionPage import ChromiumPage
 from selenium.common import NoSuchElementException
 from selenium.webdriver.common.by import By
+
 from script import fun
 
 
@@ -19,7 +20,15 @@ def work(url: str, allXpath: dict, domain_name: str, page_num: int) -> dict:
         # 处理boos页面xpath不统一
         Data: dict = {}
         for num in range(page_num):
-            print(num)
+            time.sleep(1)
+            if num == 0:
+                script = """
+                    el = document.querySelector("#wrap > div.page-job-wrapper > div.page-job-inner > div > div.job-list-wrapper > div.company-card-wrapper.clearfix");
+                    if(el){
+                        el.remove();
+                    }   
+                """
+                driver.execute_script(script)
             pageId = "page_" + str(num + 1)
             if num == 0:
                 NextButton = driver.find_element(By.CLASS_NAME, "ui-icon-arrow-right")
@@ -37,9 +46,11 @@ def work(url: str, allXpath: dict, domain_name: str, page_num: int) -> dict:
             time.sleep(1)
             script = """
                      var elements = document.querySelectorAll('div.icon_promotion');
-                     elements.forEach(function(element) {
-                        element.remove();
-                     });
+                     if(elements){
+                        elements.forEach(function(element) {
+                            element.remove();
+                        });
+                     } 
                     """
             driver.execute_script(script)
             pageId = "page_" + str(num + 1)
@@ -71,7 +82,7 @@ def work(url: str, allXpath: dict, domain_name: str, page_num: int) -> dict:
                     document.body.appendChild(textBox);
                     const loginBtn = document.querySelector('.login-btn');
                     loginBtn.click();
-                              
+                    
                 """
                 driver.execute_script(script)
                 while 1:
@@ -83,6 +94,17 @@ def work(url: str, allXpath: dict, domain_name: str, page_num: int) -> dict:
                         print("标记消失，已经登录")
                         break
             pageId = "page_" + str(num + 1)
+            # el = document.querySelector("#positionList-hook > div.business-wrap");
+            # el.remove();
+
+            time.sleep(1)
+            script = """el = document.querySelector("#positionList-hook > div.business-wrap");
+                   if(el){
+                        el.remove();
+                    }                     
+
+                """
+            driver.execute_script(script)
             Data[pageId] = task(driver=driver, allXpath=allXpath, NextButton=None, domain_name=domain_name,
                                 pageNum=(num + 1), url=url)
 
@@ -121,8 +143,11 @@ def task(driver, allXpath: dict, NextButton: object, domain_name: str, pageNum: 
         # 智联按钮不可正常跳转
         # 处理智联url
         driver.get(fun.zhilianNextUrl(url=url, pageNum=pageNum))
+        time.sleep(3)
     else:
         NextButton.click()
+        time.sleep(3)
+        driver.execute_script("location.reload();")
     time.sleep(3)
 
     return data_obj

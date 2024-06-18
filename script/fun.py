@@ -2,14 +2,28 @@ import json
 import urllib
 from datetime import date, datetime, timedelta
 
+import redis
 from sqlalchemy import create_engine, func
 from sqlalchemy.orm import sessionmaker
 
 import config
-from models.jobs import Jobs
+from models.jobs import Jobs, Tasks
 
 
 def editXpath(original_string: str, start_marker: str, end_marker: str, i: int) -> str:
+    """
+    编辑Xpath中的某个部分。
+
+    Args:
+        original_string (str): 原始的Xpath字符串。
+        start_marker (str): 要替换的部分的起始标记。
+        end_marker (str): 要替换的部分的结束标记。
+        i (int): 要替换成的新内容。
+
+    Returns:
+        str: 编辑后的Xpath字符串。
+
+    """
     # 要替换的部分的起始和结束标记
     # 新内容
     new_content = str(i)
@@ -26,6 +40,16 @@ def editXpath(original_string: str, start_marker: str, end_marker: str, i: int) 
 
 # boss方案一，重构xpath
 def editBossXpath(allXpath: dict) -> dict:
+    """
+    编辑Boss直聘网站的Xpath。
+
+    Args:
+        allXpath (dict): 包含多个key-value对的字典，其中key为字符串类型，表示某种类型的Xpath，value为列表类型，包含多个字符串，表示该类型下具体的Xpath。
+
+    Returns:
+        dict: 返回一个包含多个key-value对的字典，表示编辑后的Xpath，key和value的类型与参数allXpath中的key和value相同。
+
+    """
     newAllXpath: dict = {}
     for k, v in allXpath.items():
         newList: list = []
@@ -49,6 +73,17 @@ def editBossXpath(allXpath: dict) -> dict:
 # /html/body/div[1]/div[2]/div[2]/div/div[1]/div[1]/div/div/div/a[10]
 # /html/body/div[1]/div[2]/div[2]/div/div[1]/div[2]/div/div/div/a[10]
 def zhilianNextUrl(url: str, pageNum: int):
+    """
+    生成智联招聘下一页的url地址
+
+    Args:
+        url (str): 当前页面的url地址
+        pageNum (int): 当前页码
+
+    Returns:
+        str: 下一页的url地址
+
+    """
     index = url.find("&p=")
     # 如果找到 "&p="，则删除该子字符串及其后面的内容
     if index != -1:
@@ -194,7 +229,18 @@ def returnList(data: dict) -> list:
     return tempList
 
 
-def insertDB(dataList: list, Keyword: str) -> None:
+def insertDBJobs(dataList: list, Keyword: str) -> bool:
+    """
+    将数据插入到数据库中。
+
+    Args:
+        dataList (list): 待插入的数据列表，每个元素为一个包含10个字段的元组，分别对应Jobs对象的属性。
+        Keyword (str): 搜索关键词。
+
+    Returns:
+        None: 该函数无返回值。
+
+    """
     session = returnDbSession()
     try:
         for i in dataList:
@@ -208,8 +254,29 @@ def insertDB(dataList: list, Keyword: str) -> None:
         # 第五步：关闭session对象
         session.close()
         print("数据插入成功")
+        return True
     except Exception as e:
         print("数据插入失败：{0}".format(e))
+        session.close()
+        return False
+
+
+def insertDbTask(formParams: dict) -> bool:
+    session = returnDbSession()
+    try:
+        task = Tasks(taskId=formParams["taskId"], CollectionPurpose=formParams["CollectionPurpose"],
+                     SearchKeyword=formParams["Keyword"], CollectionPages=formParams["page_num"],
+                     CollectionCity=formParams["City"], CollectionTarget=formParams["CollectionTarget"],
+                     CollectionUrl=formParams["url"])
+        session.add(task)
+        session.commit()
+        session.close()
+        print("数据插入成功")
+        return True
+    except Exception as e:
+        print("数据插入失败：{0}".format(e))
+        session.close()
+        return False
 
 
 def returnDbSession() -> object:
@@ -239,6 +306,7 @@ def getAreaQuantity(SearchKeyword: str) -> list:
         list: 包含各个区域岗位数量的字典列表，每个字典包含两个键值对：
             - name (str): 区域名称，包含“区”或“县”后缀
             - value (int): 该区域的岗位数量
+            :param SearchKeyword:
 
     """
     AreaQuantityList: list = []
@@ -278,13 +346,14 @@ def getJobsNums(SearchKeyword: str) -> int:
     if SearchKeyword == "all":
         jobsNums: int = session.query(func.count(Jobs.id)).scalar()
     else:
-        jobsNums: int = session.query(func.count(Jobs.id)).filter(Jobs.SearchKeyword == urllib.parse.unquote(SearchKeyword)).scalar()
+        jobsNums: int = session.query(func.count(Jobs.id)).filter(
+            Jobs.SearchKeyword == urllib.parse.unquote(SearchKeyword)).scalar()
     session.close()
     return jobsNums
 
 
 # 今日更新
-def toDayUpdata(SearchKeyword: str) -> int:
+def toDayUpData(SearchKeyword: str) -> int:
     """
     查询并返回当天更新到数据库的Job数量。
 
@@ -293,6 +362,7 @@ def toDayUpdata(SearchKeyword: str) -> int:
 
     Returns:
         int: 当天更新到数据库的Job数量。
+        :param SearchKeyword:
 
     """
     today = date.today()
@@ -336,6 +406,8 @@ def latestToday(SearchKeyword: str, regName: str) -> list:
             - jobUrl (str): 职位链接
             - jobPay (str): 薪资范围
             - jobCorporationUrl (str): 公司链接
+            :param regName:
+            :param SearchKeyword:
 
     """
     latestTodayList: list = []
@@ -392,7 +464,7 @@ def changeStatus(Id: str):
     return Id
 
 
-def setPayFormat(PayString):
+def setPayFormat(PayString: str) -> str:
     """
     根据薪资字符串计算薪资平均值。
 
@@ -539,8 +611,24 @@ def WeeklyDataVolumeList() -> list:
     # 生成包含所有日期的数据量列表和格式化日期列表
     data_list = [data_dict.get(date, 0) for date in all_dates]
     formatted_dates = [date.strftime('%Y-%m-%d') for date in all_dates]  # 格式化日期为 'YYYY-MM-DD' 格式
-
+    session.close()
     # 输出格式化后的日期列表和数据量列表
     print("日期列表:", formatted_dates)
     print("数据量列表:", data_list)
     return [formatted_dates, data_list]
+
+
+def returnRedisSession() -> object:
+    """
+    创建并返回 Redis 连接对象。
+
+    Args:
+        无。
+
+    Returns:
+        object: Redis 连接对象。
+
+    """
+    redisSession = redis.Redis(host=config.redisCfg["host"], port=config.redisCfg["port"], db=config.redisCfg["db"],
+                               password=config.redisCfg["password"])
+    return redisSession

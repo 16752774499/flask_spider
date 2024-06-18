@@ -31,11 +31,11 @@ def hello_world():  # put application's cod e here
         # 总岗位数
         jobNums = fun.getJobsNums(SearchKeyword)
         # 今日更新
-        toDayUpdate = fun.toDayUpdata(SearchKeyword)
+        toDayUpdate = fun.toDayUpData(SearchKeyword)
         # 查看过的数目
         statusTrueNums = fun.viewStatus(True, SearchKeyword)
         # 今日最新
-        latestToday = fun.latestToday(SearchKeyword, regName)
+        latestToday = fun.latestToday(SearchKeyword, regName[:-1])
         # 分类
         classList = fun.getSearchKeywordClass()
         # 薪资格式化
@@ -101,19 +101,33 @@ def visualizeData():
     url = request.form.get('url')
     page_num = request.form.get('page_num')
     Keyword = request.form.get('Keyword')
+    if fun.insertDbTask(formParams=request.form):
+        pass
+    else:
+        json.dumps({"code": "10001", "message": 'tasks数据库插入失败！'})
     if domain_name == "www.zhipin.com":
         data = fun.formattingData(domain_name=domain_name,
                                   data=boss.ParseParameters(domain_name=domain_name, url=url, page_num=int(page_num),
                                                             XpathList=fun.setParsingRules(domain_name=domain_name)))
-        fun.insertDB(data, Keyword)
-        return json.dumps(data)
+        if data:
+            if fun.insertDBJobs(data, Keyword):
+                return json.dumps(data)
+            else:
+                json.dumps({"code": "10001", "message": 'jobs数据库插入失败！'})
+        else:
+            json.dumps({"code": "10001", "message": '采集任务发生错误！'})
 
     elif domain_name == "sou.zhaopin.com":
         data = fun.formattingData(domain_name=domain_name,
                                   data=zhipin.ParseParameters(domain_name=domain_name, url=url, page_num=int(page_num),
                                                               XpathList=fun.setParsingRules(domain_name=domain_name)))
-        fun.insertDB(data, Keyword)
-        return json.dumps(data)
+        if data:
+            if fun.insertDBJobs(data, Keyword):
+                return json.dumps(data)
+            else:
+                json.dumps({"code": "10001", "message": 'jobs数据库插入失败！'})
+        else:
+            json.dumps({"code": "10001", "message": '采集任务发生错误！'})
     else:
         return json.dumps({"code": "10001", "message": '不在采集范围内'})
 

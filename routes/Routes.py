@@ -16,31 +16,34 @@ routes_module = Blueprint('Routes', __name__)
 
 @routes_module.route('/', methods=["GET"])
 def hello_world():  # put application's cod e here
-    # class类型
-    SearchKeyword = urllib.parse.quote(request.args.get('class'))
-    print(SearchKeyword)
-    regName = request.args.get('reg')
-    if not SearchKeyword or SearchKeyword == "" or SearchKeyword == "undefined":
-        SearchKeyword = "all"
-    if not regName or regName == "" or regName == "undefined":
-        regName = "all"
-    print(SearchKeyword)
-    # 总岗位数
-    jobNums = fun.getJobsNums(SearchKeyword)
-    # 今日更新
-    toDayUpdate = fun.toDayUpdata(SearchKeyword)
-    # 查看过的数目
-    statusTrueNums = fun.viewStatus(True, SearchKeyword)
-    # 今日最新
-    latestToday = fun.latestToday(SearchKeyword, regName)
-    # 分类
-    classList = fun.getSearchKeywordClass()
-    # 薪资格式化
-    setPayFormat(SearchKeyword)
+    # 没有get请求参数时跳转/?class=all
+    if request.args == {}:
+        return redirect('/?class=all&reg=all')
+    else:
+        SearchKeyword = urllib.parse.quote(request.args.get('class'))
+        print(SearchKeyword)
+        regName = request.args.get('reg')
+        if not SearchKeyword or SearchKeyword == "" or SearchKeyword == "undefined":
+            SearchKeyword = "all"
+        if not regName or regName == "" or regName == "undefined":
+            regName = "all"
+        print(SearchKeyword)
+        # 总岗位数
+        jobNums = fun.getJobsNums(SearchKeyword)
+        # 今日更新
+        toDayUpdate = fun.toDayUpdata(SearchKeyword)
+        # 查看过的数目
+        statusTrueNums = fun.viewStatus(True, SearchKeyword)
+        # 今日最新
+        latestToday = fun.latestToday(SearchKeyword, regName)
+        # 分类
+        classList = fun.getSearchKeywordClass()
+        # 薪资格式化
+        setPayFormat(SearchKeyword)
 
-    return render_template('index.html', jobNums=jobNums, toDayUpdate=toDayUpdate, statusTrueNums=statusTrueNums,
-                           latestToday=latestToday, setPayFormat=setPayFormat, classList=classList,
-                           SearchKeyword=SearchKeyword,urllib=urllib)
+        return render_template('index.html', jobNums=jobNums, toDayUpdate=toDayUpdate, statusTrueNums=statusTrueNums,
+                               latestToday=latestToday, setPayFormat=setPayFormat, classList=classList,
+                               SearchKeyword=SearchKeyword, urllib=urllib)
 
 
 @routes_module.route('/browser_args', methods=["GET", "POST"])

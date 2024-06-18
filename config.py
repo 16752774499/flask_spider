@@ -5,7 +5,10 @@ dbcfg: dict = {
     "user": "xiaohua",
     "passwd": "bwEP3xAahekCRHJQ"
 }
-
-serverCfg: dict = {
-
+# password='redis_QBc2mF'
+redisCfg: dict = {
+    "host": "192.168.43.53",
+    "port": 6379,
+    "db": 0,
+    "password": "redis_QBc2mF"
 }

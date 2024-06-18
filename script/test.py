@@ -1679,3 +1679,14 @@
 # #                 Pay = round(((int(tempList2[0]) + int(tempList2[1])) / 2), 1)
 # #                 return Pay
 # #
+
+import redis
+
+# 连接到本地的 Redis 实例
+r = redis.Redis(host='192.168.43.53', port=6379, db=0, password='redis_QBc2mF')
+
+# 设置一个 key
+r.set('name', 'xiaohua')
+
+# 获取一个 key
+print(r.get('name'))

@@ -6,7 +6,7 @@ from script import fun
 from spider import spider
 
 
-def ParseParameters(domain_name: str, url: str, XpathList: str, page_num: int) -> dict:
+def ParseParameters(domain_name: str, url: str, XpathList: str, page_num: int) -> tuple:
     # 检查数据第几列
     # 构造每一条xpath
     allXpath: dict = {}

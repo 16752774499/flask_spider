@@ -12,3 +12,10 @@ redisCfg: dict = {
     "db": 0,
     "password": "redis_QBc2mF"
 }
+
+anPushCfg: dict = {
+    "apiKey": "ZKKL659CGVWW6T8AS1LG8W7E07BO27",
+    "channelId": "68317",
+    "to": "ov_2X6V-jeNpmPdj9DUXcEQwj1_I",
+    "url": "https://api.anpush.com/push/ZKKL659CGVWW6T8AS1LG8W7E07BO27"
+}

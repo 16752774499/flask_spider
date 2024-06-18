@@ -1692,9 +1692,9 @@
 # r.set("age",13)
 # print(site(r.get("age")))
 # r.close()
-state = True
-msg = "test"
-# 将布尔类型转换为字符串
-state_str = str(state).lower()  # 转换为小写字符串形式
-Msg = '{{"state":{0},"Msg":"{1}"}}'.format(state_str, msg)
-print(Msg)
+# state = True
+# msg = "test"
+# # 将布尔类型转换为字符串
+# state_str = str(state).lower()  # 转换为小写字符串形式
+# Msg = '{{"state":{0},"Msg":"{1}"}}'.format(state_str, msg)
+# print(Msg)

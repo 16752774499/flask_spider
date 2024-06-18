@@ -107,33 +107,41 @@ def visualizeData():
     else:
         json.dumps({"code": "10001", "message": 'tasks数据库插入失败！'})
     if domain_name == "www.zhipin.com":
-        data = fun.formattingData(domain_name=domain_name,
-                                  data=boss.ParseParameters(domain_name=domain_name, url=url, page_num=int(page_num),
-                                                            XpathList=fun.setParsingRules(domain_name=domain_name)))
-        if data:
+        data, state = fun.formattingData(domain_name=domain_name,
+                                         data=boss.ParseParameters(domain_name=domain_name, url=url,
+                                                                   page_num=int(page_num),
+                                                                   XpathList=fun.setParsingRules(
+                                                                       domain_name=domain_name)))
+        if state:
             if fun.insertDBJobs(data, Keyword):
                 # 任务正常完成
                 fun.modifyTaskState(True, taskId)
+                fun.pushMsg(title=taskId, content="ID:{0}正常完成".format(taskId))
                 return json.dumps(data)
 
             else:
                 fun.modifyTaskState(False, taskId, "jobs数据库插入失败！")
+                fun.pushMsg(title=taskId, content="{0}数据库插入失败！".format(taskId))
                 json.dumps({"code": "10001", "message": 'jobs数据库插入失败！'})
         else:
             fun.modifyTaskState(False, taskId, "采集任务发生错误！")
             json.dumps({"code": "10001", "message": '采集任务发生错误！'})
 
     elif domain_name == "sou.zhaopin.com":
-        data = fun.formattingData(domain_name=domain_name,
-                                  data=zhipin.ParseParameters(domain_name=domain_name, url=url, page_num=int(page_num),
-                                                              XpathList=fun.setParsingRules(domain_name=domain_name)))
-        if data:
+        data, state = fun.formattingData(domain_name=domain_name,
+                                         data=zhipin.ParseParameters(domain_name=domain_name, url=url,
+                                                                     page_num=int(page_num),
+                                                                     XpathList=fun.setParsingRules(
+                                                                         domain_name=domain_name)))
+        if state:
             if fun.insertDBJobs(data, Keyword):
                 # 任务正常完成
                 fun.modifyTaskState(True, taskId)
+                fun.pushMsg(title=taskId, content="ID:{0}正常完成".format(taskId))
                 return json.dumps(data)
             else:
                 fun.modifyTaskState(False, taskId, "jobs数据库插入失败！")
+                fun.pushMsg(title=taskId, content="{0}数据库插入失败！".format(taskId))
                 json.dumps({"code": "10001", "message": 'jobs数据库插入失败！'})
         else:
             fun.modifyTaskState(False, taskId, "采集任务发生错误！")

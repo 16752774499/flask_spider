@@ -1,12 +1,13 @@
 # 通过自动话实现翻页
 
 import json
-from spider import spider
+
 from script import fun
+from spider import spider
 
 
 # 20条每页
-def ParseParameters(domain_name: str, url: str, XpathList: str, page_num: int) -> dict:
+def ParseParameters(domain_name: str, url: str, XpathList: str, page_num: int) -> tuple:
     # 构造每一条xpath
     allXpath: dict = {}
     for i in range(1, 21):

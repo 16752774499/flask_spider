@@ -3,6 +3,7 @@ import urllib
 from datetime import date, datetime, timedelta
 
 import redis
+import requests
 from sqlalchemy import create_engine, func
 from sqlalchemy.orm import sessionmaker
 
@@ -166,7 +167,7 @@ def setParsingRules(domain_name: str) -> str:
 
 
 # 格式化数据（需要可视化的数据）
-def formattingData(domain_name: str, data: dict) -> list:
+def formattingData(domain_name: str, data: tuple) -> tuple:
     """
     根据给定的域名对字典数据进行格式化处理，并返回处理后的列表。
 
@@ -178,27 +179,31 @@ def formattingData(domain_name: str, data: dict) -> list:
         list: 格式化处理后的列表。
 
     """
-    dataList: list = returnList(data=data)
-    if domain_name == "www.zhipin.com":
+    try:
+        dataList: list = returnList(data=data[0])
+        if domain_name == "www.zhipin.com":
 
-        for i, j in enumerate(dataList):
-            j[1], j[10] = j[10], j[1]
-            j[3], j[10] = j[10], j[3]
-            j[5], j[10] = j[10], j[5]
-            j[6], j[10] = j[10], j[6]
-            j[7], j[10] = j[10], j[7]
-            j[9], j[10] = j[10], j[9]
-            j[8], j[9] = j[9], j[8]
-            # print(i, j)
+            for i, j in enumerate(dataList):
+                j[1], j[10] = j[10], j[1]
+                j[3], j[10] = j[10], j[3]
+                j[5], j[10] = j[10], j[5]
+                j[6], j[10] = j[10], j[6]
+                j[7], j[10] = j[10], j[7]
+                j[9], j[10] = j[10], j[9]
+                j[8], j[9] = j[9], j[8]
+                # print(i, j)
 
-    elif domain_name == "sou.zhaopin.com":
+        elif domain_name == "sou.zhaopin.com":
 
-        for i, j in enumerate(dataList):
-            j[2], j[3] = j[3], j[2]
-            j[4], j[5] = j[5], j[4]
-            j[8], j[9] = j[9], j[8]
-
-    return dataList
+            for i, j in enumerate(dataList):
+                j[2], j[3] = j[3], j[2]
+                j[4], j[5] = j[5], j[4]
+                j[8], j[9] = j[9], j[8]
+        return dataList, True
+    except Exception as e:
+        print("格式化数据过程中出现异常：", e)
+        pushMsg(title="格式化数据过程中出现异常", content=str(e))
+        return {}, False
 
 
 def returnList(data: dict) -> list:
@@ -665,3 +670,30 @@ def modifyTaskState(state: bool, TaskId: str, msg: str = "运行完毕") -> None
     session.commit()
     session.close()
     return None
+
+
+def pushMsg(title: str, content: str) -> bool:
+    """
+    发送推送消息
+
+    Args:
+        title (str): 消息标题
+        content (str): 消息内容
+
+    Returns:
+        bool: 若发送成功则返回True，否则返回False
+    """
+    headers = {
+        "Content-Type": "application/x-www-form-urlencoded"
+    }
+    payload: dict = {
+        "title": title,
+        "content": content,
+        "channel": config.anPushCfg["channelId"],
+        "to": config.anPushCfg["to"],
+    }
+    response = json.loads(requests.post(config.anPushCfg["url"], headers=headers, data=payload).text)
+    if response["code"] == 200 and response["msg"] == "success":
+        return True
+    else:
+        return False

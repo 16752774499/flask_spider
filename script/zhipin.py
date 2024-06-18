@@ -25,7 +25,5 @@ def ParseParameters(domain_name: str, url: str, XpathList: str, page_num: int) -
 
 # 傻逼智联
 # 隐藏页面元素
-
-
 # /html/body/div/div[4]/div[2]/div[2]/div/div[1]/div[1]  第一页
 # /html/body/div/div[4]/div[2]/div[2]/div/div[1]/div[1] 第二页

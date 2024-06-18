@@ -263,6 +263,7 @@ def insertDBJobs(dataList: list, Keyword: str) -> bool:
 
 def insertDbTask(formParams: dict) -> bool:
     session = returnDbSession()
+    redisSession = returnRedisSession()
     try:
         task = Tasks(taskId=formParams["taskId"], CollectionPurpose=formParams["CollectionPurpose"],
                      SearchKeyword=formParams["Keyword"], CollectionPages=formParams["page_num"],
@@ -270,7 +271,10 @@ def insertDbTask(formParams: dict) -> bool:
                      CollectionUrl=formParams["url"])
         session.add(task)
         session.commit()
+        # 0.正在运行        1.运行成功          -1.运行失败
+        redisSession.set(formParams["taskId"], "0")
         session.close()
+        redisSession.close()
         print("数据插入成功")
         return True
     except Exception as e:
@@ -410,6 +414,8 @@ def latestToday(SearchKeyword: str, regName: str) -> list:
             :param SearchKeyword:
 
     """
+    if regName != "all":
+        regName = regName[:-1]
     latestTodayList: list = []
     session = returnDbSession()
     if SearchKeyword == "all":
@@ -632,3 +638,30 @@ def returnRedisSession() -> object:
     redisSession = redis.Redis(host=config.redisCfg["host"], port=config.redisCfg["port"], db=config.redisCfg["db"],
                                password=config.redisCfg["password"])
     return redisSession
+
+
+def modifyTaskState(state: bool, TaskId: str, msg: str = "运行完毕") -> None:
+    session = returnDbSession()
+    redisSession = returnRedisSession()
+    # 0.正在运行        1.运行成功          -1.运行失败
+    # 将布尔类型转换为字符串
+    state_str = str(state).lower()  # 转换为小写字符串形式
+    Msg = '{{"state":{0},"Msg":"{1}"}}'.format(state_str, msg)
+    if state:
+        redisSession.set(TaskId, 1)
+        # 查询指定 id 的记录
+        task = session.query(Tasks).filter_by(taskId=TaskId).first()
+        if task:
+            # 更新 status 值
+            task.status = str(Msg)
+    else:
+        redisSession.set(TaskId, -1)
+        # 查询指定 id 的记录
+        task = session.query(Tasks).filter_by(taskId=TaskId).first()
+        if task:
+            # 更新 status 值
+            task.status = str(Msg)
+    redisSession.close()
+    session.commit()
+    session.close()
+    return None

@@ -35,7 +35,7 @@ def hello_world():  # put application's cod e here
         # 查看过的数目
         statusTrueNums = fun.viewStatus(True, SearchKeyword)
         # 今日最新
-        latestToday = fun.latestToday(SearchKeyword, regName[:-1])
+        latestToday = fun.latestToday(SearchKeyword, regName)
         # 分类
         classList = fun.getSearchKeywordClass()
         # 薪资格式化
@@ -101,6 +101,7 @@ def visualizeData():
     url = request.form.get('url')
     page_num = request.form.get('page_num')
     Keyword = request.form.get('Keyword')
+    taskId = request.form.get('taskId')
     if fun.insertDbTask(formParams=request.form):
         pass
     else:
@@ -111,10 +112,15 @@ def visualizeData():
                                                             XpathList=fun.setParsingRules(domain_name=domain_name)))
         if data:
             if fun.insertDBJobs(data, Keyword):
+                # 任务正常完成
+                fun.modifyTaskState(True, taskId)
                 return json.dumps(data)
+
             else:
+                fun.modifyTaskState(False, taskId, "jobs数据库插入失败！")
                 json.dumps({"code": "10001", "message": 'jobs数据库插入失败！'})
         else:
+            fun.modifyTaskState(False, taskId, "采集任务发生错误！")
             json.dumps({"code": "10001", "message": '采集任务发生错误！'})
 
     elif domain_name == "sou.zhaopin.com":
@@ -123,10 +129,14 @@ def visualizeData():
                                                               XpathList=fun.setParsingRules(domain_name=domain_name)))
         if data:
             if fun.insertDBJobs(data, Keyword):
+                # 任务正常完成
+                fun.modifyTaskState(True, taskId)
                 return json.dumps(data)
             else:
+                fun.modifyTaskState(False, taskId, "jobs数据库插入失败！")
                 json.dumps({"code": "10001", "message": 'jobs数据库插入失败！'})
         else:
+            fun.modifyTaskState(False, taskId, "采集任务发生错误！")
             json.dumps({"code": "10001", "message": '采集任务发生错误！'})
     else:
         return json.dumps({"code": "10001", "message": '不在采集范围内'})

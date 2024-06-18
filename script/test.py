@@ -1679,10 +1679,22 @@
 # #                 Pay = round(((int(tempList2[0]) + int(tempList2[1])) / 2), 1)
 # #                 return Pay
 # #
-
-from script import fun
-# 连接到本地的 Redis 实例
-r = fun.returnRedisSession()
-r.set("name", "xiaohua")
-print(r.get("name"))
-r.close()
+# d = {
+#     "name": "123",
+#     "age": "123",
+#     "sex": "123",
+#     "address": "123",
+# }
+#
+# from script import fun
+# # 连接到本地的 Redis 实例
+# r = fun.returnRedisSession()
+# r.set("age",13)
+# print(site(r.get("age")))
+# r.close()
+state = True
+msg = "test"
+# 将布尔类型转换为字符串
+state_str = str(state).lower()  # 转换为小写字符串形式
+Msg = '{{"state":{0},"Msg":"{1}"}}'.format(state_str, msg)
+print(Msg)

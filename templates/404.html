@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>出错啦！</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="The most powerful Coming Soon / Errors / Domain For Sale template">
+    <meta name="keywords" content="Enter, your, keywords">
+    <link href="http://povestea-noastra.com/theme/huge404/Poly%20World%203D/404/images/favicon.ico" rel="shortcut icon"
+          type="image/x-icon">
+    <link rel="stylesheet" href="../static/404/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/404/css/style.css">
+    <script src="../static/js/config.js"></script>
+</head>
+<body>
+<div id="world"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
+            <div class="content">
+                <a class="logo" href="javascript:;">
+                    <img src="../static/404/picture/logo.png">
+                </a>
+                <h1>404</h1>
+                <h2>{{ msg }}</h2>
+                <a class="btn" id="btn" href="javascript:;">
+                    Go back to our Homepage
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src='../static/404/js/three.min.js'></script>
+<script src="../static/404/js/index.js"></script>
+</body>
+<script>
+    const btn = document.getElementById('btn');
+    btn.onclick = function () {
+        window.location.href = ipAddresses;
+    }
+
+</script>
+</html>

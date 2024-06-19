@@ -1,6 +1,6 @@
 import json
 
-from flask import render_template, Blueprint
+from flask import render_template, Blueprint, request
 
 # 创建蓝图对象
 from script import fun
@@ -39,3 +39,14 @@ def returnClassList():
 @routes_module.route('/WeeklyDataVolumeList', methods=["GET"])
 def WeeklyDataVolumeList():
     return json.dumps(fun.WeeklyDataVolumeList())
+
+
+@routes_module.route('/checkTaskIdState', methods=["GET"])
+def checkTaskIdState():
+    taskId = request.args.get('taskId')
+    redisSession = fun.returnRedisSession()
+    taskIdState = redisSession.get(taskId)
+    taskIdStateStraight = taskIdState.decode('utf-8')
+    redisSession.close()
+    print(taskIdStateStraight)
+    return json.dumps({"state": str(taskIdStateStraight)})

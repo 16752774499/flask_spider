@@ -192,5 +192,5 @@ def task(driver, allXpath: dict, NextButton: object, domain_name: str, pageNum: 
         return data_obj, True
     except Exception as e:
         print(e)
-        fun.pushMsg(title="采集任务出错", content=str(e))
+        fun.pushMsg(title="spider执行任务时出错！", content=str(e))
         return {}, False

@@ -1698,3 +1698,22 @@
 # state_str = str(state).lower()  # 转换为小写字符串形式
 # Msg = '{{"state":{0},"Msg":"{1}"}}'.format(state_str, msg)
 # print(Msg)
+import json
+
+from models.jobs import Tasks
+from script.fun import returnDbSession
+
+
+def getTasksList() -> list:
+    TasksList: list = []
+    session = returnDbSession()
+    tasks = session.query(Tasks).all()
+    for task in tasks:
+        task.status = json.loads(task.status)
+        print(task.__dict__)
+        TasksList.append(task.__dict__)
+    session.close()
+    return TasksList
+
+
+getTasksList()

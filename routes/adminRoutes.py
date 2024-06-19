@@ -13,7 +13,11 @@ def admin():
     jobNums = fun.getJobsNums("all")
     classList = fun.getSearchKeywordClass()
     statusTrueNums = fun.viewStatus(True, "all")
-    return render_template('AdminIndex.html', jobNums=jobNums, classNums=len(classList), statusTrueNums=statusTrueNums)
+    tasksList = fun.getTasksList()
+
+    return render_template('AdminIndex.html', jobNums=jobNums, classNums=len(classList), statusTrueNums=statusTrueNums,
+                           tasksList=tasksList, json=json)
+    # json.loads()
 
 
 @routes_module.route('/adminFrom', methods=["GET"])

@@ -448,7 +448,7 @@
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-header">
-                                <div class="card-title">交易历史记录</div>
+                                <div class="card-title">采集历史记录</div>
                             </div>
                             <div class="card-body">
                                 <canvas class="js-chartjs-lines"></canvas>
@@ -463,126 +463,88 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <header class="card-header">
-                                <div class="card-title">项目信息</div>
+                                <div class="card-title">采集任务信息</div>
                             </header>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-hover">
                                         <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>项目名称</th>
-                                            <th>开始日期</th>
-                                            <th>截止日期</th>
+                                            <th>任务id</th>
+                                            <th>任务关键字</th>
+                                            <th>任务目标</th>
+                                            <th>任务时间</th>
                                             <th>状态</th>
-                                            <th>进度</th>
+                                            <th>任务目的</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>设计新主题</td>
-                                            <td>10/02/2019</td>
-                                            <td>12/05/2019</td>
-                                            <td><span class="badge bg-warning">待定</span></td>
-                                            <td>
-                                                <div class="progress progress-xs">
-                                                    <div class="progress-bar progress-bar-striped bg-warning"
-                                                         style="width: 45%;"></div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>网站重新设计</td>
-                                            <td>01/03/2019</td>
-                                            <td>12/04/2019</td>
-                                            <td><span class="badge bg-success">进行中</span></td>
-                                            <td>
-                                                <div class="progress progress-xs">
-                                                    <div class="progress-bar progress-bar-striped bg-success"
-                                                         style="width: 30%;"></div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>模型设计</td>
-                                            <td>10/10/2019</td>
-                                            <td>12/11/2019</td>
-                                            <td><span class="badge bg-warning">待定</span></td>
-                                            <td>
-                                                <div class="progress progress-xs">
-                                                    <div class="progress-bar progress-bar-striped bg-warning"
-                                                         style="width: 25%;"></div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>后台管理系统模板设计</td>
-                                            <td>25/01/2019</td>
-                                            <td>09/05/2019</td>
-                                            <td><span class="badge bg-success">进行中</span></td>
-                                            <td>
-                                                <div class="progress progress-xs">
-                                                    <div class="progress-bar progress-bar-striped bg-success"
-                                                         style="width: 55%;"></div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>前端设计</td>
-                                            <td>10/10/2019</td>
-                                            <td>12/12/2019</td>
-                                            <td><span class="badge bg-danger">未开始</span></td>
-                                            <td>
-                                                <div class="progress progress-xs">
-                                                    <div class="progress-bar progress-bar-striped bg-danger"
-                                                         style="width: 0%;"></div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>6</td>
-                                            <td>桌面软件测试</td>
-                                            <td>10/01/2019</td>
-                                            <td>29/03/2019</td>
-                                            <td><span class="badge bg-success">进行中</span></td>
-                                            <td>
-                                                <div class="progress progress-xs">
-                                                    <div class="progress-bar progress-bar-striped bg-success"
-                                                         style="width: 75%;"></div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>7</td>
-                                            <td>APP改版开发</td>
-                                            <td>25/02/2019</td>
-                                            <td>12/05/2019</td>
-                                            <td><span class="badge bg-danger">暂停</span></td>
-                                            <td>
-                                                <div class="progress progress-xs">
-                                                    <div class="progress-bar progress-bar-striped bg-danger"
-                                                         style="width: 15%;"></div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>8</td>
-                                            <td>Logo设计</td>
-                                            <td>10/02/2019</td>
-                                            <td>01/03/2019</td>
-                                            <td><span class="badge bg-warning">完成</span></td>
-                                            <td>
-                                                <div class="progress progress-xs">
-                                                    <div class="progress-bar progress-bar-striped bg-success"
-                                                         style="width: 100%;"></div>
-                                                </div>
-                                            </td>
-                                        </tr>
+
+                                        {#                                        <tr>#}
+                                        {#                                            <td>6</td>#}
+                                        {#                                            <td>桌面软件测试</td>#}
+                                        {#                                            <td>10/01/2019</td>#}
+                                        {#                                            <td>29/03/2019</td>#}
+                                        {#                                            <td><span class="badge bg-success">进行中</span></td>#}
+                                        {#                                            <td>#}
+                                        {#                                                <div class="progress progress-xs">#}
+                                        {#                                                    <div class="progress-bar progress-bar-striped bg-success"#}
+                                        {#                                                         style="width: 75%;"></div>#}
+                                        {#                                                </div>#}
+                                        {#                                            </td>#}
+                                        {#                                        </tr>#}
+                                        {#                                        <tr>#}
+                                        {#                                            <td>7</td>#}
+                                        {#                                            <td>APP改版开发</td>#}
+                                        {#                                            <td>25/02/2019</td>#}
+                                        {#                                            <td>12/05/2019</td>#}
+                                        {#                                            <td><span class="badge bg-danger">暂停</span></td>#}
+                                        {#                                            <td>#}
+                                        {#                                                <div class="progress progress-xs">#}
+                                        {#                                                    <div class="progress-bar progress-bar-striped bg-danger"#}
+                                        {#                                                         style="width: 15%;"></div>#}
+                                        {#                                                </div>#}
+                                        {#                                            </td>#}
+                                        {#                                        </tr>#}
+                                        {#                                        <tr>#}
+                                        {#                                            <td>8</td>#}
+                                        {#                                            <td>Logo设计</td>#}
+                                        {#                                            <td>10/02/2019</td>#}
+                                        {#                                            <td>01/03/2019</td>#}
+                                        {#                                            <td><span class="badge bg-warning">完成</span></td>#}
+                                        {#                                            <td>#}
+                                        {#                                                <div class="progress progress-xs">#}
+                                        {#                                                    <div class="progress-bar progress-bar-striped bg-success"#}
+                                        {#                                                         style="width: 100%;"></div>#}
+                                        {#                                                </div>#}
+                                        {#                                            </td>#}
+                                        {#                                        </tr>#}
+                                        {% for item in tasksList %}
+                                            <tr>
+                                                <td>{{ item.taskId }}</td>
+                                                <td>{{ item.SearchKeyword }}</td>
+                                                <td>{{ item.CollectionTarget }}</td>
+                                                <td>{{ item.addTime }}</td>
+                                                {% if json.loads(item.status)["state"] == true %}
+                                                    <td><span
+                                                            class="badge bg-success">{{ json.loads(item.status)["Msg"] }}</span>
+                                                    </td>
+                                                {% elif json.loads(item.status)["state"] == false %}
+                                                    <td><span
+                                                            class="badge bg-danger">{{ json.loads(item.status)["Msg"] }}</span>
+                                                    </td>
+                                                {% elif json.loads(item.status)["state"] == "Running" %}
+                                                    <td><span
+                                                            class="badge bg-warning">{{ json.loads(item.status)["Msg"] }}</span>
+                                                    </td>
+                                                {% endif %}
+                                                <td>
+                                                    {{ item.CollectionPurpose }}
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+
+
                                         </tbody>
                                     </table>
                                 </div>

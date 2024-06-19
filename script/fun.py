@@ -180,6 +180,8 @@ def formattingData(domain_name: str, data: tuple) -> tuple:
 
     """
     try:
+        if data[1] is False:
+            return {}, False
         dataList: list = returnList(data=data[0])
         if domain_name == "www.zhipin.com":
 
@@ -194,7 +196,6 @@ def formattingData(domain_name: str, data: tuple) -> tuple:
                 # print(i, j)
 
         elif domain_name == "sou.zhaopin.com":
-
             for i, j in enumerate(dataList):
                 j[2], j[3] = j[3], j[2]
                 j[4], j[5] = j[5], j[4]
@@ -425,18 +426,18 @@ def latestToday(SearchKeyword: str, regName: str) -> list:
     session = returnDbSession()
     if SearchKeyword == "all":
         if regName == "all":
-            latest_records = session.query(Jobs).order_by(Jobs.id.desc()).all()
+            latest_records = session.query(Jobs).order_by(Jobs.id.desc()).limit(30)
         else:
             latest_records = session.query(Jobs).order_by(Jobs.id.desc()).filter(
-                Jobs.jobAddress.like(f'%{regName}%')).all()
+                Jobs.jobAddress.like(f'%{regName}%')).limit(30)
     else:
         if regName == "all":
             latest_records = session.query(Jobs).filter(
-                Jobs.SearchKeyword == urllib.parse.unquote(SearchKeyword)).order_by(Jobs.id.desc()).all()
+                Jobs.SearchKeyword == urllib.parse.unquote(SearchKeyword)).order_by(Jobs.id.desc()).limit(30)
         else:
             latest_records = session.query(Jobs).filter(
                 Jobs.SearchKeyword == urllib.parse.unquote(SearchKeyword)).order_by(Jobs.id.desc()).filter(
-                Jobs.jobAddress.like(f'%{regName}%')).all()
+                Jobs.jobAddress.like(f'%{regName}%')).limit(30)
     for record in latest_records:
         # print(record.jobCorporation, record.jobName, record.jobUrl, record.jobPay)  # 打印每条记录
         latestTodayList.append(
@@ -646,6 +647,18 @@ def returnRedisSession() -> object:
 
 
 def modifyTaskState(state: bool, TaskId: str, msg: str = "运行完毕") -> None:
+    """
+    修改任务状态
+
+    Args:
+        state (bool): 任务状态，True表示任务成功，False表示任务失败
+        TaskId (str): 任务ID
+        msg (str, optional): 任务状态信息，默认为"运行完毕"。
+
+    Returns:
+        None
+
+    """
     session = returnDbSession()
     redisSession = returnRedisSession()
     # 0.正在运行        1.运行成功          -1.运行失败
@@ -697,3 +710,15 @@ def pushMsg(title: str, content: str) -> bool:
         return True
     else:
         return False
+
+
+def getTasksList() -> list:
+    TasksList: list = []
+    session = returnDbSession()
+    tasks = session.query(Tasks).all()
+    for task in tasks:
+        # task.status = json.dumps(task.status)
+        print(task.__dict__)
+        TasksList.append(task)
+    session.close()
+    return TasksList

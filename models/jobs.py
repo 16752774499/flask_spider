@@ -36,7 +36,7 @@ class Tasks(Base):
     CollectionPages = Column(String(8), nullable=False, name="采集任务页数")
     CollectionCity = Column(String(128), nullable=False, name="采集任务城市")
     CollectionTarget = Column(String(128), index=True, nullable=False, name="采集任务目标")
-    status = Column(String(64), default="Running", index=True, nullable=False, name="采集任务状态")
+    status = Column(String(64), default='{"state":"Running","Msg":"正在运行"}', index=True, nullable=False, name="采集任务状态")
     CollectionUrl = Column(Text, nullable=False, name="采集任务详情")
     addTime = Column(DateTime, default=datetime.datetime.now, nullable=False, name="采集任务时间")
 

@@ -7,11 +7,7 @@
     <script type="text/javascript" src="../static/js/jquery.js"></script>
     <link rel="stylesheet" href="../static/css/comon0.css">
     <!--引入 element-ui 的样式，-->
-    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-    <!-- 必须先引入vue，  后使用element-ui -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
-    <!-- 引入element 的组件库-->
-    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
 
 </head>
 <body>
@@ -223,16 +219,6 @@
             scrollamount: 20//速度
         });
     });
-    new Vue({
-        //    此处指向vue组件所要渲染的DOM标签 <div id="box"></div>   el:'#box'  用id属性标识 也可用class属性
-        // 如果是class <div class="box"></div>   el:'.box'
-        // 总之最外层div用class或id绑定js ，下面el对应body对外层div选择器名称，绑定之后才可以使用elementui中组件内容
-        el: '#app',
-        data() {
-            return {}
-        },
-        methods: {}
-    })
 
 </script>
 <meta http-equiv="refresh" content="50;">

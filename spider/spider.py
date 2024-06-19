@@ -30,110 +30,123 @@ def work(url: str, allXpath: dict, domain_name: str, page_num: int) -> tuple:
     if domain_name == "www.zhipin.com":
         # //*[@id="wrap"]/div[2]/div[2]/div/div[1]/div[2]/div/div/div/a[10]
         # 处理boos页面xpath不统一
-        Data: dict = {}
-        for num in range(page_num):
-            time.sleep(1)
-            if num == 0:
+        try:
+            Data: dict = {}
+            for num in range(page_num):
+                time.sleep(1)
+                if num == 0:
+                    script = """
+                                el = document.querySelector("#wrap > div.page-job-wrapper > div.page-job-inner > div > div.job-list-wrapper > div.company-card-wrapper.clearfix");
+                                if(el){
+                                    el.remove();
+                                }   
+                            """
+                    driver.execute_script(script)
+                pageId = "page_" + str(num + 1)
+                if num == 0:
+                    NextButton = driver.find_element(By.CLASS_NAME, "ui-icon-arrow-right")
+                    Data[pageId], state = task(driver=driver, allXpath=allXpath, NextButton=NextButton,
+                                               domain_name=domain_name,
+                                               pageNum=(num + 1), url=url)
+                    if state is False:
+                        return {}, False
+                else:
+                    NextButton = driver.find_element(By.CLASS_NAME, "ui-icon-arrow-right")
+                    Data[pageId], state = task(driver=driver, allXpath=fun.editBossXpath(allXpath=allXpath),
+                                               NextButton=NextButton,
+                                               domain_name=domain_name, pageNum=(num + 1), url=url)
+                    if state is False:
+                        return {}, False
+            driver.quit()
+            return Data, True
+        except Exception as e:
+            fun.pushMsg(title="spider打开网页时出错！", content=str(e))
+            return {}, False
+    elif domain_name == "we.51job.com":
+        try:
+            Data: dict = {}
+            for num in range(page_num):
+                time.sleep(1)
                 script = """
-                    el = document.querySelector("#wrap > div.page-job-wrapper > div.page-job-inner > div > div.job-list-wrapper > div.company-card-wrapper.clearfix");
-                    if(el){
-                        el.remove();
-                    }   
-                """
+                                 var elements = document.querySelectorAll('div.icon_promotion');
+                                 if(elements){
+                                    elements.forEach(function(element) {
+                                        element.remove();
+                                    });
+                                 } 
+                                """
                 driver.execute_script(script)
-            pageId = "page_" + str(num + 1)
-            if num == 0:
-                NextButton = driver.find_element(By.CLASS_NAME, "ui-icon-arrow-right")
+                pageId = "page_" + str(num + 1)
+                NextButton = driver.find_element(By.CLASS_NAME, "btn-next")
                 Data[pageId], state = task(driver=driver, allXpath=allXpath, NextButton=NextButton,
                                            domain_name=domain_name,
                                            pageNum=(num + 1), url=url)
                 if state is False:
                     return {}, False
-            else:
-                NextButton = driver.find_element(By.CLASS_NAME, "ui-icon-arrow-right")
-                Data[pageId], state = task(driver=driver, allXpath=fun.editBossXpath(allXpath=allXpath),
-                                           NextButton=NextButton,
-                                           domain_name=domain_name, pageNum=(num + 1), url=url)
-                if state is False:
-                    return {}, False
-        driver.quit()
-        return Data, True
-    elif domain_name == "we.51job.com":
-        Data: dict = {}
-        for num in range(page_num):
-            time.sleep(1)
-            script = """
-                     var elements = document.querySelectorAll('div.icon_promotion');
-                     if(elements){
-                        elements.forEach(function(element) {
-                            element.remove();
-                        });
-                     } 
-                    """
-            driver.execute_script(script)
-            pageId = "page_" + str(num + 1)
-            NextButton = driver.find_element(By.CLASS_NAME, "btn-next")
-            Data[pageId], state = task(driver=driver, allXpath=allXpath, NextButton=NextButton, domain_name=domain_name,
-                                       pageNum=(num + 1), url=url)
-            if state is False:
-                return {}, False
-        driver.quit()
-        return Data, True
+            driver.quit()
+            return Data, True
+        except Exception as e:
+            fun.pushMsg(title="spider打开网页时出错！", content=str(e))
+            return {}, False
     elif domain_name == "sou.zhaopin.com":
 
-        Data: dict = {}
-        for num in range(page_num):
-            # 第一页手动登录
-            if num == 0:
+        try:
+            Data: dict = {}
+            for num in range(page_num):
+                # 第一页手动登录
+                if num == 0:
 
-                script = """
-                    var textBox = document.createElement('input');
+                    script = """
+                                var textBox = document.createElement('input');
 
-                    // 设置文本框的类型为文本框
-                    textBox.type = 'text';
-                    
-                    // 设置文本框的初始值为 "false"
-                    textBox.value = '显示表示未登录';
-                    
-                    // 添加类名 "isLogin" 到文本框
-                    textBox.className = 'xiaohua';
-                    
-                    // 将文本框元素添加到文档的 body 元素中，即网页最底部
-                    document.body.appendChild(textBox);
-                    const loginBtn = document.querySelector('.login-btn');
-                    loginBtn.click();
-                    
-                """
+                                // 设置文本框的类型为文本框
+                                textBox.type = 'text';
+
+                                // 设置文本框的初始值为 "false"
+                                textBox.value = '显示表示未登录';
+
+                                // 添加类名 "isLogin" 到文本框
+                                textBox.className = 'xiaohua';
+
+                                // 将文本框元素添加到文档的 body 元素中，即网页最底部
+                                document.body.appendChild(textBox);
+                                const loginBtn = document.querySelector('.login-btn');
+                                loginBtn.click();
+
+                            """
+                    driver.execute_script(script)
+                    while 1:
+                        try:
+                            state = driver.find_element(By.CLASS_NAME, "xiaohua")
+                            print("标记未消失！")
+                            continue
+                        except NoSuchElementException:
+                            print("标记消失，已经登录")
+                            break
+                pageId = "page_" + str(num + 1)
+                # el = document.querySelector("#positionList-hook > div.business-wrap");
+                # el.remove();
+
+                time.sleep(1)
+                script = """el = document.querySelector("#positionList-hook > div.business-wrap");
+                               if(el){
+                                    el.remove();
+                                }                     
+
+                            """
                 driver.execute_script(script)
-                while 1:
-                    try:
-                        state = driver.find_element(By.CLASS_NAME, "xiaohua")
-                        print("标记未消失！")
-                        continue
-                    except NoSuchElementException:
-                        print("标记消失，已经登录")
-                        break
-            pageId = "page_" + str(num + 1)
-            # el = document.querySelector("#positionList-hook > div.business-wrap");
-            # el.remove();
-
-            time.sleep(1)
-            script = """el = document.querySelector("#positionList-hook > div.business-wrap");
-                   if(el){
-                        el.remove();
-                    }                     
-
-                """
-            driver.execute_script(script)
-            Data[pageId], state = task(driver=driver, allXpath=allXpath, NextButton=None, domain_name=domain_name,
-                                       pageNum=(num + 1), url=url)
-            if state is False:
-                return {}, False
-        driver.quit()
-        return Data, True
+                Data[pageId], state = task(driver=driver, allXpath=allXpath, NextButton=None, domain_name=domain_name,
+                                           pageNum=(num + 1), url=url)
+                if state is False:
+                    return {}, False
+            driver.quit()
+            return Data, True
+        except Exception as e:
+            fun.pushMsg(title="spider打开网页时出错！", content=str(e))
+            return {}, False
     else:
         Data: dict = {"response": "该域名未在采集名单！"}
-        return Data, True
+        return Data, False
 
 
 def task(driver, allXpath: dict, NextButton: object, domain_name: str, pageNum: int, url: str) -> tuple:
@@ -192,5 +205,5 @@ def task(driver, allXpath: dict, NextButton: object, domain_name: str, pageNum: 
         return data_obj, True
     except Exception as e:
         print(e)
-        fun.pushMsg(title="spider执行任务时出错！", content=str(e))
+        fun.pushMsg(title="spider采集时出错！", content=str(e))
         return {}, False

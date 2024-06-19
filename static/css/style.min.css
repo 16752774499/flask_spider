@@ -5017,3 +5017,58 @@ body[data-theme='translucent-pink'],
     border-color: rgba(33, 37, 41, .01);
     color: #D5D9DA;
 }
+.loadingIcon{
+    width: 100px;
+    height: 100px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    border-top: 10px solid #63A69F;
+    /* 相对定位 */
+    position: relative;
+    /* 执行动画：动画a1 时长 线性的 无限次播放 */
+    animation: a1 2s linear infinite;
+}
+.loadingIcon::before,.loadingIcon::after{
+    content: "";
+    width: 100px;
+    height: 100px;
+    /* 绝对定位 */
+    position: absolute;
+    left: 0;
+    top: -10px;
+    box-sizing: border-box;
+    border-radius: 50%;
+}
+.loadingIcon::before{
+    border-top: 10px solid #F2E1AC;
+    /* 旋转120度 */
+    transform: rotate(120deg);
+}
+.loadingIcon::after{
+    border-top: 10px solid #F2836B;
+    /* 旋转240度 */
+    transform: rotate(240deg);
+}
+.loadingIcon span{
+    /* 绝对定位 */
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    color: #fff;
+    /* 执行动画：动画a2 时长 线性的 无限次播放 */
+    animation: a2 2s linear infinite;
+}
+/* 定义动画 */
+@keyframes a1{
+    to{
+        transform: rotate(360deg);
+    }
+}
+@keyframes a2{
+    to{
+        transform: rotate(-360deg);
+    }
+}
+

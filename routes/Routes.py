@@ -122,10 +122,10 @@ def visualizeData():
             else:
                 fun.modifyTaskState(False, taskId, "jobs数据库插入失败！")
                 fun.pushMsg(title=taskId, content="{0}数据库插入失败！".format(taskId))
-                json.dumps({"code": "10001", "message": 'jobs数据库插入失败！'})
+                return json.dumps({"code": "10001", "message": "jobs数据库插入失败！"})
         else:
             fun.modifyTaskState(False, taskId, "采集任务发生错误！")
-            json.dumps({"code": "10001", "message": '采集任务发生错误！'})
+            return json.dumps({"code": "10001", "message": "{0}采集任务发生错误,具体原因请查看微信消息推送！".format(taskId)})
 
     elif domain_name == "sou.zhaopin.com":
         data, state = fun.formattingData(domain_name=domain_name,
@@ -142,12 +142,12 @@ def visualizeData():
             else:
                 fun.modifyTaskState(False, taskId, "jobs数据库插入失败！")
                 fun.pushMsg(title=taskId, content="{0}数据库插入失败！".format(taskId))
-                json.dumps({"code": "10001", "message": 'jobs数据库插入失败！'})
+                return json.dumps({"code": "10001", "message": "jobs数据库插入失败！"})
         else:
             fun.modifyTaskState(False, taskId, "采集任务发生错误！")
-            json.dumps({"code": "10001", "message": '采集任务发生错误！'})
+            return json.dumps({"code": "10001", "message": "{0}采集任务发生错误,具体原因请查看微信消息推送！".format(taskId)})
     else:
-        return json.dumps({"code": "10001", "message": '不在采集范围内'})
+        return json.dumps({"code": "10001", "message": "不在采集范围内"})
 
 
 # 区域数量

@@ -54,3 +54,24 @@ def checkTaskIdState():
     redisSession.close()
     print(taskIdStateStraight)
     return json.dumps({"state": str(taskIdStateStraight)})
+
+
+@routes_module.route('/returnJobsList', methods=["GET"])
+def returnJobsList():
+    limit = request.args.get('limit', default=10, type=int)
+    offset = request.args.get('offset', default=0, type=int)
+    page = request.args.get('page', default=1, type=int)
+    sortOrder = request.args.get('sortOrder', default='asc', type=str)
+    return fun.returnJobsList(limit, offset, page, sortOrder)
+
+
+@routes_module.route('/delJob', methods=["GET"])
+def delJob():
+    jobId = request.args.get('jobId')
+    return fun.delJob(jobId)
+
+
+@routes_module.route('/returnIdsData', methods=["POST"])
+def returnIdsData():
+    jobIds = request.form.get('ids')
+    return fun.returnIdsData(int(num) for num in jobIds.split(','))

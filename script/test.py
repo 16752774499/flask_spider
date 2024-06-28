@@ -1698,22 +1698,16 @@
 # state_str = str(state).lower()  # 转换为小写字符串形式
 # Msg = '{{"state":{0},"Msg":"{1}"}}'.format(state_str, msg)
 # print(Msg)
-import json
 
-from models.jobs import Tasks
-from script.fun import returnDbSession
+from models.jobs import Jobs
+from script import fun
 
+# 创建会话对象
+session = fun.returnDbSession()
 
-def getTasksList() -> list:
-    TasksList: list = []
-    session = returnDbSession()
-    tasks = session.query(Tasks).all()
-    for task in tasks:
-        task.status = json.loads(task.status)
-        print(task.__dict__)
-        TasksList.append(task.__dict__)
-    session.close()
-    return TasksList
-
-
-getTasksList()
+# 查询jobs表中id不为空的所有数据
+results = session.query(Jobs).filter(Jobs.id.isnot(None)).all()
+session.close()
+# 输出查询结果
+for data in results:
+    print(data.id)

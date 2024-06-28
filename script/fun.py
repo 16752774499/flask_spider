@@ -4,11 +4,13 @@ from datetime import date, datetime, timedelta
 
 import redis
 import requests
+from flask import jsonify, Response
 from sqlalchemy import create_engine, func
 from sqlalchemy.orm import sessionmaker
 
 import config
 from models.jobs import Jobs, Tasks
+from script import toolClass
 
 
 def editXpath(original_string: str, start_marker: str, end_marker: str, i: int) -> str:
@@ -722,3 +724,77 @@ def getTasksList() -> list:
         TasksList.append(task)
     session.close()
     return TasksList
+
+
+def returnJobsList(limit, offset, page, sortOrder) -> Response:
+    """
+    返回Jobs表的分页数据列表
+
+    Args:
+        limit (int): 每页显示的数据条数
+        offset (int): 跳过指定数量的数据
+        page (int): 当前页码
+        sortOrder (str): 排序方式，可选值为'asc'（升序）和'desc'（降序）
+
+    Returns:
+        Response: 包含查询结果的响应对象，包括数据列表和总数
+
+    """
+
+    # session = returnDbSession()
+    # results = session.query(Jobs).all()
+    # # 将查询结果转换为字典列表
+    # data_list = [data.__dict__ for data in results]
+    # # 移除'_sa_instance_state'键
+    # for data in data_list:
+    #     data.pop('_sa_instance_state', None)
+    # session.close()
+    # json_str = {"rows": data_list, "total": len(data_list)}
+    # # 定义要包裹JSON数据的JavaScript函数名称
+    # # jsonp_callback = ""
+    # # # 构建JSONP格式的数据
+    # # jsonp_data = f"{jsonp_callback}({json.dumps(json_str, cls=DateTimeEncoder)})"
+    session = returnDbSession()
+
+    query = session.query(Jobs)
+    jobsListLen = query.count()
+    if sortOrder == 'asc':
+        query = query.order_by(Jobs.id.asc())
+    else:
+        query = query.order_by(Jobs.id.desc())
+
+    results = query.limit(limit).offset(offset).all()
+
+    serialized_results = [dict(row.__dict__) for row in results]
+    for data in serialized_results:
+        data.pop('_sa_instance_state', None)
+    session.close()
+
+    return jsonify({"rows": serialized_results, "total": jobsListLen})
+
+
+def delJob(jobId) -> Response:
+    session = returnDbSession()
+    result = session.query(Jobs).filter_by(id=jobId).delete()
+    session.commit()
+    session.close()
+    if result > 0:
+        return jsonify({"code": '10000', "message": 'Success'})
+    else:
+        return jsonify({"code": '10001', "message": 'Failed'})
+
+
+def returnIdsData(jobIds) -> str:
+    jobsList: list = []
+    session = returnDbSession()
+    for ID in list(jobIds):
+        result = session.query(Jobs).filter_by(id=ID).first().__dict__
+        if result:
+            jobsList.append(result)
+        delInstanceState(result)
+    session.close()
+    return json.dumps(jobsList, cls=toolClass.DateTimeEncoder)
+
+
+def delInstanceState(result):
+    result.pop('_sa_instance_state', None)

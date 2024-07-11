@@ -1,5 +1,5 @@
 dbcfg: dict = {
-    "address": "192.168.43.53",
+    "address": "192.168.0.6",
     "port": 3306,
     "dbname": "xiaohua",
     "user": "xiaohua",
@@ -7,7 +7,7 @@ dbcfg: dict = {
 }
 
 redisCfg: dict = {
-    "host": "192.168.43.53",
+    "host": "192.168.0.6",
     "port": 6379,
     "db": 0,
     "password": "redis_QBc2mF"

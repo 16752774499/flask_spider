@@ -9,7 +9,9 @@ from sqlalchemy import create_engine, func
 from sqlalchemy.orm import sessionmaker
 
 import config
-from models.jobs import Jobs, Tasks
+from models.Api import Api
+from models.Tasks import Tasks
+from models.jobs import Jobs
 from script import toolClass
 
 
@@ -773,6 +775,7 @@ def returnJobsList(limit, offset, page, sortOrder) -> Response:
     return jsonify({"rows": serialized_results, "total": jobsListLen})
 
 
+# 删除岗位
 def delJob(jobId) -> Response:
     session = returnDbSession()
     result = session.query(Jobs).filter_by(id=jobId).delete()
@@ -785,6 +788,16 @@ def delJob(jobId) -> Response:
 
 
 def returnIdsData(jobIds) -> str:
+    """
+    根据提供的 jobIds 返回对应的 Jobs 数据字典列表的 JSON 字符串。
+
+    Args:
+        jobIds (list): 包含多个 job ID 的列表。
+
+    Returns:
+        str: 包含 Jobs 数据字典列表的 JSON 字符串。
+
+    """
     jobsList: list = []
     session = returnDbSession()
     for ID in list(jobIds):
@@ -797,4 +810,26 @@ def returnIdsData(jobIds) -> str:
 
 
 def delInstanceState(result):
+    """
+    从字典中删除 '_sa_instance_state' 键及其对应的值。
+
+    Args:
+        result (dict): 需要进行操作的字典，预期包含 '_sa_instance_state' 键。
+
+    Returns:
+        None: 该函数直接修改传入的字典，不返回任何值。
+
+    """
     result.pop('_sa_instance_state', None)
+
+
+def createApi(name: str, url: str) -> dict:
+    try:
+        session = returnDbSession()
+        api = Api(name=name, url=url)
+        session.add(api)
+        session.commit()
+        session.close()
+        return {'code': '10000', 'message': 'Success'}
+    except Exception as e:
+        return {'code': '10001', 'message': str(e)}

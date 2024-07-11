@@ -1,3 +1,3 @@
-ipAddresses = "http://192.168.43.20:5000/"
+ipAddresses = "http://127.0.0.1:5000/"
 
 

@@ -27,20 +27,6 @@ class Jobs(Base):
     SearchKeyword = Column(String(32), index=True, nullable=False, name="采集时的关键字")
 
 
-class Tasks(Base):
-    __tablename__ = 'tasks'  # 数据库表名称
-    id = Column(Integer, primary_key=True)  # 生成一列，类型是Integer，主键
-    taskId = Column(String(128), index=True, nullable=False, name="采集任务ID")
-    CollectionPurpose = Column(String(128), index=True, nullable=False, name="采集任务目的")
-    SearchKeyword = Column(String(32), index=True, nullable=False, name="采集任务时的关键字")
-    CollectionPages = Column(String(8), nullable=False, name="采集任务页数")
-    CollectionCity = Column(String(128), nullable=False, name="采集任务城市")
-    CollectionTarget = Column(String(128), index=True, nullable=False, name="采集任务目标")
-    status = Column(String(64), default='{"state":"Running","Msg":"正在运行"}', index=True, nullable=False, name="采集任务状态")
-    CollectionUrl = Column(Text, nullable=False, name="采集任务详情")
-    addTime = Column(DateTime, default=datetime.datetime.now, nullable=False, name="采集任务时间")
-
-
 
 engine = create_engine(
     "mysql+pymysql://{0}:{4}@{1}:{2}/{3}".format(config.dbcfg["user"], config.dbcfg["address"],

@@ -32,7 +32,7 @@ def adminTask():
 
 @routes_module.route('/adminTable', methods=["GET"])
 def adminTable():
-    return render_template('AdminlDtatTable.html')
+    return render_template('AdminlDataTable.html')
 
 
 @routes_module.route('/returnClassList', methods=["GET"])
@@ -75,3 +75,11 @@ def delJob():
 def returnIdsData():
     jobIds = request.form.get('ids')
     return fun.returnIdsData(int(num) for num in jobIds.split(','))
+
+
+@routes_module.route('/createApi', methods=["post"])
+def createApi():
+    name = request.form.get('name')
+    url = request.form.get('url')
+    print(name, url)
+    return json.dumps(fun.createApi(name, url))

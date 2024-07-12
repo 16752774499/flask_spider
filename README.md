@@ -24,11 +24,11 @@
 # 四、效果演示 ---> [博客](https://www.xaiohua.icu)
 
 > ## 1.Chrome扩展程序，实现自定义的数据采集
->![image](md_src/Chrome扩展自定义采集.gif)
->> [备用地址](https://www.xaiohua.icu/wp-content/uploads/2024/07/Chrome扩展自定义采集.gif)
+>![image](https://www.xaiohua.icu/wp-content/uploads/2024/07/Chrome扩展自定义采集.gif)
+>> [备用地址](md_src/Chrome扩展自定义采集.gif)
 >## 2.Web端后台，发布采集任务
->![image](md_src/Web后台发布采集任务.gif)
->> [备用地址](https://www.xaiohua.icu/wp-content/uploads/2024/07/Web后台发布采集任务.gif)
+>![image](https://www.xaiohua.icu/wp-content/uploads/2024/07/Web后台发布采集任务.gif)
+>> [备用地址](md_src/Web后台发布采集任务.gif)
 >## 3.Web可视化页面（个别数据还未适配）
 >![img_1.png](md_src/img_1.png)
 > ![img.png](md_src/img.png)

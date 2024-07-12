@@ -833,3 +833,29 @@ def createApi(name: str, url: str) -> dict:
         return {'code': '10000', 'message': 'Success'}
     except Exception as e:
         return {'code': '10001', 'message': str(e)}
+
+
+def xueLi():
+    session = returnDbSession()
+    category_count = session.query(Jobs.jobQualification, func.count(Jobs.jobQualification)).group_by(
+        Jobs.jobQualification).all()
+    # 关闭Session
+    session.close()
+    return pyXueLI(category_count)
+
+
+def pyXueLI(items: list) -> jsonify:
+    i: int = 0
+    otherCount: int = 0
+    while i < len(items):
+        if (items[i][0] == "NULL") or ("月" in items[i][0]):
+            otherCount += items[i][1]
+            i += 1
+        else:
+            i += 1
+    items.append(("其他", otherCount))
+    filtered_list = [item for item in items if "月" not in item[0] and item[0] != "NULL"]
+    # filtered_list.append(("总计", sum([int(item[1]) for item in filtered_list])))
+
+    response = [{"value": item[1], "name": item[0]} for item in filtered_list]
+    return jsonify(response)

@@ -164,3 +164,8 @@ def AreaQuantity():
 def changeStatus():
     fun.changeStatus(request.args.get('id'))
     return json.dumps({"code": "10000", "message": "Success"})
+
+
+@routes_module.route('/xueLi', methods=["GET"])
+def xueLi():
+    return fun.xueLi()

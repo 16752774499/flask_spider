@@ -104,7 +104,7 @@ $(function () {
     function echarts_4() {
         var myChart = echarts.init(document.getElementById('echart4'));
         option1 = {
-             backgroundColor: 'rgba(14,93,211,0.08)',
+            backgroundColor: 'rgba(14,93,211,0.08)',
             tooltip: {
                 trigger: 'axis',
                 axisPointer: {
@@ -145,9 +145,9 @@ $(function () {
                 },
                 axisLabel: {
                     interval: 0,
-                    rotate:50,
+                    rotate: 50,
                     show: true,
-                     splitNumber: 2,
+                    splitNumber: 2,
                     textStyle: {
                         color: "rgba(255,255,255,.6)",
                         fontSize: '12',
@@ -216,7 +216,6 @@ $(function () {
                 }
             ]
         };
-
 
 
         myChart.setOption(option1);
@@ -357,89 +356,90 @@ $(function () {
         });
     }
 
+
     function bt01() {
-        var myChart = echarts.init(document.getElementById('bt01'));
-        var data1 = 1//己完成
-        var data2 = 18//未完成
-        var data3 = data2 / (data1 + data2) * 100
-        option = {
-            title: [{
-                text: data3.toFixed(1) + '%',
-                x: 'center', y: '54%',
-                textStyle: {
-                    fontSize: 18,
-                    fontWeight: 'bold',
-                    fontStyle: 'normal',
-                    color: '#fff'
-                }
-            }, {
-                text: '本科以上',
-                x: 'center', y: '68%',
-                textStyle: {
-                    fontSize: 10,
-                    fontWeight: 'normal',
-                    fontStyle: 'normal',
-                    color: 'rgba(255,255,255,.6)'
-                }
+        let myChart = echarts.init(document.getElementById('bt01'));
+        //请求查看所有学历类别
+        const xueLiData = getXueLi().then(res => {
+            console.log(res.data)
+            let data1 = 1;//己完成
+            let data2 = 18;//未完成
+            let sum = 0;
+            res.data.forEach((item) => {
+                sum += item.value;
+            })
+            let foundObject = res.data.find(obj => obj.name === "本科");
+            console.log(sum);
+            option = {
+                title: [{
+                    text: ((foundObject.value) / sum).toFixed(1) * 100 + '%',
+                    x: 'center', y: '54%',
+                    textStyle: {
+                        fontSize: 18,
+                        fontWeight: 'bold',
+                        fontStyle: 'normal',
+                        color: '#fff'
+                    }
+                }, {
+                    text: '本科及以上',
+                    x: 'center', y: '68%',
+                    textStyle: {
+                        fontSize: 10,
+                        fontWeight: 'normal',
+                        fontStyle: 'normal',
+                        color: 'rgba(255,255,255,.6)'
+                    }
 
-            }, {
-                text: '学历要求',
-                x: 'center', y: '20',
-                textStyle: {
-                    fontSize: 14,
-                    fontWeight: 'bold',
-                    color: '#fff'
-                }
+                }, {
+                    text: '学历要求',
+                    x: 'center', y: '20',
+                    textStyle: {
+                        fontSize: 14,
+                        fontWeight: 'bold',
+                        color: '#fff'
+                    }
 
-            }],
-            tooltip: {
-                trigger: 'item',
-                formatter: '{a} <br/>{b}: {c} ({d}%)'
-            },
-            color: ['#58c485', '#ea7231'],
-            series: [
-                {
-                    name: '要求',
-                    type: 'pie', center: ['50%', '65%'], radius: ['45%', '60%'],
-                    startAngle: 360,
-                    avoidLabelOverlap: false,
-                    label: {
-                        normal: {
-                            show: false,
-                            position: 'center'
-                        },
-                        emphasis: {
-                            show: false,
-                            textStyle: {
-                                fontSize: '30',
-                                fontWeight: 'bold'
+                }],
+                tooltip: {
+                    trigger: 'item',
+                    formatter: '{a} <br/>{b}: {c} ({d}%)'
+                },
+                color: ['#58c485', '#ea7231', '#ce0c0c', '#255786'],
+                series: [
+                    {
+                        name: '学历要求',
+                        type: 'pie', center: ['50%', '65%'], radius: ['45%', '60%'],
+                        startAngle: 360,
+                        avoidLabelOverlap: false,
+                        label: {
+                            normal: {
+                                show: false,
+                                position: 'center'
+                            },
+                            emphasis: {
+                                show: false,
+                                textStyle: {
+                                    fontSize: '30',
+                                    fontWeight: 'bold'
+                                }
                             }
-                        }
-                    },
-                    labelLine: {
-                        normal: {
-                            show: false
-                        }
-                    },
-                    data: [{
-                        value: data1,
-                        name: '本科'
-                    },
-                        {
-                            value: data2,
-                            name: '专科'
-
                         },
+                        labelLine: {
+                            normal: {
+                                show: false
+                            }
+                        },
+                        data: res.data
 
+                    }]
 
-                    ]
-
-                }]
-
-        };
-        myChart.setOption(option);
-        window.addEventListener("resize", function () {
-            myChart.resize();
+            };
+            myChart.setOption(option);
+            window.addEventListener("resize", function () {
+                myChart.resize();
+            });
+        }).catch(err => {
+            console.log(err)
         });
     }
 
@@ -693,6 +693,10 @@ $(function () {
         });
     }
 })
+
+async function getXueLi() {
+    return await axios.get(`${ipAddresses}xueLi`);
+}
 
 
 function clickLi(Id) {

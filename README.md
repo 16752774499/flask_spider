@@ -27,10 +27,10 @@
 
 > ## 1.Chrome扩展程序，实现自定义的数据采集
 >![image](md_src/Chrome扩展自定义采集.gif)
->> [备用地址](https://www.xaiohua.icu/wp-content/uploads/2024/07/Chrome扩展自定义采集.gif)
+>> [备用地址](https://www.xaiohua.icu/wp-content/uploads/2024/07/Chrome%E6%89%A9%E5%B1%95%E8%87%AA%E5%AE%9A%E4%B9%89%E9%87%87%E9%9B%86%E2%80%94%E2%80%94%E4%BD%BF%E7%94%A8Clipchamp%E5%88%B6%E4%BD%9C.mp4)
 >## 2.Web端后台，发布采集任务
 >![image](md_src/Web后台发布采集任务.gif)
->> [备用地址](https://www.xaiohua.icu/wp-content/uploads/2024/07/Web后台发布采集任务.gif)
+>> [备用地址](https://www.xaiohua.icu/wp-content/uploads/2024/07/Web%E5%90%8E%E5%8F%B0%E5%8F%91%E5%B8%83%E9%87%87%E9%9B%86%E4%BB%BB%E5%8A%A1%E2%80%94%E2%80%94%E4%BD%BF%E7%94%A8Clipchamp%E5%88%B6%E4%BD%9C.mp4)
 >## 3.Web可视化页面（个别数据还未适配）
 >![img_1.png](md_src/img_1.png)
 > ![img.png](md_src/img.png)

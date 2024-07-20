@@ -1,5 +1,6 @@
 from flask import *
 from flask_cors import *
+from flask_restful import Api
 
 from routes import Routes
 from routes import adminRoutes
@@ -10,7 +11,7 @@ app = Flask(__name__)
 app.config['DEBUG'] = False
 
 CORS(app, supports_credentials=True)
-
+api = Api(app)
 # 注册路由
 app.register_blueprint(Routes.routes_module)
 app.register_blueprint(adminRoutes.routes_module)

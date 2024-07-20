@@ -1,9 +1,9 @@
 dbcfg: dict = {
     "address": "192.168.0.6",
     "port": 3306,
-    "dbname": "xiaohua",
-    "user": "xiaohua",
-    "passwd": "bwEP3xAahekCRHJQ"
+    "dbname": "flask",
+    "user": "flask",
+    "passwd": "flask_"
 }
 
 redisCfg: dict = {
